@@ -1,64 +1,58 @@
 package mfrf.sunken_world.capabilities.oxygentank;
 
+import mfrf.sunken_world.registry.Capabilities;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class OxygenTankImplement implements IOxygenProviderItemCap {
-    private int oxygen;
-    private int recovery_speed;
-    private int capacity;
+public class OxygenTankImplement implements IOxygenProviderItemCap, ICapabilityProvider {
 
-    private OxygenTankImplement(int capacity, int recovery_speed) {
-        this.capacity = capacity;
-        this.recovery_speed = recovery_speed;
+    private final ItemStack stack;
+
+    public OxygenTankImplement(int capacity, int recovery_speed, ItemStack stack) {
+        stack.getOrCreateTagElement("oxygen_tank").putInt("oxygen", capacity);
+        stack.getOrCreateTagElement("oxygen_tank").putInt("capacity", capacity);
+        stack.getOrCreateTagElement("oxygen_tank").putInt("recovery_speed", recovery_speed);
+        this.stack = stack;
     }
 
 
     @Override
     public int getOxygen() {
-        return oxygen;
+        return stack.getTagElement("oxygen_tank").getInt("oxygen");
     }
 
     @Override
     public int getCapacity() {
-        return capacity;
+        return stack.getTagElement("oxygen_tank").getInt("capacity");
     }
 
     @Override
     public int recoverySpeed() {
-        return recovery_speed;
+        return stack.getTagElement("oxygen_tank").getInt("recovery_speed");
     }
 
     @Override
     public void setOxygen(int oxygen) {
-        this.oxygen = oxygen;
+        stack.getTagElement("oxygen_tank").putInt("oxygen", oxygen);
     }
 
-    public static void attach(ItemStack stack, int capacity, int recovery_speed) {
 
-        CompoundTag orCreateTag = stack.getOrCreateTag();
-
-        CompoundTag compoundTag = new CompoundTag();
-        compoundTag.putInt("capacity", capacity);
-        compoundTag.putInt("recovery_speed", recovery_speed);
-        compoundTag.putInt("oxygen", capacity);
-        orCreateTag.put("oxygen_tank", compoundTag);
-    }
-
+    @NotNull
     @Override
-    public CompoundTag serializeNBT() {
-        CompoundTag compoundTag = new CompoundTag();
-        compoundTag.putInt("oxygen", oxygen);
-        compoundTag.putInt("capacity", capacity);
-        compoundTag.putInt("recovery_speed", recovery_speed);
-        return compoundTag;
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        return getCapability(cap);
     }
 
+    @NotNull
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
-        oxygen = nbt.getInt("oxygen");
-        capacity = nbt.getInt("capacity");
-        recovery_speed = nbt.getInt("recovery_speed");
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        if (cap == Capabilities.OXYGEN_PROVIDER_ITEM_CAP_CAPABILITY) return LazyOptional.of(() -> this).cast();
+        return LazyOptional.empty();
     }
 }

@@ -44,6 +44,4 @@ public class SwimGlass extends CurioBase {
         }
     }
 
-    //todo attach slot type
-
 }

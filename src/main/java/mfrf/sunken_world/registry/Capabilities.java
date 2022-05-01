@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Capabilities {
 
-    public static final Capability<IOxygenProviderItemCap> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {
+    public static final Capability<IOxygenProviderItemCap> OXYGEN_PROVIDER_ITEM_CAP_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     @SubscribeEvent
