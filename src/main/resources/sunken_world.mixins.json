@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "mfrf.sunken_world.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "sunken_world.refmap.json",
+  "mixins": [
+    "MixinChunkGenerator"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
