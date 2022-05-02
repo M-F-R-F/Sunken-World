@@ -24,6 +24,7 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2;
     public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_3;
     public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> CAN_FURNACE_BURN_UNDER_WATER;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -68,6 +69,12 @@ public class Config {
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_3", 100, 0, Integer.MAX_VALUE);
 
         builder.pop();
+
+        builder.pop();
+
+        builder.push("technical settings");
+
+        CAN_FURNACE_BURN_UNDER_WATER = builder.comment("can vanilla furnace of any block derived from furnace could burn when facing non-Air block", "default = true").define("can_furnace_burn_under_water", false);
 
         builder.pop();
 
