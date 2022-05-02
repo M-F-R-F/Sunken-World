@@ -2,6 +2,7 @@ package mfrf.sunken_world.items.accessories;
 
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -26,7 +27,7 @@ public class SwimGlass extends CurioBase {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
-        if (entity.isInWater()) {
+        if (entity.isEyeInFluid(FluidTags.WATER)) {
             entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 5, 1, false, false));
         }
     }

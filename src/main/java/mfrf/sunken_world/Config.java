@@ -25,6 +25,8 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_3;
     public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3;
     public static final ForgeConfigSpec.ConfigValue<Boolean> CAN_FURNACE_BURN_UNDER_WATER;
+    public static final ForgeConfigSpec.ConfigValue<Double> SWIFT_DIG_ADDITION;
+    public static final ForgeConfigSpec.ConfigValue<Double> MAX_SWIFT_DIG;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -74,7 +76,11 @@ public class Config {
 
         builder.push("technical settings");
 
-        CAN_FURNACE_BURN_UNDER_WATER = builder.comment("can vanilla furnace of any block derived from furnace could burn when facing non-Air block", "default = true").define("can_furnace_burn_under_water", false);
+        CAN_FURNACE_BURN_UNDER_WATER = builder.comment("can vanilla furnace of any block derived from furnace could burn when facing non-Air block").define("can_furnace_burn_under_water", false);
+
+        SWIFT_DIG_ADDITION = builder.comment("how much amount of \"swift dig\" attribute will addition when use swift paint", "default = 5.0").define("swift_dig_addition", 2d);
+
+        MAX_SWIFT_DIG = builder.comment("max amount of \"swift dig\" attribute", "default = 25, 12.5 = normal speed on ground, 25 means can dig as normal while swimming, but would grant double speed while on ground").define("max_swift_dig", 25d);
 
         builder.pop();
 

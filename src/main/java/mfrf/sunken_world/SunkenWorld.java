@@ -1,5 +1,6 @@
 package mfrf.sunken_world;
 
+import mfrf.sunken_world.events.PlayerEvent;
 import mfrf.sunken_world.registry.Attributes;
 import mfrf.sunken_world.registry.Blocks;
 import mfrf.sunken_world.registry.Items;
@@ -28,6 +29,7 @@ public class SunkenWorld {
 
     public SunkenWorld() {
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new PlayerEvent());
         init();
     }
 

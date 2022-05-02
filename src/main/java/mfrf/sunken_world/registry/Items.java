@@ -3,6 +3,7 @@ package mfrf.sunken_world.registry;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.DebugTool;
+import mfrf.sunken_world.items.SwiftPaint;
 import mfrf.sunken_world.items.accessories.OxygenTank;
 import mfrf.sunken_world.items.accessories.SwimGlass;
 import net.minecraft.world.item.Item;
@@ -27,7 +28,7 @@ public class Items {
     public static final RegistryObject<Item> WATER_REPELLENT = ITEMS.register("water_repellent", () -> new Item(DEFAULT_PROPERTIES));
     public static final RegistryObject<Item> OXIDIZER = ITEMS.register("oxidizer", () -> new Item(DEFAULT_PROPERTIES));
     public static final RegistryObject<Item> PROTECTIVE_AGENT = ITEMS.register("protective_agent", () -> new Item(DEFAULT_PROPERTIES));
-    public static final RegistryObject<Item> SWIFT_PAINT = ITEMS.register("swift_paint", () -> new Item(DEFAULT_PROPERTIES));
+    public static final RegistryObject<Item> SWIFT_PAINT = ITEMS.register("swift_paint", () -> new SwiftPaint(DEFAULT_PROPERTIES));
 
 
     //technical
