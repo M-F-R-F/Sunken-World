@@ -36,6 +36,7 @@ public class SwiftPaint extends Item {
         if (!pLevel.isClientSide()) {
             ItemStack stack_to_be_modify;
             ItemStack stack_to_be_shrink;
+            boolean modified = false;
             if (pUsedHand == InteractionHand.MAIN_HAND) {
                 stack_to_be_modify = pPlayer.getItemInHand(InteractionHand.OFF_HAND);
                 stack_to_be_shrink = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
@@ -56,22 +57,30 @@ public class SwiftPaint extends Item {
 
 
                             if (ResourceLocation.tryParse(compoundtag.getString("AttributeName")).equals(Attributes.SWIFT_DIG.get().getRegistryName())) {
-                                compoundtag.putDouble("Amount", Math.min(compoundtag.getDouble("Amount") + Config.SWIFT_DIG_ADDITION.get(), Config.MAX_SWIFT_DIG.get()));
+                                if (compoundtag.getDouble("Amount") < Config.MAX_SWIFT_DIG.get()) {
+                                    compoundtag.putDouble("Amount", Math.min(compoundtag.getDouble("Amount") + Config.SWIFT_DIG_ADDITION.get(), Config.MAX_SWIFT_DIG.get()));
+                                    modified = true;
+                                }
                             }
-                        }
 
+                        }
                     }
+
+
+                } else {
+                    stack_to_be_modify.addAttributeModifier(Attributes.SWIFT_DIG.get(), new AttributeModifier(SWIFT_DIG_UUID, "tool_modifier", Config.SWIFT_DIG_ADDITION.get(), AttributeModifier.Operation.ADDITION), EquipmentSlot.MAINHAND);
                 }
 
 
-            } else {
-                stack_to_be_modify.addAttributeModifier(Attributes.SWIFT_DIG.get(), new AttributeModifier(SWIFT_DIG_UUID, "tool_modifier", Config.SWIFT_DIG_ADDITION.get(), AttributeModifier.Operation.ADDITION), EquipmentSlot.MAINHAND);
+                if (modified) {
+                    stack_to_be_shrink.shrink(1);
+                    return InteractionResultHolder.success(stack_to_be_shrink);
+                } else {
+                    return InteractionResultHolder.pass(stack_to_be_shrink);
+                }
             }
-
-            stack_to_be_shrink.shrink(1);
-            return InteractionResultHolder.success(stack_to_be_shrink);
         }
         return super.use(pLevel, pPlayer, pUsedHand);
-    }
 
+    }
 }
