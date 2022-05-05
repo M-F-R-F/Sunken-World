@@ -4,6 +4,7 @@ import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.DebugTool;
 import mfrf.sunken_world.items.SwiftPaint;
+import mfrf.sunken_world.items.accessories.Flipper;
 import mfrf.sunken_world.items.accessories.OxygenTank;
 import mfrf.sunken_world.items.accessories.SwimGlass;
 import net.minecraft.world.item.Item;
@@ -30,6 +31,9 @@ public class Items {
     public static final RegistryObject<Item> PROTECTIVE_AGENT = ITEMS.register("protective_agent", () -> new Item(DEFAULT_PROPERTIES));
     public static final RegistryObject<Item> SWIFT_PAINT = ITEMS.register("swift_paint", () -> new SwiftPaint(DEFAULT_PROPERTIES));
 
+
+    //flipper
+    public static final RegistryObject<Item> TEST_FLIPPER = ITEMS.register("test_flipper", () -> new Flipper(new Item.Properties().stacksTo(1).tab(SunkenWorld.TAB)));
 
     //technical
     public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugTool::new);
