@@ -38,14 +38,23 @@ public class Flipper extends CurioBase {
         super.onUnequip(slotContext, newStack, stack);
     }
 
+//    @Override
+//    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nullable EquipmentSlot slot) {
+//        Multimap<Attribute, AttributeModifier> multimap = LinkedHashMultimap.create(super.getDefaultAttributeModifiers(slot));
+//        UUID uuid = new UUID(slot.toString().hashCode(),0);
+//        if(slot == EquipmentSlot.FEET) {
+//            Attribute swimSpeed = ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("forge", "swim_speed"));
+//            multimap.put(swimSpeed, new AttributeModifier(uuid, "Flipper Swim Speed", 0.1, AttributeModifier.Operation.ADDITION));
+//        }
+//        return multimap;
+//    }
+
     @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nullable EquipmentSlot slot) {
-        Multimap<Attribute, AttributeModifier> multimap = LinkedHashMultimap.create(super.getDefaultAttributeModifiers(slot));
-        UUID uuid = new UUID(slot.toString().hashCode(),0);
-        if(slot == EquipmentSlot.FEET) {
-            Attribute swimSpeed = ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("forge", "swim_speed"));
-            multimap.put(swimSpeed, new AttributeModifier(uuid, "Flipper Swim Speed", 0.1, AttributeModifier.Operation.ADDITION));
-        }
-        return multimap;
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, uuid, stack);
+        Attribute swimSpeed = ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("forge", "swim_speed"));
+        attributeModifiers.put(swimSpeed, new AttributeModifier(uuid, "Flipper Swim Speed", 0.1, AttributeModifier.Operation.ADDITION));
+        return attributeModifiers;
+        //todo add to slot type
     }
 }

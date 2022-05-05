@@ -27,6 +27,10 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Boolean> CAN_FURNACE_BURN_UNDER_WATER;
     public static final ForgeConfigSpec.ConfigValue<Double> SWIFT_DIG_ADDITION;
     public static final ForgeConfigSpec.ConfigValue<Double> MAX_SWIFT_DIG;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_SKY;
+    public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_SKY;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_STRATA;
+    public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_STRATA;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -81,6 +85,15 @@ public class Config {
         SWIFT_DIG_ADDITION = builder.comment("how much amount of \"swift dig\" attribute will addition when use swift paint", "default = 5.0").define("swift_dig_addition", 2d);
 
         MAX_SWIFT_DIG = builder.comment("max amount of \"swift dig\" attribute", "default = 25, 12.5 = normal speed on ground, 25 means can dig as normal while swimming, but would grant double speed while on ground").define("max_swift_dig", 25d);
+
+        builder.pop();
+
+        builder.push("world settings");
+        ENABLE_FURY_OF_SKY = builder.comment("Enable fury of sky").define("enable_fury_of_sky", true);
+        DAMAGE_FURY_OF_SKY = builder.comment("If enabled,damage of fury of sky").defineInRange("damage_fury_of_sky", 4.0f, 0, Double.MAX_VALUE);
+
+        ENABLE_FURY_OF_STRATA = builder.comment("Enable fury of strata").define("enable_fury_of_strata", true);
+        DAMAGE_FURY_OF_STRATA = builder.comment("If enabled damage of fury of strata").defineInRange("damage_fury_of_strata", 4.0f, 0, Double.MAX_VALUE);
 
         builder.pop();
 
