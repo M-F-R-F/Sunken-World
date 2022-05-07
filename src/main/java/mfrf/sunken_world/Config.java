@@ -1,15 +1,11 @@
 package mfrf.sunken_world;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.world.ForgeWorldPreset;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
@@ -32,7 +28,18 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_STRATA;
     public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_STRATA;
 
+    public static final ForgeConfigSpec.ConfigValue<Double> FLIPPER_SPEED_BOOST;
+    public static final ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_BOOST;
+    public static final ForgeConfigSpec.ConfigValue<Double> END_FLIPPER_SPEED_BOOST;
+    public static final ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_ACTIVATED_BOOST;
+    public static final ForgeConfigSpec.ConfigValue<Integer> JET_FLIPPER_COST_ON_ACTIVATED_PER_TICK;
+    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_DISTANCE;
+    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_ENERGY_CAPACITY;
+    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COST;
+    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COOL_DOWN;
+
     public static List<String> dimensionsWillBeEffectCache = null;
+
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -73,6 +80,24 @@ public class Config {
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3 = builder.comment("Oxygen tank oxygen recovery rate tier 3", "default = 8")
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_3", 100, 0, Integer.MAX_VALUE);
+
+        FLIPPER_SPEED_BOOST = builder.comment("Flipper boost speed", "default = 1.5").defineInRange("flipper_boost_speed", 1.5, 0, Double.MAX_VALUE);
+
+        JET_FLIPPER_SPEED_BOOST = builder.comment("Jet flipper speed boost", "default = 1.5").defineInRange("jet_flipper_speed_boost", 1.5, 0, Double.MAX_VALUE);
+
+        JET_FLIPPER_SPEED_ACTIVATED_BOOST = builder.comment("Jet flipper speed boost", "default = 1.5").defineInRange("jet_flipper_speed_boost", 1.5, 0, Double.MAX_VALUE);
+
+        JET_FLIPPER_COST_ON_ACTIVATED_PER_TICK = builder.comment("Jet flipper cost oxygen on activated per tick", "default = 1").defineInRange("jet_flipper_cost_on_activated_per_tick", 1, 0, Integer.MAX_VALUE);
+
+        END_FLIPPER_SPEED_BOOST = builder.comment("End flipper boost speed", "default = 1.5").defineInRange("end_flipper_boost_speed", 1.5, 0, Double.MAX_VALUE);
+
+        END_FLIPPER_TELEPORT_DISTANCE = builder.comment("End flipper teleport distance", "default = 10").defineInRange("end_flipper_teleport_distance", 10, 0, Integer.MAX_VALUE);
+
+        END_FLIPPER_ENERGY_CAPACITY = builder.comment("End flipper energy capacity use to teleport", "gather while move, 2 unit swim speed grants 1 unit energy (floor)", "default = 100").defineInRange("end_flipper_energy_capacity", 100, 0, Integer.MAX_VALUE);
+
+        END_FLIPPER_TELEPORT_COST = builder.comment("End flipper teleport cost energy", "default = 10").defineInRange("end_flipper_teleport_cost", 10, 0, Integer.MAX_VALUE);
+
+        END_FLIPPER_TELEPORT_COOL_DOWN = builder.comment("End flipper teleport cool down", "unit = second", "default = 10").defineInRange("end_flipper_teleport_cool down", 10, 0, Integer.MAX_VALUE);
 
         builder.pop();
 

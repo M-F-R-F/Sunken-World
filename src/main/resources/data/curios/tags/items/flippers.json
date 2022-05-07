@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "sunken_world:flipper",
+    "sunken_world:jet_flipper",
+    "sunken_world:end_flipper"
+  ]
+}

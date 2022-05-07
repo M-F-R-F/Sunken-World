@@ -21,11 +21,11 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public class Flipper extends CurioBase {
-    //public final Consumer<ServerPlayer> onActive;
+    private final Double speedBoost;
 
-    public Flipper(Properties pProperties) {
+    public Flipper(Properties pProperties, Double speedBoost) {
         super(pProperties);
-        //this.onActive = onActive;
+        this.speedBoost = speedBoost;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Flipper extends CurioBase {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, uuid, stack);
         Attribute swimSpeed = ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("forge", "swim_speed"));
-        attributeModifiers.put(swimSpeed, new AttributeModifier(uuid, "Flipper Swim Speed", 0.1, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(swimSpeed, new AttributeModifier(uuid, "Flipper Swim Speed", speedBoost, AttributeModifier.Operation.ADDITION));
         return attributeModifiers;
         //todo add to slot type
     }

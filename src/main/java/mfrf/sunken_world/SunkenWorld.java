@@ -30,15 +30,16 @@ public class SunkenWorld {
     public SunkenWorld() {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new EventAboutPlayer());
-        init();
+        ModInit();
     }
 
 
-    private static void init() {
+    private static void ModInit() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         Blocks.BLOCKS.register(modEventBus);
         Items.ITEMS.register(modEventBus);
         Attributes.ATTRIBUTES.register(modEventBus);
+
     }
 
 }
