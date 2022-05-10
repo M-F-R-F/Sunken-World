@@ -1,5 +1,6 @@
 package mfrf.sunken_world.network.try_teleport;
 
+import com.mojang.math.Vector3f;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.items.accessories.EndFlipper;
 import mfrf.sunken_world.registry.CuriosSlotRegistry;
@@ -20,13 +21,17 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.function.Supplier;
 
 public class PakcetTryTeleport {
+    Vector3f targetVector;
 
-    public PakcetTryTeleport() {
-
+    public PakcetTryTeleport(Vector3f targetVector) {
+        this.targetVector = targetVector;
     }
 
     public PakcetTryTeleport(FriendlyByteBuf friendlyByteBuf) {
-
+        float x = friendlyByteBuf.readFloat();
+        float y = friendlyByteBuf.readFloat();
+        float z = friendlyByteBuf.readFloat();
+        this.targetVector = new Vector3f(x, y, z);
     }
 
 
@@ -50,16 +55,18 @@ public class PakcetTryTeleport {
 
                     if (end_flipper != ItemStack.EMPTY && !player.getCooldowns().isOnCooldown(end_flipper.getItem()) && EndFlipper.getEnergy(end_flipper) >= Config.END_FLIPPER_TELEPORT_COST.get()) {
                         ServerLevel level = player.getLevel();
-                        Vec3 lookAngle = player.getLookAngle();
-                        //todo fix bug
+//                        Vec3 lookAngle = player.getLookAngle();
+                        Vector3f lookAngle = targetVector;
                         BlockPos eyePos = player.eyeBlockPosition();
-                        double xLook = lookAngle.x;
-                        double yLook = lookAngle.y;
-                        double zLook = lookAngle.z;
+//                        double xLook = lookAngle.x();
+//                        double yLook = lookAngle.y();
+//                        double zLook = lookAngle.z();
                         for (Integer offset = Config.END_FLIPPER_TELEPORT_DISTANCE.get(); offset > 0; offset--) {
-                            double x = eyePos.getX() + xLook * offset;
-                            double y = eyePos.getY() + yLook * offset;
-                            double z = eyePos.getZ() + zLook * offset;
+                            Vector3f copy = lookAngle.copy();
+                            copy.mul(offset);
+                            double x = eyePos.getX() + copy.x();
+                            double y = eyePos.getY() + copy.y();
+                            double z = eyePos.getZ() + copy.z();
 
 
                             double f = player.getType().getDimensions().width * 0.8f;
@@ -77,6 +84,8 @@ public class PakcetTryTeleport {
                                 player.teleportTo(x, y, z);
                                 EndFlipper.setEnergy(end_flipper, EndFlipper.getEnergy(end_flipper) - Config.END_FLIPPER_TELEPORT_COST.get());
                                 player.getCooldowns().addCooldown(end_flipper.getItem(), Config.END_FLIPPER_TELEPORT_COOL_DOWN.get());
+                                //todo add sound, particles
+                                break;
                             }
 
                         }
@@ -89,6 +98,8 @@ public class PakcetTryTeleport {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-
+        buf.writeFloat(targetVector.x());
+        buf.writeFloat(targetVector.y());
+        buf.writeFloat(targetVector.z());
     }
 }
