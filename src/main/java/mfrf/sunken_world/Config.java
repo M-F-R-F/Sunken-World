@@ -37,8 +37,12 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_ENERGY_CAPACITY;
     public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COST;
     public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COOL_DOWN;
+    public static final ForgeConfigSpec.BooleanValue OXYGEN_TANK_HUD_ENABLED;
+    public static final ForgeConfigSpec.IntValue PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE;
+    public static final ForgeConfigSpec.DoubleValue OXYGEN_BUBBLE_SPEED;
 
     public static List<String> dimensionsWillBeEffectCache = null;
+
 
 
     static {
@@ -111,6 +115,7 @@ public class Config {
 
         MAX_SWIFT_DIG = builder.comment("max amount of \"swift dig\" attribute", "default = 25, 12.5 = normal speed on ground, 25 means can dig as normal while swimming, but would grant double speed while on ground").define("max_swift_dig", 25d);
 
+        OXYGEN_TANK_HUD_ENABLED = builder.comment("enable oxygen tank hud").define("oxygen_tank_hud_enabled", true);
         builder.pop();
 
         builder.push("world settings");
@@ -119,6 +124,13 @@ public class Config {
 
         ENABLE_FURY_OF_STRATA = builder.comment("Enable fury of strata").define("enable_fury_of_strata", true);
         DAMAGE_FURY_OF_STRATA = builder.comment("If enabled damage of fury of strata").defineInRange("damage_fury_of_strata", 4.0f, 0, Double.MAX_VALUE);
+        OXYGEN_BUBBLE_SPEED = builder.comment("How fast oxygen bubble move").defineInRange("oxygen_bubble_speed", 0.5f, 0, Double.MAX_VALUE);
+
+        builder.pop();
+
+        builder.push("environment settings");
+        PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE = builder.comment("Probability of generate bubble of oxygen coral per tick", "default = 2").defineInRange("probability_oxygen_coral_generate_bubble", 2, 0, 100);
+        builder.pop();
 
         builder.pop();
 

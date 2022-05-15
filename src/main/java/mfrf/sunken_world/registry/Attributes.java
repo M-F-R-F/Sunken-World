@@ -16,7 +16,7 @@ public class Attributes {
     public static final RegistryObject<Attribute> GRACE_OF_SKY = ATTRIBUTES.register("grace_of_sky", () -> new NonValueAttribute("Grace of sky"));
     public static final RegistryObject<Attribute> GRACE_OF_OCEAN = ATTRIBUTES.register("grace_of_ocean", () -> new NonValueAttribute("Grace of ocean"));
     public static final RegistryObject<Attribute> GRACE_OF_STRATA = ATTRIBUTES.register("grace_of_strata", () -> new NonValueAttribute("Grace of strata"));
-
+    public static final RegistryObject<Attribute> ADDITION_OXYGEN_CAPACITY = ATTRIBUTES.register("addition_oxygen_capacity", () -> new RangedAttribute("Addition Oxygen Capacity", 0, 0, Integer.MAX_VALUE));
 }
 
 class NonValueAttribute extends Attribute {
