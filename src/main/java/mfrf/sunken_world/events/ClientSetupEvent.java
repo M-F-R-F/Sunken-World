@@ -1,8 +1,11 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +18,11 @@ public class ClientSetupEvent {
     public static void init(final FMLClientSetupEvent event) {
         MinecraftForge.EVENT_BUS.addListener(KeyInputEvent::onKeyInput);
         KeyBindings.init();
+    }
+
+    @SubscribeEvent
+    public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
     }
 
 }

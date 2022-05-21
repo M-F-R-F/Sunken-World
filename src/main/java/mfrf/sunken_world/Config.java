@@ -40,6 +40,7 @@ public class Config {
     public static final ForgeConfigSpec.BooleanValue OXYGEN_TANK_HUD_ENABLED;
     public static final ForgeConfigSpec.IntValue PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE;
     public static final ForgeConfigSpec.DoubleValue OXYGEN_BUBBLE_SPEED;
+    public static final ForgeConfigSpec.BooleanValue DISABLE_WATER_FOG;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -49,7 +50,6 @@ public class Config {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
         builder.push("General settings");
-
         SEA_LEVEL_TOP = builder
                 .comment("This value defines top of the sea", "vanilla = 63, default by this mod = 230")
                 .defineInRange("sea_level_top", 256, -63, 320);
@@ -60,11 +60,9 @@ public class Config {
                 .comment("dimensions that this mod will effect(flood by water)")
                 .comment("separate by \";\", include name space")
                 .define("dimensions_would_be_effect", "minecraft:overworld;");
-
         builder.pop();
 
         builder.push("gear settings");
-
         builder.comment("1 oxygen = 1 bubble").comment("recovery speed means how much oxygen recovery per tick").push("Oxygen tank settings");
 
         OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 1000")
@@ -102,13 +100,10 @@ public class Config {
         END_FLIPPER_TELEPORT_COST = builder.comment("End flipper teleport cost energy", "default = 10").defineInRange("end_flipper_teleport_cost", 10, 0, Integer.MAX_VALUE);
 
         END_FLIPPER_TELEPORT_COOL_DOWN = builder.comment("End flipper teleport cool down", "unit = second", "default = 10").defineInRange("end_flipper_teleport_cool down", 10, 0, Integer.MAX_VALUE);
-
         builder.pop();
-
         builder.pop();
 
         builder.push("technical settings");
-
         CAN_FURNACE_BURN_UNDER_WATER = builder.comment("can vanilla furnace of any block derived from furnace could burn when facing non-Air block").define("can_furnace_burn_under_water", false);
 
         SWIFT_DIG_ADDITION = builder.comment("how much amount of \"swift dig\" attribute will addition when use swift paint", "default = 5.0").define("swift_dig_addition", 2d);
@@ -116,6 +111,8 @@ public class Config {
         MAX_SWIFT_DIG = builder.comment("max amount of \"swift dig\" attribute", "default = 25, 12.5 = normal speed on ground, 25 means can dig as normal while swimming, but would grant double speed while on ground").define("max_swift_dig", 25d);
 
         OXYGEN_TANK_HUD_ENABLED = builder.comment("enable oxygen tank hud").define("oxygen_tank_hud_enabled", true);
+
+        DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", true);
         builder.pop();
 
         builder.push("world settings");
@@ -130,8 +127,6 @@ public class Config {
 
         builder.push("environment settings");
         PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE = builder.comment("Probability of generate bubble of oxygen coral per tick", "default = 2").defineInRange("probability_oxygen_coral_generate_bubble", 2, 0, 100);
-        builder.pop();
-
         builder.pop();
 
 

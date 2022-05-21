@@ -3,6 +3,7 @@ package mfrf.sunken_world;
 import mfrf.sunken_world.events.EventAboutPlayer;
 import mfrf.sunken_world.registry.Attributes;
 import mfrf.sunken_world.registry.Blocks;
+import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.Items;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -39,6 +40,7 @@ public class SunkenWorld {
         Blocks.BLOCKS.register(modEventBus);
         Items.ITEMS.register(modEventBus);
         Attributes.ATTRIBUTES.register(modEventBus);
+        Entities.ENTITIES.register(modEventBus);
 
     }
 

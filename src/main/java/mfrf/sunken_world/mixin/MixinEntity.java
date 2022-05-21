@@ -23,16 +23,6 @@ public abstract class MixinEntity {
     @Shadow(aliases = "this$0")
     private Entity inst;
 
-
-    @Shadow
-    protected abstract void checkInsideBlocks();
-
-    @Shadow
-    public abstract void ejectPassengers();
-
-    @Shadow
-    public abstract boolean equals(Object pObject);
-
     @Inject(method = "getAirSupply", at = @At("RETURN"), cancellable = true)
     public void getAirSupply(CallbackInfoReturnable<Integer> info) {
         executeIFExistAdditionOxygenCapacityAttribute((livingEntity, attributeInstance) -> {
