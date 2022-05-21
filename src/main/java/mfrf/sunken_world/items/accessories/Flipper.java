@@ -57,4 +57,5 @@ public class Flipper extends CurioBase {
         return attributeModifiers;
         //todo add to slot type
     }
+
 }

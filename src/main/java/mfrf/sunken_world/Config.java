@@ -52,7 +52,7 @@ public class Config {
         builder.push("General settings");
         SEA_LEVEL_TOP = builder
                 .comment("This value defines top of the sea", "vanilla = 63, default by this mod = 230")
-                .defineInRange("sea_level_top", 256, -63, 320);
+                .defineInRange("sea_level_top", 128, -63, 320);
         SEA_LEVEL_BOTTOM = builder
                 .comment("This value defines top of the sea", "vanilla = 63, default by this mod = 230")
                 .defineInRange("sea_level_bottom", 60, -63, 320);
@@ -112,7 +112,7 @@ public class Config {
 
         OXYGEN_TANK_HUD_ENABLED = builder.comment("enable oxygen tank hud").define("oxygen_tank_hud_enabled", true);
 
-        DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", true);
+        DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", false);
         builder.pop();
 
         builder.push("world settings");
