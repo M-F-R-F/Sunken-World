@@ -3,7 +3,7 @@ package mfrf.sunken_world.registry;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.DebugTool;
-import mfrf.sunken_world.items.SwiftPaint;
+import mfrf.sunken_world.items.WaterProofPaint;
 import mfrf.sunken_world.items.accessories.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,11 +30,8 @@ public class Items {
     public static final RegistryObject<Item> CONDUIT_PENDANT = ITEMS.register("conduit_pendant", () -> new ConduitPendant(NON_STACK_NON_BREAK_PROPERTIES));
 
             //resources
-    public static final RegistryObject<Item> ADHESIVE = ITEMS.register("adhesive", () -> new Item(DEFAULT_PROPERTIES));
-    public static final RegistryObject<Item> WATER_REPELLENT = ITEMS.register("water_repellent", () -> new Item(DEFAULT_PROPERTIES));
     public static final RegistryObject<Item> OXIDIZER = ITEMS.register("oxidizer", () -> new Item(DEFAULT_PROPERTIES));
-    public static final RegistryObject<Item> PROTECTIVE_AGENT = ITEMS.register("protective_agent", () -> new Item(DEFAULT_PROPERTIES));
-    public static final RegistryObject<Item> SWIFT_PAINT = ITEMS.register("swift_paint", () -> new SwiftPaint(DEFAULT_PROPERTIES));
+    public static final RegistryObject<Item> WATER_PROOF_PAINT = ITEMS.register("water_proof_paint", () -> new WaterProofPaint(DEFAULT_PROPERTIES));
 
 
     //technical

@@ -41,6 +41,10 @@ public class Config {
     public static final ForgeConfigSpec.IntValue PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE;
     public static final ForgeConfigSpec.DoubleValue OXYGEN_BUBBLE_SPEED;
     public static final ForgeConfigSpec.BooleanValue DISABLE_WATER_FOG;
+    public static final ForgeConfigSpec.IntValue OXIDIZER_LAST_TIME;
+    public static final ForgeConfigSpec.IntValue MIN_BURNING_TICK_OF_NETHER_FURNACE;
+    public static final ForgeConfigSpec.ConfigValue<Double> PROBABILITY_NETHER_FURNACE_EXTINGUISH;
+    public static final ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -113,14 +117,22 @@ public class Config {
         OXYGEN_TANK_HUD_ENABLED = builder.comment("enable oxygen tank hud").define("oxygen_tank_hud_enabled", true);
 
         DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", false);
+
+        OXIDIZER_LAST_TIME = builder.comment("how much tick could an oxidizer use", "default = 1600").defineInRange("oxidizer_last_time", 1600, 1, Integer.MAX_VALUE);
+        builder.pop();
+
+        builder.push("tile entities");
+        MIN_BURNING_TICK_OF_NETHER_FURNACE = builder.comment("how many ticks will burning at LEAST while only soul fire burning in nether furnace").defineInRange("min_burning_tick_of_nether_furnace", 800, 0, Integer.MAX_VALUE);
+        PROBABILITY_NETHER_FURNACE_EXTINGUISH = builder.comment("probability of soul fire extinguish in nether furnace").define("probability_nether_furnace_extinguish", 0.1d);
+        NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST = builder.comment("boost speed per tick while both soul fire and fuel burning in nether furnace").defineInRange("nether_furnace_overclock_smelting_boost", 0, 2, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("world settings");
-        ENABLE_FURY_OF_SKY = builder.comment("Enable fury of sky").define("enable_fury_of_sky", true);
-        DAMAGE_FURY_OF_SKY = builder.comment("If enabled,damage of fury of sky").defineInRange("damage_fury_of_sky", 4.0f, 0, Double.MAX_VALUE);
+        ENABLE_FURY_OF_SKY = builder.comment("Enable fury of sky").define("enable_fury_of_sky", false);
+        DAMAGE_FURY_OF_SKY = builder.comment("If enabled,cause damage to player that haven't be forgiven by sky yet while above the sea_level_top ").defineInRange("damage_fury_of_sky", 4.0f, 0, Double.MAX_VALUE);
 
-        ENABLE_FURY_OF_STRATA = builder.comment("Enable fury of strata").define("enable_fury_of_strata", true);
-        DAMAGE_FURY_OF_STRATA = builder.comment("If enabled damage of fury of strata").defineInRange("damage_fury_of_strata", 4.0f, 0, Double.MAX_VALUE);
+        ENABLE_FURY_OF_STRATA = builder.comment("Enable fury of strata").define("enable_fury_of_strata", false);
+        DAMAGE_FURY_OF_STRATA = builder.comment("If enabled,cause damage to player that haven't be forgiven by strata yet while  under the sea_level_bottom ").defineInRange("damage_fury_of_strata", 4.0f, 0, Double.MAX_VALUE);
         OXYGEN_BUBBLE_SPEED = builder.comment("How fast oxygen bubble move").defineInRange("oxygen_bubble_speed", 0.5f, 0, Double.MAX_VALUE);
 
         builder.pop();
