@@ -69,20 +69,20 @@ public class Config {
         builder.push("gear settings");
         builder.comment("1 oxygen = 1 bubble").comment("recovery speed means how much oxygen recovery per tick").push("Oxygen tank settings");
 
-        OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 1000")
-                .defineInRange("oxygen_tank_capacity_tier_1", 1000, 0, Integer.MAX_VALUE);
+        OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 15000","notice:max oxygen capacity of vanilla player is 300")
+                .defineInRange("oxygen_tank_capacity_tier_1", 15000, 0, Integer.MAX_VALUE);
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1 = builder.comment("Oxygen tank oxygen recovery rate tier 1", "default = 2")
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_1", 25, 0, Integer.MAX_VALUE);
 
-        OXYGEN_TANK_CAPACITY_TIER_2 = builder.comment("Oxygen tank capacity tier 2", "default = 2000")
-                .defineInRange("oxygen_tank_capacity_tier_2", 2000, 0, Integer.MAX_VALUE);
+        OXYGEN_TANK_CAPACITY_TIER_2 = builder.comment("Oxygen tank capacity tier 2", "default = 30000")
+                .defineInRange("oxygen_tank_capacity_tier_2", 30000, 0, Integer.MAX_VALUE);
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2 = builder.comment("Oxygen tank oxygen recovery rate tier 2", "default = 4")
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_2", 50, 0, Integer.MAX_VALUE);
 
-        OXYGEN_TANK_CAPACITY_TIER_3 = builder.comment("Oxygen tank capacity tier 3", "default = 4000")
-                .defineInRange("oxygen_tank_capacity_tier_3", 4000, 0, Integer.MAX_VALUE);
+        OXYGEN_TANK_CAPACITY_TIER_3 = builder.comment("Oxygen tank capacity tier 3", "default = 60000")
+                .defineInRange("oxygen_tank_capacity_tier_3", 60000, 0, Integer.MAX_VALUE);
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3 = builder.comment("Oxygen tank oxygen recovery rate tier 3", "default = 8")
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_3", 100, 0, Integer.MAX_VALUE);

@@ -1,10 +1,14 @@
 package mfrf.sunken_world.items.accessories;
 
 import com.google.common.collect.Multimap;
+import mfrf.sunken_world.capabilities.oxygentank.IOxygenProviderItemCap;
 import mfrf.sunken_world.capabilities.oxygentank.OxygenTankImplement;
+import mfrf.sunken_world.network.sync_player_info.PacketSyncOxygenTank;
+import mfrf.sunken_world.network.sync_player_info.SyncPlayerInfoChannel;
 import mfrf.sunken_world.registry.Attributes;
 import mfrf.sunken_world.registry.Capabilities;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -45,15 +49,38 @@ public class OxygenTank extends CurioBase {
             if (entity.getAirSupply() == 0) {
                 if (!oxygenTank.isEmpty()) {
                     entity.setAirSupply(oxygenTank.extractOxygen(maxAirSupply - 1));
-                    //todo modify vanilla oxygen system
+                    //todo modify vanilla oxygen system #deprecated
+                    syncPlayerInfo((float) oxygenTank.getOxygen() / oxygenTank.getCapacity(), entity);
                 }
             }
 
             if (oxygenTank.getOxygen() < oxygenTank.getCapacity() && (!entity.isEyeInFluid(FluidTags.WATER) || entity.level.getBlockState(entity.blockPosition()).is(Blocks.BUBBLE_COLUMN))) {
                 oxygenTank.recovery();
+                syncPlayerInfo((float) oxygenTank.getOxygen() / oxygenTank.getCapacity(), entity);
             }
         });
     }
+
+    private void syncPlayerInfo(float percent, LivingEntity entity) {
+        if (entity instanceof ServerPlayer player) {
+            SyncPlayerInfoChannel.sendToClient(new PacketSyncOxygenTank(percent), player);
+        }
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        super.onEquip(slotContext, prevStack, stack);
+        stack.getCapability(Capabilities.OXYGEN_PROVIDER_ITEM_CAP_CAPABILITY).ifPresent(oxygenTank -> {
+            syncPlayerInfo((float) oxygenTank.getOxygen() / oxygenTank.getCapacity(), slotContext.entity());
+        });
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        super.onUnequip(slotContext, newStack, stack);
+        syncPlayerInfo(-1, slotContext.entity());
+    }
+
 
     @Nullable
     @Override

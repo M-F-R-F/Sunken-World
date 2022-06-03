@@ -15,7 +15,6 @@ import net.minecraft.world.phys.Vec3;
 
 public class BubbleEntity extends Projectile {
     private static final EntityDataAccessor<Integer> OXYGEN_CONTAIN = SynchedEntityData.defineId(BubbleEntity.class, EntityDataSerializers.INT);
-    //todo registry
 
     public BubbleEntity(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);

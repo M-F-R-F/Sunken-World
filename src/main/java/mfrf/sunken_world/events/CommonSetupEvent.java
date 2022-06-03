@@ -1,6 +1,7 @@
 package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.network.sync_player_info.SyncPlayerInfoChannel;
 import mfrf.sunken_world.network.try_teleport.TryTeleportChannel;
 import mfrf.sunken_world.registry.Entities;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -14,6 +15,7 @@ public class CommonSetupEvent {
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         TryTeleportChannel.register();
+        SyncPlayerInfoChannel.register();
     }
 
     @SubscribeEvent
