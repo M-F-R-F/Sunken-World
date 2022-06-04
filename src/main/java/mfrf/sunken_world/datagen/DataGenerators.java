@@ -13,11 +13,10 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
-            BlockTagAttaches blockTagAttacher = new BlockTagAttaches(generator, event.getExistingFileHelper());
 
-            generator.addProvider(blockTagAttacher);
-        }
-        if (event.includeClient()) {
+        }if (event.includeClient()) {
+            generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));
+//            generator.addProvider(new BlockTagAttaches(generator, event.getExistingFileHelper()));
 
         }
     }

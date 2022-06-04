@@ -68,7 +68,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'sunken_world'
 
             mods {
-                sunkenworld {
+                sunken_world {
                     source sourceSets.main
                 }
             }
@@ -95,7 +95,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'sunken_world'
 
             mods {
-                sunkenworld {
+                sunken_world {
                     source sourceSets.main
                 }
             }
@@ -120,7 +120,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'sunken_world'
 
             mods {
-                sunkenworld {
+                sunken_world {
                     source sourceSets.main
                 }
             }
@@ -142,10 +142,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'sunkenworld', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'sunken_world', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                sunkenworld {
+                sunken_world {
                     source sourceSets.main
                 }
             }
@@ -200,12 +200,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "sunkenworld",
-                //"Specification-Vendor": "sunkenworld authors",
+                "Specification-Title"     : "sunken_world",
+                //"Specification-Vendor": "sunken_world authors",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                //"Implementation-Vendor": "sunkenworld authors",
+                //"Implementation-Vendor": "sunken_world authors",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

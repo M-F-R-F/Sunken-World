@@ -20,15 +20,15 @@ public class CuriosSlotRegistry {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, SlotTypePreset.HEAD.getMessageBuilder().size(2)::build);
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, SlotTypePreset.NECKLACE.getMessageBuilder().size(2)::build);
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, SlotTypePreset.BACK.getMessageBuilder().size(1)::build);
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder(SLOT_FLIPPER).icon(new ResourceLocation(SunkenWorld.MODID, "items/curios_slots/flippers")).priority(500).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder(SLOT_OXYGEN_TANK).icon(new ResourceLocation(SunkenWorld.MODID, "items/curios_slots/oxygen_tank")).priority(81).build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder(SLOT_FLIPPER).icon(new ResourceLocation(SunkenWorld.MODID, "curios_slots/flippers")).priority(500).build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder(SLOT_OXYGEN_TANK).icon(new ResourceLocation(SunkenWorld.MODID, "curios_slots/oxygen_tank")).priority(81).build());
 
     }
 
     @SubscribeEvent
     public static void onRegistrySprite(TextureStitchEvent.Pre event) {
-        event.addSprite(new ResourceLocation(SunkenWorld.MODID, "items/curios_slots/flippers"));
-        event.addSprite(new ResourceLocation(SunkenWorld.MODID, "items/curios_slots/oxygen_tank"));
+        event.addSprite(new ResourceLocation(SunkenWorld.MODID, "curios_slots/flippers"));
+        event.addSprite(new ResourceLocation(SunkenWorld.MODID, "curios_slots/oxygen_tank"));
     }
 
 
