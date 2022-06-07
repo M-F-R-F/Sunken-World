@@ -33,4 +33,10 @@ description='''
     mandatory=true
     versionRange="[1.18.2-5.0.7.0,)"
     side="BOTH"
+[[dependencies.sunken_world]]
+    modId = "terrablender"
+    mandatory = true
+    versionRange = "[1.1.0.102,)"
+    ordering = "NONE"
+    side = "BOTH"
 
