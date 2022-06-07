@@ -63,7 +63,7 @@ public class Config {
         DIMENSIONS_WILL_BE_EFFECT = builder
                 .comment("dimensions that this mod will effect(flood by water)")
                 .comment("separate by \";\", include name space")
-                .define("dimensions_would_be_effect", "minecraft:overworld;");
+                .define("dimensions_would_be_effect", "sunken_world:sunken_world");
         builder.pop();
 
         builder.push("gear settings");

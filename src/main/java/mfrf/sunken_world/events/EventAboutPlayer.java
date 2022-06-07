@@ -1,16 +1,29 @@
 package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.helper.Tools;
 import mfrf.sunken_world.registry.Attributes;
 import mfrf.sunken_world.registry.DamageSources;
+import mfrf.sunken_world.registry.Dimensions;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.OptionalDouble;
@@ -40,6 +53,23 @@ public class EventAboutPlayer {
         }
     }
 
+
+    @SubscribeEvent
+    public void onPlayerDrown(LivingDeathEvent event) {
+        if (event.getSource() == DamageSource.DROWN) {
+            LivingEntity entityLiving = event.getEntityLiving();
+            Level level = entityLiving.getLevel();
+            BlockPos onPos = entityLiving.getOnPos();
+            if (level.getBiome(onPos).is(BiomeTags.IS_OCEAN)) {
+                if (event.getEntityLiving().getAttribute(Attributes.DISTANCE_CALLING.get()) != null) {
+                    entityLiving.heal(entityLiving.getMaxHealth());
+                    entityLiving.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 256, 1, true, true));
+                    Tools.teleport(entityLiving, entityLiving.getServer().getLevel(Dimensions.SUNKEN_WORLD), onPos, true);
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
 
 
 }

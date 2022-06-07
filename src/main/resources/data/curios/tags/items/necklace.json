@@ -1,5 +1,9 @@
 {
   "replace": false,
   "values": [
+    "sunken_world:grace_of_ocean_pendant_broken",
+    "sunken_world:grace_of_ocean_pendant",
+    "sunken_world:grace_of_sky_pendant",
+    "sunken_world:grace_of_strata_pendant"
   ]
 }
