@@ -2,6 +2,8 @@ package mfrf.sunken_world.registry;
 
 import mfrf.sunken_world.SunkenWorld;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -26,6 +28,7 @@ public class CuriosSlotRegistry {
     }
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public static void onRegistrySprite(TextureStitchEvent.Pre event) {
         event.addSprite(new ResourceLocation(SunkenWorld.MODID, "curios_slots/flippers"));
         event.addSprite(new ResourceLocation(SunkenWorld.MODID, "curios_slots/oxygen_tank"));

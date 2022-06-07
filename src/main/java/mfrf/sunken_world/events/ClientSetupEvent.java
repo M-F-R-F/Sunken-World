@@ -2,6 +2,7 @@ package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.KeyBindings;
 import mfrf.sunken_world.render.EquipmentHud;
@@ -22,6 +23,7 @@ public class ClientSetupEvent {
         MinecraftForge.EVENT_BUS.addListener(KeyInputEvent::onKeyInput);
         KeyBindings.init();
         OverlayRegistry.registerOverlayTop("oxygen_tank", EquipmentHud.INSTANCE);
+        ClientHelper.setOxygenTank = EquipmentHud::setPercent;
     }
 
     @SubscribeEvent

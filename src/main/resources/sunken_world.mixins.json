@@ -6,10 +6,10 @@
   "refmap": "sunken_world.refmap.json",
   "mixins": [
     "MixinChunkGenerator",
-    "MixinFurnaceTile",
-    "MixinFogRender"
+    "MixinFurnaceTile"
   ],
   "client": [
+    "MixinFogRender"
   ],
   "injectors": {
     "defaultRequire": 1

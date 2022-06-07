@@ -11,9 +11,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
 
+@OnlyIn(Dist.CLIENT)
 public enum EquipmentHud implements IIngameOverlay {
     INSTANCE;
     private static final ResourceLocation OXYGEN_TANK_HUD = new ResourceLocation(SunkenWorld.MODID, "textures/gui/oxygen_ui.png");

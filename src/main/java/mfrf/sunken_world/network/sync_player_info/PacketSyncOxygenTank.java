@@ -2,6 +2,7 @@ package mfrf.sunken_world.network.sync_player_info;
 
 import com.mojang.math.Vector3f;
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.items.accessories.EndFlipper;
 import mfrf.sunken_world.registry.CuriosSlotRegistry;
 import mfrf.sunken_world.render.EquipmentHud;
@@ -39,7 +40,7 @@ public class PacketSyncOxygenTank {
         NetworkEvent.Context ctx = supplier.get();
         ctx.enqueueWork(() -> {
             if (ctx.getDirection() == NetworkDirection.PLAY_TO_CLIENT) {
-                EquipmentHud.setPercent(percent);
+                ClientHelper.setOxygenTank.accept(percent);
             }
         });
         return true;
