@@ -1,13 +1,9 @@
 package mfrf.sunken_world.items;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.blocks.water_proof_furnace.TileWaterProofFurnace;
-import mfrf.sunken_world.mixin.MixinFurnaceTile;
 import mfrf.sunken_world.registry.Attributes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +11,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -23,17 +18,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class WaterProofPaint extends Item {
     public static final UUID SWIFT_DIG_UUID = UUID.randomUUID();
@@ -51,7 +42,7 @@ public class WaterProofPaint extends Item {
         if (blockState.getBlock() == Blocks.FURNACE) {
             CompoundTag compoundTag = new CompoundTag();
             ((AbstractFurnaceBlockEntity) level.getBlockEntity(clickedPos)).saveAdditional(compoundTag);
-            level.setBlockAndUpdate(clickedPos, mfrf.sunken_world.registry.Blocks.BLOCK_WATER_PROOF_FURNACE.block().get().defaultBlockState()
+            level.setBlockAndUpdate(clickedPos, mfrf.sunken_world.registry.Blocks.WATER_PROOF_FURNACE.block().get().defaultBlockState()
                     .setValue(AbstractFurnaceBlock.LIT, blockState.getValue(AbstractFurnaceBlock.LIT))
                     .setValue(AbstractFurnaceBlock.FACING, blockState.getValue(AbstractFurnaceBlock.FACING)));
             ((TileWaterProofFurnace) level.getBlockEntity(clickedPos)).setTag(compoundTag);

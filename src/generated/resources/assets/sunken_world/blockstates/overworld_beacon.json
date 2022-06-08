@@ -1,0 +1,10 @@
+{
+  "variants":{
+    "charge=true": {
+      "model": "sunken_world:block/overworld_beacon_charge"
+    },
+    "charge=false": {
+      "model": "sunken_world:block/overworld_beacon"
+    }
+  }
+}
