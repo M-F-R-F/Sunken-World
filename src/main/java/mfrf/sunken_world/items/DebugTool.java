@@ -9,6 +9,7 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.storage.LevelStorageException;
 import net.minecraft.world.level.storage.LevelSummary;
 import net.minecraftforge.common.world.ForgeWorldPreset;
 import net.minecraftforge.registries.ForgeRegistries;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -34,11 +36,7 @@ public class DebugTool extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if (!pLevel.isClientSide()) {
-
-            OptionalDouble attributeModifiers = pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getAttributeModifiers(EquipmentSlot.MAINHAND).get(Attributes.SWIFT_DIG.get()).stream().mapToDouble(AttributeModifier::getAmount).max();
-            if (attributeModifiers.isPresent()) {
-                pPlayer.sendMessage(new TextComponent("Attribute: " + attributeModifiers.getAsDouble()), null);
-            }
+//                pPlayer.sendMessage(new TextComponent((pPlayer.getAttribute(Attributes.GRACE_OF_OCEAN.get()) == null)?"null":"yes"), null);
         }
 
         return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));

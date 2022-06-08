@@ -2,11 +2,15 @@ package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.blocks.overworld_beacon.TileOverworldBeacon;
 import mfrf.sunken_world.helper.ClientHelper;
+import mfrf.sunken_world.registry.BlockEntities;
 import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.KeyBindings;
 import mfrf.sunken_world.render.EquipmentHud;
+import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRender;
 import net.minecraft.client.player.inventory.Hotbar;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.gui.OverlayRegistry;
@@ -24,11 +28,17 @@ public class ClientSetupEvent {
         KeyBindings.init();
         OverlayRegistry.registerOverlayTop("oxygen_tank", EquipmentHud.INSTANCE);
         ClientHelper.setOxygenTank = EquipmentHud::setPercent;
+
+        registerTileRender();
     }
 
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
+    }
+
+    private static void registerTileRender() {
+        BlockEntityRenderers.register(BlockEntities.OVERWORLD_BEACON_TILE.get(), TileOverworldBeaconRender::new);
     }
 
 }

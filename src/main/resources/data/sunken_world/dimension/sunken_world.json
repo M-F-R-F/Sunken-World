@@ -2,7 +2,7 @@
   "type": "sunken_world:sunken_world",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 704889607,
+    "seed": 114514,
     "settings": "minecraft:overworld",
     "biome_source": {
       "type": "minecraft:multi_noise",

@@ -51,7 +51,7 @@ public class WaterProofPaint extends Item {
         if (blockState.getBlock() == Blocks.FURNACE) {
             CompoundTag compoundTag = new CompoundTag();
             ((AbstractFurnaceBlockEntity) level.getBlockEntity(clickedPos)).saveAdditional(compoundTag);
-            level.setBlockAndUpdate(clickedPos, mfrf.sunken_world.registry.Blocks.BLOCK_WATER_PROOF_FURNACE.get().defaultBlockState()
+            level.setBlockAndUpdate(clickedPos, mfrf.sunken_world.registry.Blocks.BLOCK_WATER_PROOF_FURNACE.block().get().defaultBlockState()
                     .setValue(AbstractFurnaceBlock.LIT, blockState.getValue(AbstractFurnaceBlock.LIT))
                     .setValue(AbstractFurnaceBlock.FACING, blockState.getValue(AbstractFurnaceBlock.FACING)));
             ((TileWaterProofFurnace) level.getBlockEntity(clickedPos)).setTag(compoundTag);

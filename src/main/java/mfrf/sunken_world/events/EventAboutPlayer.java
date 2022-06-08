@@ -2,10 +2,12 @@ package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.helper.CurioHelper;
 import mfrf.sunken_world.helper.Tools;
 import mfrf.sunken_world.registry.Attributes;
 import mfrf.sunken_world.registry.DamageSources;
 import mfrf.sunken_world.registry.Dimensions;
+import mfrf.sunken_world.registry.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -21,10 +23,14 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import top.theillusivec4.curios.api.SlotTypePreset;
 
 import java.util.OptionalDouble;
 
@@ -44,10 +50,10 @@ public class EventAboutPlayer {
         Level level = player.level;
         if (Config.getDimensionsWillBeEffect().contains(level.dimension().location().toString())) {
             int blockY = player.getBlockY();
-            if (Config.ENABLE_FURY_OF_SKY.get() && blockY <= Config.SEA_LEVEL_BOTTOM.get() && player.getAttribute(Attributes.GRACE_OF_STRATA.get()) == null) {
+            if (Config.ENABLE_FURY_OF_SKY.get() && blockY <= Config.SEA_LEVEL_BOTTOM.get() && !CurioHelper.findAnyItem(player, SlotTypePreset.NECKLACE.getIdentifier(), itemStack -> itemStack.getItem() == Items.GRACE_OF_SKY_PENDANT.get()).isEmpty()) {
                 player.hurt(DamageSources.FURY_OF_STRATA, Config.DAMAGE_FURY_OF_STRATA.get().floatValue());
             }
-            if (Config.ENABLE_FURY_OF_SKY.get() && blockY >= Config.SEA_LEVEL_TOP.get() && player.getAttribute(Attributes.GRACE_OF_SKY.get()) == null) {
+            if (Config.ENABLE_FURY_OF_SKY.get() && blockY >= Config.SEA_LEVEL_TOP.get() && !CurioHelper.findAnyItem(player, SlotTypePreset.NECKLACE.getIdentifier(), itemStack -> itemStack.getItem() == Items.GRACE_OF_STRATA_PENDANT.get()).isEmpty()) {
                 player.hurt(DamageSources.FURY_OF_SKY, Config.DAMAGE_FURY_OF_SKY.get().floatValue());
             }
         }
@@ -55,15 +61,18 @@ public class EventAboutPlayer {
 
 
     @SubscribeEvent
-    public void onPlayerDrown(LivingDeathEvent event) {
-        if (event.getSource() == DamageSource.DROWN) {
-            LivingEntity entityLiving = event.getEntityLiving();
+    public void onPlayerDrown(LivingDamageEvent event) {
+        LivingEntity entityLiving = event.getEntityLiving();
+        if (event.getSource() == DamageSource.DROWN && event.getAmount() >= entityLiving.getHealth()) {
             Level level = entityLiving.getLevel();
             BlockPos onPos = entityLiving.getOnPos();
             if (level.getBiome(onPos).is(BiomeTags.IS_OCEAN)) {
-                if (event.getEntityLiving().getAttribute(Attributes.DISTANCE_CALLING.get()) != null) {
+                if (!CurioHelper.findAnyItem(entityLiving, SlotTypePreset.NECKLACE.getIdentifier(), itemStack -> {
+                    Item item = itemStack.getItem();
+                    return item == Items.GRACE_OF_OCEAN_PENDANT_BROKEN.get() || item == Items.GRACE_OF_OCEAN_PENDANT.get();
+                }).isEmpty()) {
                     entityLiving.heal(entityLiving.getMaxHealth());
-                    entityLiving.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 256, 1, true, true));
+                    entityLiving.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 2560, 1, true, true));
                     Tools.teleport(entityLiving, entityLiving.getServer().getLevel(Dimensions.SUNKEN_WORLD), onPos, true);
                     event.setCanceled(true);
                 }

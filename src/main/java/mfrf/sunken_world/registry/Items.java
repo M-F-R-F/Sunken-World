@@ -24,10 +24,10 @@ public class Items {
     public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new Flipper(NON_STACK_NON_BREAK_PROPERTIES, Config.FLIPPER_SPEED_BOOST.get()));
     public static final RegistryObject<Item> JET_FLIPPER = ITEMS.register("jet_flipper", () -> new JetFlipper(NON_STACK_NON_BREAK_PROPERTIES, Config.JET_FLIPPER_SPEED_BOOST.get()));
     public static final RegistryObject<Item> END_FLIPPER = ITEMS.register("end_flipper", () -> new EndFlipper(NON_STACK_NON_BREAK_PROPERTIES, Config.END_FLIPPER_SPEED_BOOST.get()));
-    public static final RegistryObject<Item> GRACE_OF_OCEAN_PENDANT_BROKEN = ITEMS.register("grace_of_ocean_pendant_broken", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES,Attributes.DISTANCE_CALLING));
-    public static final RegistryObject<Item> GRACE_OF_OCEAN_PENDANT = ITEMS.register("grace_of_ocean_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES, Attributes.GRACE_OF_OCEAN));
-    public static final RegistryObject<Item> GRACE_OF_SKY_PENDANT = ITEMS.register("grace_of_sky_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES, Attributes.GRACE_OF_SKY));
-    public static final RegistryObject<Item> GRACE_OF_STRATA_PENDANT = ITEMS.register("grace_of_strata_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES, Attributes.GRACE_OF_STRATA));
+    public static final RegistryObject<Item> GRACE_OF_OCEAN_PENDANT_BROKEN = ITEMS.register("grace_of_ocean_pendant_broken", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
+    public static final RegistryObject<Item> GRACE_OF_OCEAN_PENDANT = ITEMS.register("grace_of_ocean_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
+    public static final RegistryObject<Item> GRACE_OF_SKY_PENDANT = ITEMS.register("grace_of_sky_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
+    public static final RegistryObject<Item> GRACE_OF_STRATA_PENDANT = ITEMS.register("grace_of_strata_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
     public static final RegistryObject<Item> CONDUIT_PENDANT = ITEMS.register("conduit_pendant", () -> new ConduitPendant(NON_STACK_NON_BREAK_PROPERTIES));
 
             //resources

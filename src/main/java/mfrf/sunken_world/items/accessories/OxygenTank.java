@@ -88,10 +88,10 @@ public class OxygenTank extends CurioBase {
         return new OxygenTankImplement(oxygenCapacity, recoverySpeed, stack);
     }
 
-    @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, uuid, stack);
-        attributeModifiers.put(Attributes.ADDITION_OXYGEN_CAPACITY.get(), new AttributeModifier(uuid, "addition_oxygen_capacity", oxygenCapacity, AttributeModifier.Operation.ADDITION));
-        return attributeModifiers;
-    }
+//    @Override
+//    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+//        Multimap<Attribute, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, uuid, stack);
+//        attributeModifiers.put(Attributes.ADDITION_OXYGEN_CAPACITY.get(), new AttributeModifier(uuid, "addition_oxygen_capacity", oxygenCapacity, AttributeModifier.Operation.ADDITION));
+//        return attributeModifiers;
+//    }
 }
