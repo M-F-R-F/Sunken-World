@@ -15,7 +15,7 @@ public class MixinFogRender {
     @Redirect(
             method = "setupFog(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/FogRenderer$FogMode;FZF)V", at = @At(
             value = "INVOKE",target = "Lnet/minecraft/client/Camera;getFluidInCamera()Lnet/minecraft/world/level/material/FogType;"
-    ), remap = false
+    ), remap = true
     )
     private static FogType modifyType$setupFog(Camera instance) {
         FogType fluidInCamera = instance.getFluidInCamera();
