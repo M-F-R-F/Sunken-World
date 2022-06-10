@@ -45,6 +45,7 @@ public class Config {
     public static final ForgeConfigSpec.IntValue MIN_BURNING_TICK_OF_NETHER_FURNACE;
     public static final ForgeConfigSpec.ConfigValue<Double> PROBABILITY_NETHER_FURNACE_EXTINGUISH;
     public static final ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
+    public static final ForgeConfigSpec.IntValue MAX_WATER_CONTAINS_IN_SPONGE_STICK;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -67,8 +68,8 @@ public class Config {
         builder.pop();
 
         builder.push("gear settings");
-        builder.comment("1 oxygen = 1 bubble").comment("recovery speed means how much oxygen recovery per tick").push("Oxygen tank settings");
 
+        builder.comment("1 oxygen = 1 bubble").comment("recovery speed means how much oxygen recovery per tick").push("Oxygen tank settings");
         OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 15000","notice:max oxygen capacity of vanilla player is 300")
                 .defineInRange("oxygen_tank_capacity_tier_1", 15000, 0, Integer.MAX_VALUE);
 
@@ -86,6 +87,9 @@ public class Config {
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3 = builder.comment("Oxygen tank oxygen recovery rate tier 3", "default = 8")
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_3", 100, 0, Integer.MAX_VALUE);
+        builder.pop();
+
+        MAX_WATER_CONTAINS_IN_SPONGE_STICK = builder.comment("Max water could be contained in sponge stick", "default = 64").defineInRange("max_water_contains_in_sponge_stick", 64, 1, Integer.MAX_VALUE);
 
         FLIPPER_SPEED_BOOST = builder.comment("Flipper boost speed", "default = 1.5").defineInRange("flipper_boost_speed", 1.5, 0, Double.MAX_VALUE);
 
@@ -104,7 +108,6 @@ public class Config {
         END_FLIPPER_TELEPORT_COST = builder.comment("End flipper teleport cost energy", "default = 10").defineInRange("end_flipper_teleport_cost", 10, 0, Integer.MAX_VALUE);
 
         END_FLIPPER_TELEPORT_COOL_DOWN = builder.comment("End flipper teleport cool down", "unit = second", "default = 10").defineInRange("end_flipper_teleport_cool down", 10, 0, Integer.MAX_VALUE);
-        builder.pop();
         builder.pop();
 
         builder.push("technical settings");

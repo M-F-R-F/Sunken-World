@@ -18,9 +18,9 @@ public class Items {
 
     //gear
     public static final RegistryObject<Item> SWIM_GLASS = ITEMS.register("swim_glass", () -> new SwimGlass(new Item.Properties().stacksTo(1).tab(ModTab.TAB)));
-    public static final RegistryObject<Item> OXYGEN_TANK_1 = ITEMS.register("oxygen_tank_1", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_1.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1.get()));
-    public static final RegistryObject<Item> OXYGEN_TANK_2 = ITEMS.register("oxygen_tank_2", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_2.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2.get()));
-    public static final RegistryObject<Item> OXYGEN_TANK_3 = ITEMS.register("oxygen_tank_3", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_3.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3.get()));
+    public static final RegistryObject<Item> OXYGEN_TANK_1 = ITEMS.register("oxygen_tank", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_1.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1.get()));
+    public static final RegistryObject<Item> OXYGEN_TANK_2 = ITEMS.register("high_pressure_oxygen_tank", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_2.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2.get()));
+    public static final RegistryObject<Item> OXYGEN_TANK_3 = ITEMS.register("extreme_high_pressure_oxygen_tank", () -> new OxygenTank(new Item.Properties().stacksTo(1).tab(ModTab.TAB), Config.OXYGEN_TANK_CAPACITY_TIER_3.get(), Config.OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3.get()));
     public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new Flipper(NON_STACK_NON_BREAK_PROPERTIES, Config.FLIPPER_SPEED_BOOST.get()));
     public static final RegistryObject<Item> JET_FLIPPER = ITEMS.register("jet_flipper", () -> new JetFlipper(NON_STACK_NON_BREAK_PROPERTIES, Config.JET_FLIPPER_SPEED_BOOST.get()));
     public static final RegistryObject<Item> END_FLIPPER = ITEMS.register("end_flipper", () -> new EndFlipper(NON_STACK_NON_BREAK_PROPERTIES, Config.END_FLIPPER_SPEED_BOOST.get()));
@@ -30,7 +30,7 @@ public class Items {
     public static final RegistryObject<Item> GRACE_OF_STRATA_PENDANT = ITEMS.register("grace_of_strata_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
     public static final RegistryObject<Item> CONDUIT_PENDANT = ITEMS.register("conduit_pendant", () -> new ConduitPendant(NON_STACK_NON_BREAK_PROPERTIES));
 
-            //resources
+    //resources
     public static final RegistryObject<Item> OXIDIZER = ITEMS.register("oxidizer", () -> new Item(DEFAULT_PROPERTIES));
     public static final RegistryObject<Item> WATER_PROOF_PAINT = ITEMS.register("water_proof_paint", () -> new WaterProofPaint(DEFAULT_PROPERTIES));
 

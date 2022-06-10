@@ -8,7 +8,7 @@ public class ModTab {
     public static final CreativeModeTab TAB = new CreativeModeTab(SunkenWorld.MODID) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.SWIM_GLASS.get());
+            return new ItemStack(Items.GRACE_OF_OCEAN_PENDANT.get());
         }
     };
 }
