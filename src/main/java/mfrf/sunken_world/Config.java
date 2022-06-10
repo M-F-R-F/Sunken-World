@@ -95,7 +95,7 @@ public class Config {
 
         JET_FLIPPER_SPEED_BOOST = builder.comment("Jet flipper speed boost", "default = 1.5").defineInRange("jet_flipper_speed_boost", 1.5, 0, Double.MAX_VALUE);
 
-        JET_FLIPPER_SPEED_ACTIVATED_BOOST = builder.comment("Jet flipper speed boost", "default = 1.5").defineInRange("jet_flipper_speed_boost", 1.5, 0, Double.MAX_VALUE);
+        JET_FLIPPER_SPEED_ACTIVATED_BOOST = builder.comment("Jet flipper speed boost scale on active", "default = 4.0").defineInRange("jet_flipper_speed_boost", 4.0, 0, Double.MAX_VALUE);
 
         JET_FLIPPER_COST_ON_ACTIVATED_PER_TICK = builder.comment("Jet flipper cost oxygen on activated per tick", "default = 1").defineInRange("jet_flipper_cost_on_activated_per_tick", 1, 0, Integer.MAX_VALUE);
 

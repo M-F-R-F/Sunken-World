@@ -30,10 +30,10 @@ public class TryTeleportChannel {
         // Register all our packets. We only have one right now. The new message has a unique ID, an indication
         // of how it is going to be used (from client to server) and ways to encode and decode it. Finally 'handle'
         // will actually execute when the packet is received
-        net.messageBuilder(PakcetTryTeleport.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(PakcetTryTeleport::new)
-                .encoder(PakcetTryTeleport::toBytes)
-                .consumer(PakcetTryTeleport::handle)
+        net.messageBuilder(PakcetActiveFlipperEnhance.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PakcetActiveFlipperEnhance::new)
+                .encoder(PakcetActiveFlipperEnhance::toBytes)
+                .consumer(PakcetActiveFlipperEnhance::handle)
                 .add();
     }
 

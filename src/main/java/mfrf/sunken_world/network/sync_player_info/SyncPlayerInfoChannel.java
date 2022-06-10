@@ -1,17 +1,12 @@
 package mfrf.sunken_world.network.sync_player_info;
 
 import mfrf.sunken_world.SunkenWorld;
-import mfrf.sunken_world.network.try_teleport.PakcetTryTeleport;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
-
-import java.sql.Connection;
 
 public class SyncPlayerInfoChannel {
     private static SimpleChannel INSTANCE;

@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "sunken_world:oxygen_tank_1",
-    "sunken_world:oxygen_tank_2",
-    "sunken_world:oxygen_tank_3"
+    "sunken_world:oxygen_tank",
+    "sunken_world:high_pressure_oxygen_tank",
+    "sunken_world:extreme_high_pressure_oxygen_tank"
   ]
 }

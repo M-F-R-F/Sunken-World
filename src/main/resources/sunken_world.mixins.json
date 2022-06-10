@@ -6,7 +6,6 @@
   "refmap": "sunken_world.refmap.json",
   "mixins": [
     "MixinChunkGenerator",
-    "MixinDrowned",
     "MixinFurnaceTile"
   ],
   "client": [
