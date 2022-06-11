@@ -3,6 +3,7 @@ package mfrf.sunken_world.registry;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.DebugTool;
+import mfrf.sunken_world.items.ItemSpongeOnAStick;
 import mfrf.sunken_world.items.WaterProofPaint;
 import mfrf.sunken_world.items.accessories.*;
 import net.minecraft.world.item.Item;
@@ -29,6 +30,7 @@ public class Items {
     public static final RegistryObject<Item> GRACE_OF_SKY_PENDANT = ITEMS.register("grace_of_sky_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
     public static final RegistryObject<Item> GRACE_OF_STRATA_PENDANT = ITEMS.register("grace_of_strata_pendant", () -> new GracePendant(NON_STACK_NON_BREAK_PROPERTIES));
     public static final RegistryObject<Item> CONDUIT_PENDANT = ITEMS.register("conduit_pendant", () -> new ConduitPendant(NON_STACK_NON_BREAK_PROPERTIES));
+    public static final RegistryObject<Item> SPONGE_ON_A_STICK = ITEMS.register("sponge_on_a_stick", () -> new ItemSpongeOnAStick(NON_STACK_NON_BREAK_PROPERTIES));
 
     //resources
     public static final RegistryObject<Item> OXIDIZER = ITEMS.register("oxidizer", () -> new Item(DEFAULT_PROPERTIES));

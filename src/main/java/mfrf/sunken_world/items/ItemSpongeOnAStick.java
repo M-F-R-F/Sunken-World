@@ -2,14 +2,20 @@ package mfrf.sunken_world.items;
 
 import com.google.common.collect.Lists;
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.Entities.block_projectile.BlockProjectile;
+import mfrf.sunken_world.registry.Entities;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Queue;
@@ -36,25 +43,34 @@ public class ItemSpongeOnAStick extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        BlockPos blockPos = pPlayer.blockPosition();
-        ItemStack itemInHand = pPlayer.getItemInHand(pUsedHand);
-        CompoundTag orCreateTag = itemInHand.getOrCreateTag();
-        Integer capacity = Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get();
-        if (!orCreateTag.contains("water")) {
-            orCreateTag.putInt("water", removeWaterBreadthFirstSearch(pLevel, blockPos, capacity));
-        } else {
-            int water = orCreateTag.getInt("water");
-            int capRemain = capacity - water;
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand pUsedHand) {
+        if (!level.isClientSide()) {
+            BlockPos blockPos = player.blockPosition();
+            ItemStack itemInHand = player.getItemInHand(pUsedHand);
+            CompoundTag orCreateTag = itemInHand.getOrCreateTag();
+            Integer capacity = Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get();
+            if (!orCreateTag.contains("water")) {
+                orCreateTag.putInt("water", removeWaterBreadthFirstSearch(level, blockPos, capacity));
+                return InteractionResultHolder.success(itemInHand);
+            } else {
+                int water = orCreateTag.getInt("water");
+                int capRemain = capacity - water;
 
-            if (pPlayer.isShiftKeyDown()) {
-                //todo water cannon
-                orCreateTag.putInt("water", water - 1);
-            } else if (capRemain > 0) {
-                orCreateTag.putInt("water", water + removeWaterBreadthFirstSearch(pLevel, blockPos, capRemain));
+                if (player.isShiftKeyDown()) {
+                    Entity spawn = Entities.BLOCK_PROJECTILE.get().spawn(((ServerLevel) level), null, player, player.getOnPos(), MobSpawnType.TRIGGERED, true, false);
+                    Vec3 lookAngle = player.getLookAngle();
+                    ((BlockProjectile) spawn).shoot(lookAngle.x, lookAngle.y, lookAngle.z, 4f, 0);
+                    orCreateTag.putInt("water", water - 1);
+
+                    return InteractionResultHolder.success(itemInHand);
+                } else if (capRemain > 0) {
+                    orCreateTag.putInt("water", water + removeWaterBreadthFirstSearch(level, blockPos, capRemain));
+
+                    return InteractionResultHolder.success(itemInHand);
+                }
             }
         }
-        return super.use(pLevel, pPlayer, pUsedHand);
+        return super.use(level, player, pUsedHand);
     }
 
 
@@ -104,4 +120,14 @@ public class ItemSpongeOnAStick extends Item {
 
         return i;
     }
+
+    @Override
+    public int getBarWidth(ItemStack pStack) {
+        CompoundTag orCreateTag = pStack.getOrCreateTag();
+        if(!orCreateTag.contains("water")){
+            orCreateTag.putInt("water", 0);
+        }
+        return (int) (13 * ((float) orCreateTag.getInt("water")) / Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get());
+    }
+
 }

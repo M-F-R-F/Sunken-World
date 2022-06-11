@@ -1,5 +1,6 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.block_projectile.BlockProjectileRender;
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.blocks.overworld_beacon.TileOverworldBeacon;
@@ -35,6 +36,7 @@ public class ClientSetupEvent {
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
+        event.registerEntityRenderer(Entities.BLOCK_PROJECTILE.get(), BlockProjectileRender::new);
     }
 
     private static void registerTileRender() {
