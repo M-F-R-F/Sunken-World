@@ -46,9 +46,9 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Double> PROBABILITY_NETHER_FURNACE_EXTINGUISH;
     public static final ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
     public static final ForgeConfigSpec.IntValue MAX_WATER_CONTAINS_IN_SPONGE_STICK;
+    public static final ForgeConfigSpec.IntValue SPONGE_STICK_BRUST_CONSUME;
 
     public static List<String> dimensionsWillBeEffectCache = null;
-
 
 
     static {
@@ -70,7 +70,7 @@ public class Config {
         builder.push("gear settings");
 
         builder.comment("1 oxygen = 1 bubble").comment("recovery speed means how much oxygen recovery per tick").push("Oxygen tank settings");
-        OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 15000","notice:max oxygen capacity of vanilla player is 300")
+        OXYGEN_TANK_CAPACITY_TIER_1 = builder.comment("Oxygen tank capacity tier 1", "default = 15000", "notice:max oxygen capacity of vanilla player is 300")
                 .defineInRange("oxygen_tank_capacity_tier_1", 15000, 0, Integer.MAX_VALUE);
 
         OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1 = builder.comment("Oxygen tank oxygen recovery rate tier 1", "default = 2")
@@ -89,7 +89,9 @@ public class Config {
                 .defineInRange("oxygen_tank_oxygen_recovery_rate_tier_3", 100, 0, Integer.MAX_VALUE);
         builder.pop();
 
-        MAX_WATER_CONTAINS_IN_SPONGE_STICK = builder.comment("Max water could be contained in sponge stick", "default = 64").defineInRange("max_water_contains_in_sponge_stick", 64, 1, Integer.MAX_VALUE);
+        MAX_WATER_CONTAINS_IN_SPONGE_STICK = builder.comment("Max water could be contained in sponge stick", "default = 64").defineInRange("max_water_contains_in_sponge_stick", 729, 1, Integer.MAX_VALUE);
+
+        SPONGE_STICK_BRUST_CONSUME = builder.comment("How many water will be consume each fire of sponge stick").defineInRange("sponge_stick_brust_effect_range", 81, 0, Integer.MAX_VALUE);
 
         FLIPPER_SPEED_BOOST = builder.comment("Flipper boost speed", "default = 1.5").defineInRange("flipper_boost_speed", 1.5, 0, Double.MAX_VALUE);
 
@@ -108,6 +110,7 @@ public class Config {
         END_FLIPPER_TELEPORT_COST = builder.comment("End flipper teleport cost energy", "default = 10").defineInRange("end_flipper_teleport_cost", 10, 0, Integer.MAX_VALUE);
 
         END_FLIPPER_TELEPORT_COOL_DOWN = builder.comment("End flipper teleport cool down", "unit = second", "default = 10").defineInRange("end_flipper_teleport_cool down", 10, 0, Integer.MAX_VALUE);
+
         builder.pop();
 
         builder.push("technical settings");
@@ -119,7 +122,7 @@ public class Config {
 
         OXYGEN_TANK_HUD_ENABLED = builder.comment("enable oxygen tank hud").define("oxygen_tank_hud_enabled", true);
 
-        DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", false);
+        DISABLE_WATER_FOG = builder.comment("disable_water_fog", "might cause bug while using shader").define("disable_water_fog", true);
 
         OXIDIZER_LAST_TIME = builder.comment("how much tick could an oxidizer use", "default = 1600").defineInRange("oxidizer_last_time", 1600, 1, Integer.MAX_VALUE);
         builder.pop();

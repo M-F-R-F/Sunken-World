@@ -15,9 +15,9 @@ public class KeyInputEvent {
             TryTeleportChannel.sendToServer(new PakcetActiveFlipperEnhance(new Vector3f(Minecraft.getInstance().player.getLookAngle())));
 //            Minecraft.getInstance().player.getViewVector()
         }
-        if (event.getAction() == GLFW.GLFW_RELEASE && KeyBindings.activeFlipperKeyMapping.getKey().getNumericKeyValue().orElse(-1) == event.getKey()){
-            TryTeleportChannel.sendToServer(new PakcetActiveFlipperEnhance(new Vector3f(Minecraft.getInstance().player.getLookAngle())));
-        }
+//        if (event.getAction() == GLFW.GLFW_RELEASE && KeyBindings.activeFlipperKeyMapping.getKey().getNumericKeyValue().orElse(-1) == event.getKey()){
+//            TryTeleportChannel.sendToServer(new PakcetActiveFlipperEnhance(new Vector3f(Minecraft.getInstance().player.getLookAngle())));
+//        }
     }
 
 }

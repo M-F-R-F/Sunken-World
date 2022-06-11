@@ -3,8 +3,11 @@ package mfrf.sunken_world.blocks.overworld_beacon;
 import mfrf.sunken_world.helper.CurioHelper;
 import mfrf.sunken_world.helper.Tools;
 import mfrf.sunken_world.registry.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -45,6 +48,8 @@ public class TileOverworldBeacon extends BlockEntity {
         });
         if (b && !flag) {
             pLevel.setBlockAndUpdate(pPos, pLevel.getBlockState(pPos).setValue(OverworldBeacon.CHARGE, true));
+            pLevel.playSound(null, pPos, SoundEvents.TRIDENT_THUNDER, SoundSource.AMBIENT, 1.0F, 1.0F);
+//            pLevel.playSound(null, pPos, SoundEvents.PORTAL_TRIGGER, SoundSource.AMBIENT, 1.0F, 1.0F);
         }
 
         if (!b && flag) {

@@ -1,9 +1,13 @@
 package mfrf.sunken_world.mixin;
 
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.helper.CurioHelper;
+import mfrf.sunken_world.registry.Items;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,12 +18,12 @@ public class MixinFogRender {
 
     @Redirect(
             method = "setupFog(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/FogRenderer$FogMode;FZF)V", at = @At(
-            value = "INVOKE",target = "Lnet/minecraft/client/Camera;getFluidInCamera()Lnet/minecraft/world/level/material/FogType;"
+            value = "INVOKE", target = "Lnet/minecraft/client/Camera;getFluidInCamera()Lnet/minecraft/world/level/material/FogType;"
     ), remap = true
     )
     private static FogType modifyType$setupFog(Camera instance) {
         FogType fluidInCamera = instance.getFluidInCamera();
-        if(fluidInCamera == FogType.WATER && Config.DISABLE_WATER_FOG.get()){
+        if (fluidInCamera == FogType.WATER && Config.DISABLE_WATER_FOG.get()) {
             return FogType.NONE;
         }
         return fluidInCamera;

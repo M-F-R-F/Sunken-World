@@ -1,16 +1,14 @@
 package mfrf.sunken_world.events;
 
-import mfrf.sunken_world.Entities.block_projectile.BlockProjectileRender;
+import mfrf.sunken_world.Entities.block_projectile.WaterBlockProjectileRender;
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
-import mfrf.sunken_world.blocks.overworld_beacon.TileOverworldBeacon;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.BlockEntities;
 import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.KeyBindings;
 import mfrf.sunken_world.render.EquipmentHud;
 import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRender;
-import net.minecraft.client.player.inventory.Hotbar;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -36,7 +34,7 @@ public class ClientSetupEvent {
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
-        event.registerEntityRenderer(Entities.BLOCK_PROJECTILE.get(), BlockProjectileRender::new);
+        event.registerEntityRenderer(Entities.WATER_BLOCK_PROJECTILE.get(), WaterBlockProjectileRender::new);
     }
 
     private static void registerTileRender() {

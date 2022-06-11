@@ -52,12 +52,12 @@ public abstract class MixinChunkGenerator {
             Random random = pLevel.getRandom();
             for (int x = pos.getMinBlockX(); x <= pos.getMaxBlockX(); x++) {
                 for (int z = pos.getMinBlockZ(); z <= pos.getMaxBlockZ(); z++) {
-                    for (int y = 0; y <= top; y++) {
+                    for (int y = bottom; y <= top; y++) {
                         BlockPos posToBeReplaced = new BlockPos(x, y, z);
                         BlockState blockState = pChunk.getBlockState(posToBeReplaced);
                         if (blockState.isAir()) {
                             pChunk.setBlockState(posToBeReplaced, Blocks.WATER.defaultBlockState(), false);
-                        } else if (blockState.getBlock() instanceof SimpleWaterloggedBlock) {
+                        } else if (blockState.hasProperty(BlockStateProperties.WATERLOGGED)) {
                             pChunk.setBlockState(posToBeReplaced, blockState.setValue(BlockStateProperties.WATERLOGGED, true), false);
                         } else if (blockState.getBlock() == Blocks.GRASS) {
                             pChunk.setBlockState(posToBeReplaced, Blocks.SEAGRASS.defaultBlockState(), false);
