@@ -1,7 +1,7 @@
 package mfrf.sunken_world.items;
 
 import mfrf.sunken_world.Config;
-import mfrf.sunken_world.Entities.block_projectile.WaterBlockProjectile;
+import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -14,9 +14,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 import static net.minecraft.world.level.block.Block.dropResources;
 

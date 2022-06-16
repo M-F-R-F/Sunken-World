@@ -1,6 +1,6 @@
 package mfrf.sunken_world.registry;
 
-import mfrf.sunken_world.Entities.block_projectile.WaterBlockProjectile;
+import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
 import mfrf.sunken_world.Entities.bubble.BubbleEntity;
 import mfrf.sunken_world.SunkenWorld;
 import net.minecraft.world.entity.EntityType;

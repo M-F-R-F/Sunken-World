@@ -1,6 +1,6 @@
 package mfrf.sunken_world.events;
 
-import mfrf.sunken_world.Entities.block_projectile.WaterBlockProjectileRender;
+import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectileRender;
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.helper.ClientHelper;
