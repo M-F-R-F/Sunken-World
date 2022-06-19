@@ -10,7 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod("sunken_world")
-public class SunkenWorld {
+public class SunkenWorld  {
     public static final String MODID = "sunken_world";
 
     private static final Logger LOGGER = LogManager.getLogger();
