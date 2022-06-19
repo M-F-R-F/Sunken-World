@@ -52,6 +52,6 @@ public class BiomesGenerator {
         BiomeDefaultFeatures.addColdOceanExtraVegetation(biomeBuilder);
         globalOverworldGeneration(biomeBuilder);
 
-        return biome(Biome.Precipitation.SNOW, Biome.BiomeCategory.OCEAN, 0.0F, 0.5F, spawnBuilder, biomeBuilder, null);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.OCEAN, 0.8F, 0.5F, spawnBuilder, biomeBuilder, null);
     }
 }

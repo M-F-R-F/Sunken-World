@@ -2,14 +2,19 @@ package mfrf.sunken_world;
 
 import mfrf.sunken_world.events.EventAboutPlayer;
 import mfrf.sunken_world.registry.*;
+import mfrf.sunken_world.worldgen.OverWorldBiomeRegion;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import terrablender.api.Regions;
 
 @Mod("sunken_world")
+@Mod.EventBusSubscriber(modid = SunkenWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SunkenWorld  {
     public static final String MODID = "sunken_world";
 
@@ -29,6 +34,12 @@ public class SunkenWorld  {
         Entities.ENTITIES.register(modEventBus);
         BlockEntities.BLOCK_ENTITIES.register(modEventBus);
         GuiContainers.CONTAINERS.register(modEventBus);
+
+    }
+
+    private void setup(final FMLCommonSetupEvent event)
+    {
+        Regions.register(new OverWorldBiomeRegion(new ResourceLocation(SunkenWorld.MODID, "overworld"), 2));
     }
 
 }

@@ -15,6 +15,7 @@ public class ModBiomes {
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
         IForgeRegistry<Biome> registry = event.getRegistry();
-        registry.register(BiomesGenerator.mysteryOcean().setRegistryName(Biomes.MYSTERY_OCEAN.getRegistryName()));
+
+        registry.register(BiomesGenerator.mysteryOcean().setRegistryName(Biomes.MYSTERY_OCEAN.location()));
     }
 }

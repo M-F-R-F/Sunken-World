@@ -16,13 +16,12 @@ import terrablender.api.Regions;
 public class CommonSetupEvent {
 
     @SubscribeEvent
-    public static void init(FMLCommonSetupEvent event) {
+    public static void init(final FMLCommonSetupEvent event) {
         TryTeleportChannel.register();
         SyncPlayerInfoChannel.register();
 
-        event.enqueueWork(() -> {
-            Regions.register(new OverWorldBiomeRegion(new ResourceLocation(SunkenWorld.MODID, "overworld_biome_region"), 2));
-        });
+//        event.enqueueWork(() -> {
+//        });
     }
 
     @SubscribeEvent
