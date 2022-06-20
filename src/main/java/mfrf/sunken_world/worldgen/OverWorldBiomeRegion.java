@@ -1,11 +1,11 @@
 package mfrf.sunken_world.worldgen;
 
 import com.mojang.datafixers.util.Pair;
+import mfrf.sunken_world.registry.Biomes;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import terrablender.api.ParameterUtils;
 import terrablender.api.Region;
@@ -33,11 +33,12 @@ public class OverWorldBiomeRegion extends Region {
 //                FULL_RANGE,
 //                0), Biomes.MYSTERY_OCEAN);
 
-//        addModifiedVanillaOverworldBiomes(mapper,modifiedVanillaOverworldBuilder -> {
-//            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.LUKEWARM_OCEAN, mfrf.sunken_world.registry.Biomes.MYSTERY_OCEAN);
-//        });
+        //won't completely replace, just take some place.
+        addModifiedVanillaOverworldBiomes(mapper,modifiedVanillaOverworldBuilder -> {
+            modifiedVanillaOverworldBuilder.replaceBiome(net.minecraft.world.level.biome.Biomes.DEEP_LUKEWARM_OCEAN, mfrf.sunken_world.registry.Biomes.MYSTERY_OCEAN);
+        });
 
-        //todo 检查是否有调用
+        //todo
     }
 
 }

@@ -1,11 +1,14 @@
 package mfrf.sunken_world.worldgen;
 
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 import javax.annotation.Nullable;
 
@@ -34,7 +37,7 @@ public class BiomesGenerator {
         BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
         BiomeDefaultFeatures.addDefaultSprings(builder);
-        BiomeDefaultFeatures.addSurfaceFreezing(builder);
+//        BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
     public static Biome mysteryOcean() {
@@ -44,14 +47,14 @@ public class BiomesGenerator {
         spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 3, 2, 4));
         spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8));
         spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 2, 1, 2));
-
+//
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-        BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
         BiomeDefaultFeatures.addIcebergs(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultSeagrass(biomeBuilder);
-        BiomeDefaultFeatures.addColdOceanExtraVegetation(biomeBuilder);
-        globalOverworldGeneration(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.WARM_OCEAN_VEGETATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEA_PICKLE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.KELP_WARM);
+        //todo 多整点feature
 
-        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.OCEAN, 0.8F, 0.5F, spawnBuilder, biomeBuilder, null);
+        return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.OCEAN, 0.8F, 0.5F,Mth.color(200,107,255),Mth.color(209,170,255), spawnBuilder, biomeBuilder, Musics.UNDER_WATER);
     }
 }

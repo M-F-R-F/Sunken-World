@@ -16,7 +16,7 @@ import terrablender.api.Regions;
 public class CommonSetupEvent {
 
     @SubscribeEvent
-    public static void init(final FMLCommonSetupEvent event) {
+    public static void init(FMLCommonSetupEvent event) {
         TryTeleportChannel.register();
         SyncPlayerInfoChannel.register();
 
