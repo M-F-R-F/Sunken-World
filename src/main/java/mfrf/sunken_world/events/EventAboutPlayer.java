@@ -4,10 +4,7 @@ import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.helper.CurioHelper;
 import mfrf.sunken_world.helper.Tools;
-import mfrf.sunken_world.registry.Attributes;
-import mfrf.sunken_world.registry.DamageSources;
-import mfrf.sunken_world.registry.Dimensions;
-import mfrf.sunken_world.registry.Items;
+import mfrf.sunken_world.registry.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +22,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -66,7 +62,7 @@ public class EventAboutPlayer {
         if (event.getSource() == DamageSource.DROWN && event.getAmount() >= entityLiving.getHealth()) {
             Level level = entityLiving.getLevel();
             BlockPos onPos = entityLiving.getOnPos();
-            if (level.getBiome(onPos).is(BiomeTags.IS_OCEAN)) {
+            if (level.getBiome(onPos).is(Biomes.MYSTERY_OCEAN)) {
                 if (!CurioHelper.findAnyItem(entityLiving, SlotTypePreset.NECKLACE.getIdentifier(), itemStack -> {
                     Item item = itemStack.getItem();
                     return item == Items.GRACE_OF_OCEAN_PENDANT_BROKEN.get() || item == Items.GRACE_OF_OCEAN_PENDANT.get();
