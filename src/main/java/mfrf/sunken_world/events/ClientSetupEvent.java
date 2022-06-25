@@ -38,7 +38,7 @@ public class ClientSetupEvent {
     }
 
     private static void registerTileRender() {
-        BlockEntityRenderers.register(BlockEntities.OVERWORLD_BEACON_TILE.get(), TileOverworldBeaconRender::new);
+        BlockEntityRenderers.register(BlockEntities.WORLD_BEACON_TILE.get(), TileOverworldBeaconRender::new);
     }
 
 }

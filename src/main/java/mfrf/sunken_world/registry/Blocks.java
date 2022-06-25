@@ -3,7 +3,7 @@ package mfrf.sunken_world.registry;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.blocks.OxygenCoral;
 import mfrf.sunken_world.blocks.nether_furnace.BlockNetherProofFurnace;
-import mfrf.sunken_world.blocks.overworld_beacon.OverworldBeacon;
+import mfrf.sunken_world.blocks.overworld_beacon.WorldBeacon;
 import mfrf.sunken_world.blocks.water_proof_furnace.BlockWaterProofFurnace;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -24,7 +24,7 @@ public class Blocks {
     public static final BlockAndItem OXYGEN_CORAL = blockAndItem("oxygen_coral", () -> new OxygenCoral(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY)), Items.DEFAULT_PROPERTIES);
     public static final BlockAndItem WATER_PROOF_FURNACE = blockAndItem("water_proof_furnace", BlockWaterProofFurnace::new, Items.DEFAULT_PROPERTIES);
     public static final BlockAndItem NETHER_FURNACE = blockAndItem("nether_furnace", BlockNetherProofFurnace::new, Items.DEFAULT_PROPERTIES);
-    public static final BlockAndItem OVERWORLD_BEACON = blockAndItem("overworld_beacon", () -> new OverworldBeacon(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY).lightLevel(state -> state.getValue(OverworldBeacon.CHARGE) ? 15 : 0)), Items.DEFAULT_PROPERTIES);
+    public static final BlockAndItem WORLD_BEACON = blockAndItem("world_beacon", () -> new WorldBeacon(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY).lightLevel(state -> state.getValue(WorldBeacon.CHARGE) ? 15 : 0)), Items.DEFAULT_PROPERTIES);
 
     public static <B extends Block> BlockAndItem blockAndItem(String s, Supplier<B> supplier, Item.Properties properties) {
         RegistryObject<B> object = BLOCKS.register(s, supplier);

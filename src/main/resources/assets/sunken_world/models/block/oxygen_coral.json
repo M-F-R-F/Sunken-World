@@ -1,8 +1,8 @@
 {
 	"credit": "Made by hqyzsy",
 	"textures": {
-		"0": "sunken_world:blocks/oxygen_coral",
-		"particle": "sunken_world:blocks/oxygen_coral"
+		"0": "sunken_world:block/oxygen_coral",
+		"particle": "sunken_world:block/oxygen_coral"
 	},
 	"elements": [
 		{
