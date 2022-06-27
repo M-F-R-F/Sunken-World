@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/cube_all",
 	"textures": {
-		"0": "sunken_world:block/overworld_beacon"
+		"0": "sunken_world:block/world_beacon"
 	},
 	"elements": [
 		{
