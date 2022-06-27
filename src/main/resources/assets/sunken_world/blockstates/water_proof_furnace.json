@@ -1,33 +1,33 @@
 {
     "variants": 
     {
-        "burning=true,facing=north": {
+        "lit=true,facing=north": {
             "model": "sunken_world:block/water_proof_furnace_on"
         },
-        "burning=true,facing=east": {
+        "lit=true,facing=east": {
             "model": "sunken_world:block/water_proof_furnace_on",
             "y": 90
         },
-        "burning=true,facing=south": {
+        "lit=true,facing=south": {
             "model": "sunken_world:block/water_proof_furnace_on",
             "y": 180
         },
-        "burning=true,facing=west": {
+        "lit=true,facing=west": {
             "model": "sunken_world:block/water_proof_furnace_on",
             "y": 270
         },
-        "burning=false,facing=north": {
+        "lit=false,facing=north": {
             "model": "sunken_world:block/water_proof_furnace_off"
         },
-        "burning=false,facing=east": {
+        "lit=false,facing=east": {
             "model": "sunken_world:block/water_proof_furnace_off",
             "y": 90
         },
-        "burning=false,facing=south": {
+        "lit=false,facing=south": {
             "model": "sunken_world:block/water_proof_furnace_off",
             "y": 180
         },
-        "burning=false,facing=west": {
+        "lit=false,facing=west": {
             "model": "sunken_world:block/water_proof_furnace_off",
             "y": 270
         }

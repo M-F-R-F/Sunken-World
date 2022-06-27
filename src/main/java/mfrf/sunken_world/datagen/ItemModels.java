@@ -21,5 +21,8 @@ public class ItemModels extends ItemModelProvider {
         singleTexture(Items.OXYGEN_TANK_1.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/oxygen_tank"));
         singleTexture(Items.OXYGEN_TANK_2.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/high_pressure_oxygen_tank"));
         singleTexture(Items.OXYGEN_TANK_3.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/extreme_high_pressure_oxygen_tank"));
+        singleTexture(Items.SPONGE_ON_A_STICK.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/sponge_on_a_stick"));
+        singleTexture(Items.THROWABLE_SPONGE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_sponge"));
+        singleTexture(Items.THROWABLE_UNDERWATER_TORCH.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_underwater_torch"));
     }
 }

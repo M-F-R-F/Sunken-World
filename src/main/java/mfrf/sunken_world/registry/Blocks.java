@@ -22,9 +22,9 @@ public class Blocks {
 
     //    public static final RegistryObject<ModifiedWaterBlock> MODIFIED_WATER = BLOCKS.register("water", ModifiedWaterBlock::new);
     public static final BlockAndItem OXYGEN_CORAL = blockAndItem("oxygen_coral", () -> new OxygenCoral(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY)), Items.DEFAULT_PROPERTIES);
-    public static final BlockAndItem WATER_PROOF_FURNACE = blockAndItem("water_proof_furnace", BlockWaterProofFurnace::new, Items.DEFAULT_PROPERTIES);
     public static final BlockAndItem NETHER_FURNACE = blockAndItem("nether_furnace", BlockNetherProofFurnace::new, Items.DEFAULT_PROPERTIES);
     public static final BlockAndItem WORLD_BEACON = blockAndItem("world_beacon", () -> new WorldBeacon(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY).lightLevel(state -> state.getValue(WorldBeacon.CHARGE) ? 15 : 0)), Items.DEFAULT_PROPERTIES);
+    public static final RegistryObject<Block> WATER_PROOF_FURNACE = BLOCKS.register("water_proof_furnace", BlockWaterProofFurnace::new);
 
     public static <B extends Block> BlockAndItem blockAndItem(String s, Supplier<B> supplier, Item.Properties properties) {
         RegistryObject<B> object = BLOCKS.register(s, supplier);
