@@ -1,0 +1,22 @@
+{
+  "type": "sunken_world:world_beacon_structure",
+  "config": {
+    "start_pool": "sunken_world:world_beacon/start_pool",
+    "size": 1
+  },
+  "biomes": "#sunken_world:has_structure/world_beacon",
+  "adapt_noise": true,
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "minecraft:zombie",
+          "weight": 10,
+          "minCount": 3,
+          "maxCount": 15
+        }
+      ]
+    }
+  }
+}
