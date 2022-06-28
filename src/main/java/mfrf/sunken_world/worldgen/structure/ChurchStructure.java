@@ -36,7 +36,7 @@ public class ChurchStructure extends StructureFeature<JigsawConfiguration> {
             return Optional.empty();
         }
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
-        int topLandY = context.chunkGenerator().getFirstFreeHeight(blockpos.getX(), blockpos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor());
+        int topLandY = context.chunkGenerator().getFirstFreeHeight(blockpos.getX(), blockpos.getZ(), Heightmap.Types.OCEAN_FLOOR_WG, context.heightAccessor());
         blockpos = blockpos.above(topLandY);
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator = JigsawPlacement.addPieces(context, PoolElementStructurePiece::new,blockpos,false,false);
         return structurePiecesGenerator;
