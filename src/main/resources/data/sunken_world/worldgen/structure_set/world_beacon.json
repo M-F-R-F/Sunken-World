@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "sunken_world:world_beacon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2036674,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}
