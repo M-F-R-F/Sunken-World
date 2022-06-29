@@ -4,6 +4,7 @@ import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.network.sync_player_info.SyncPlayerInfoChannel;
 import mfrf.sunken_world.network.try_teleport.TryTeleportChannel;
 import mfrf.sunken_world.registry.Entities;
+import mfrf.sunken_world.registry.Features;
 import mfrf.sunken_world.worldgen.OverWorldBiomeRegion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -19,13 +20,9 @@ public class CommonSetupEvent {
     public static void init(FMLCommonSetupEvent event) {
         TryTeleportChannel.register();
         SyncPlayerInfoChannel.register();
-
+        Features.FeatureHolder.registerFeatures();
 //        event.enqueueWork(() -> {
 //        });
-    }
-
-    @SubscribeEvent
-    public static void onAttributeCreate(EntityAttributeCreationEvent event) {
     }
 
 }

@@ -27,7 +27,6 @@ public class Config {
     public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_SKY;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_STRATA;
     public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_STRATA;
-
     public static final ForgeConfigSpec.ConfigValue<Double> FLIPPER_SPEED_BOOST;
     public static final ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_BOOST;
     public static final ForgeConfigSpec.ConfigValue<Double> END_FLIPPER_SPEED_BOOST;
@@ -145,6 +144,8 @@ public class Config {
 
         builder.push("environment settings");
         PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE = builder.comment("Probability of generate bubble of oxygen coral per tick", "default = 2").defineInRange("probability_oxygen_coral_generate_bubble", 2, 0, 100);
+
+
         builder.pop();
 
 

@@ -1,10 +1,12 @@
 package mfrf.sunken_world.helper;
 
+import mfrf.sunken_world.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.util.ITeleporter;
 
@@ -24,5 +26,9 @@ public class Tools {
                 return entity;
             }
         });
+    }
+
+    public static boolean dimContainsInList(WorldGenLevel pLevel) {
+        return Config.getDimensionsWillBeEffect().contains(pLevel.getLevel().dimension().location().toString());
     }
 }

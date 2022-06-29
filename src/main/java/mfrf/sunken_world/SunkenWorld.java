@@ -1,13 +1,12 @@
 package mfrf.sunken_world;
 
-import mfrf.sunken_world.events.EventAboutPlayer;
+import mfrf.sunken_world.events.PlayerEvents;
 import mfrf.sunken_world.registry.*;
 import mfrf.sunken_world.worldgen.OverWorldBiomeRegion;
 import mfrf.sunken_world.worldgen.structure.ModStructures;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -23,7 +22,7 @@ public class SunkenWorld {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public SunkenWorld() {
-        MinecraftForge.EVENT_BUS.register(new EventAboutPlayer());
+        MinecraftForge.EVENT_BUS.register(new PlayerEvents());
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         ModInit();
     }
@@ -36,8 +35,9 @@ public class SunkenWorld {
         Attributes.ATTRIBUTES.register(modEventBus);
         Entities.ENTITIES.register(modEventBus);
         BlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        Features.FEATURES.register(modEventBus);
         GuiContainers.CONTAINERS.register(modEventBus);
-        ModStructures.register(modEventBus);
+        ModStructures.STRUCTURES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

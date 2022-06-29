@@ -20,6 +20,7 @@ public class WorldBeacon extends Block implements EntityBlock {
 
     public WorldBeacon(Properties p_49795_) {
         super(p_49795_);
+        this.registerDefaultState(defaultBlockState().setValue(CHARGE,false));
     }
 
     @Override

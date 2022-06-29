@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = SunkenWorld.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class EntityViewRenderEvent {
+public class EntityViewRenderEvents {
 
 //    @SubscribeEvent
 //    public static void onRenderFog(net.minecraftforge.client.event.EntityViewRenderEvent.FogColors event){

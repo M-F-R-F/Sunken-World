@@ -30,7 +30,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 
 import java.util.OptionalDouble;
 
-public class EventAboutPlayer {
+public class PlayerEvents {
 
     @SubscribeEvent
     public void onDig(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event) {

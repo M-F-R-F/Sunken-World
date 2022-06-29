@@ -1,6 +1,7 @@
 package mfrf.sunken_world.mixin;
 
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.helper.Tools;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -45,7 +46,7 @@ public abstract class MixinChunkGenerator {
             )
     )
     public void generateFeatures(WorldGenLevel pLevel, ChunkAccess pChunk, StructureFeatureManager pStructureFeatureManager, CallbackInfo ci) {
-        if (Config.getDimensionsWillBeEffect().contains(pLevel.getLevel().dimension().location().toString())) {
+        if (Tools.dimContainsInList(pLevel)) {
             int top = Config.SEA_LEVEL_TOP.get();
             int bottom = Config.SEA_LEVEL_BOTTOM.get();
             ChunkPos pos = pChunk.getPos();
@@ -75,4 +76,6 @@ public abstract class MixinChunkGenerator {
             }
         }
     }
+
+
 }

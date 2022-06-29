@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = SunkenWorld.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class LivingEvent {
+public class LivingEvents {
 
     @SubscribeEvent
     public static void onLivingSpawnEvent(LivingSpawnEvent event) {
