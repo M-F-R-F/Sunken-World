@@ -41,6 +41,6 @@ public class Items {
     public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugTool::new);
 
     //place holder
-    public static final RegistryObject<Item> THROWABLE_UNDERWATER_TORCH = ITEMS.register("under_water_torch", () -> new Item(DEFAULT_PROPERTIES));
+    public static final RegistryObject<Item> THROWABLE_UNDERWATER_TORCH = ITEMS.register("under_water_torch", () -> new Item(new Item.Properties().stacksTo(1).tab(ModTab.TAB).durability(Config.UNDERWATER_TORCH_LIT_DURATION.get())));
     public static final RegistryObject<Item> THROWABLE_SPONGE = ITEMS.register("throwable_sponge", () -> new Item(DEFAULT_PROPERTIES));
 }

@@ -46,6 +46,7 @@ public class Config {
     public static final ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
     public static final ForgeConfigSpec.IntValue MAX_WATER_CONTAINS_IN_SPONGE_STICK;
     public static final ForgeConfigSpec.IntValue SPONGE_STICK_BRUST_CONSUME;
+    public static final ForgeConfigSpec.IntValue UNDERWATER_TORCH_LIT_DURATION;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
@@ -110,6 +111,7 @@ public class Config {
 
         END_FLIPPER_TELEPORT_COOL_DOWN = builder.comment("End flipper teleport cool down", "unit = second", "default = 10").defineInRange("end_flipper_teleport_cool down", 10, 0, Integer.MAX_VALUE);
 
+        UNDERWATER_TORCH_LIT_DURATION = builder.comment("lit duration of underwater torch").defineInRange("underwater_torch_lit_duration", 7200, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("technical settings");

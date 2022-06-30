@@ -22,8 +22,9 @@ public class OxygenCoral extends Block {
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         super.randomTick(pState, pLevel, pPos, pRandom);
         if (pLevel.getBlockState(pPos.above()).getBlock() == Blocks.WATER && pRandom.nextInt(100) + 1 < Config.PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE.get()) {
-            Entity spawn = Entities.BUBBLE.get().spawn(pLevel, null, null, pPos.above(), MobSpawnType.NATURAL, true, false);
-            spawn.getEntityData().set(BubbleEntity.OXYGEN_CONTAIN, pRandom.nextInt(300) + 300);
+//            Entity spawn = Entities.BUBBLE.get().spawn(pLevel, null, null, pPos.above(), MobSpawnType.NATURAL, true, false);
+//            spawn.getEntityData().set(BubbleEntity.OXYGEN_CONTAIN, pRandom.nextInt(300) + 300);
+            //todo use some math magic~
         }
     }
 }

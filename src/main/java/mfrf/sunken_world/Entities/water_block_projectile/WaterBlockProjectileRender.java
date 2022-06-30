@@ -26,7 +26,8 @@ public class WaterBlockProjectileRender extends EntityRenderer<WaterBlockProject
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
 
         BlockRenderDispatcher blockRenderer = Minecraft.getInstance().getBlockRenderer();
-        BlockState blockState = Blocks.WATER.defaultBlockState();
+//        BlockState blockState = Blocks.WATER.defaultBlockState();
+        BlockState blockState = Blocks.ICE.defaultBlockState();
 
         pMatrixStack.pushPose();
         pMatrixStack.translate(-0.5D, 0.0D, -0.5D);

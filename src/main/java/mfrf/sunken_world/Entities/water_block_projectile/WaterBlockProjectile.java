@@ -3,6 +3,7 @@ package mfrf.sunken_world.Entities.water_block_projectile;
 import mfrf.sunken_world.registry.Entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class WaterBlockProjectile extends ThrowableProjectile {
     public static final EntityDataAccessor<Integer> LIFETIME = SynchedEntityData.defineId(WaterBlockProjectile.class, EntityDataSerializers.INT);
@@ -41,7 +43,18 @@ public class WaterBlockProjectile extends ThrowableProjectile {
             tryPlaceWater(blockPosition());
         }
         entityData.set(LIFETIME, lifetime + 1);
-//        this.move(MoverType.SELF, getDeltaMovement());
+
+
+
+        Vec3 vec3 = this.getDeltaMovement();
+        double d2 = this.getX() + vec3.x;
+        double d0 = this.getY() + vec3.y;
+        double d1 = this.getZ() + vec3.z;
+        this.updateRotation();
+        for (int i = 0; i < 4; ++i) {
+            this.level.addParticle(ParticleTypes.BUBBLE, d2 - vec3.x * 0.25D, d0 - vec3.y * 0.25D, d1 - vec3.z * 0.25D, vec3.x, vec3.y, vec3.z);
+        }
+
     }
 
     @Override

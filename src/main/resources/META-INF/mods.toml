@@ -39,4 +39,10 @@ description='''
     versionRange = "[1.1.0.99,)"
     ordering = "NONE"
     side = "BOTH"
+[[dependencies.sunken_world]]
+    modId="lucent"
+    mandatory=true
+    versionRange="[1.2.2,]"
+    ordering="NONE"
+    side="CLIENT"
 

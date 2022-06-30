@@ -4,6 +4,8 @@ import mfrf.sunken_world.Config;
 import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -24,26 +26,28 @@ public class ItemSpongeOnAStick extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand pUsedHand) {
+
         if (!level.isClientSide()) {
             BlockPos blockPos = player.blockPosition();
             ItemStack itemInHand = player.getItemInHand(pUsedHand);
-            CompoundTag orCreateTag = itemInHand.getOrCreateTag();
-            Integer capacity = Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get();
-            int water = getWater(itemInHand);
-            int capRemain = capacity - water;
-            if (!(player.isShiftKeyDown() || (isSqueezeMode(itemInHand) && squeeze(level, player, orCreateTag, water)))) {
-
-                if (capRemain > 0) {
-                    int i = removeWater(level, blockPos, capRemain);
-                    orCreateTag.putInt("water", water + i);
-                    if (i >= capRemain) {
-                        orCreateTag.putBoolean("squeeze_mode", true);
-                    }
-                }
-
-            } else {
-                orCreateTag.putBoolean("squeeze_mode", true);
-            }
+//            CompoundTag orCreateTag = itemInHand.getOrCreateTag();
+//            Integer capacity = Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get();
+//            int water = getWater(itemInHand);
+//            int capRemain = capacity - water;
+//            if (!(player.isShiftKeyDown() || (isSqueezeMode(itemInHand) && squeeze(level, player, orCreateTag, water)))) {
+//
+//                if (capRemain > 0) {
+//                    int i = removeWater(level, blockPos, capRemain);
+//                    orCreateTag.putInt("water", water + i);
+//                    if (i >= capRemain) {
+//                        orCreateTag.putBoolean("squeeze_mode", true);
+//                    }
+//                }
+//
+//            } else {
+//                orCreateTag.putBoolean("squeeze_mode", true);
+//            }
+            player.sendMessage(new TextComponent("受到TeaCon规则限制，为防止破坏场馆，本物品已暂时禁用"),null);
             return InteractionResultHolder.success(itemInHand);
         }
         return super.use(level, player, pUsedHand);
