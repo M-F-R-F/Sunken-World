@@ -1,0 +1,11 @@
+{
+    "variants": 
+    {
+        "oil_seed=true": {
+            "model": "sunken_world:block/gloil_kelp_seed"
+        },
+        "oil_seed=false": {
+            "model": "sunken_world:block/gloil_kelp_plant"
+        }
+    }
+}

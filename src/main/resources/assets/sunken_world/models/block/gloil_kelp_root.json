@@ -1,0 +1,60 @@
+{
+	"credit": "Made by hqyzsy",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "sunken_world:block/gloil_kelp_root",
+		"particle": "sunken_world:block/gloil_kelp_root"
+	},
+	"elements": [
+		{
+			"from": [8, 0, -2],
+			"to": [8, 14, 18],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"east": {"uv": [7, 9, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"west": {"uv": [16, 9, 7, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "rotation": 90, "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 0], "rotation": 270, "texture": "#missing"}
+			}
+		},
+		{
+			"from": [-2, 0, 8],
+			"to": [18, 14, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [7, 9, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"south": {"uv": [10, 0, 0, 7], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#missing"}
+			}
+		},
+		{
+			"from": [-1, 0, 8],
+			"to": [17, 14, 8],
+			"faces": {
+				"north": {"uv": [7, 9, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"south": {"uv": [16, 9, 7, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#missing"}
+			}
+		},
+		{
+			"from": [8, 0, -1],
+			"to": [8, 14, 17],
+			"faces": {
+				"north": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"east": {"uv": [7, 9, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 0, 14], "texture": "#missing"},
+				"west": {"uv": [7, 9, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "rotation": 90, "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 0], "rotation": 270, "texture": "#missing"}
+			}
+		}
+	]
+}
