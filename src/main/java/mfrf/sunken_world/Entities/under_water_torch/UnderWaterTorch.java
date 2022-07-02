@@ -1,8 +1,7 @@
 package mfrf.sunken_world.Entities.under_water_torch;
 
-import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
+import mfrf.sunken_world.Config;
 import mfrf.sunken_world.registry.Entities;
-import mfrf.sunken_world.registry.Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -11,17 +10,30 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.*;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class UnderWaterTorch extends ThrowableProjectile {
-    private ItemStack stack = ItemStack.EMPTY;
+
+    public static final EntityDataAccessor<Integer> TIME = SynchedEntityData.defineId(UnderWaterTorch.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<ItemStack> STACK = SynchedEntityData.defineId(UnderWaterTorch.class, EntityDataSerializers.ITEM_STACK);
+
+    public ItemStack getStack() {
+        return this.entityData.get(STACK);
+    }
 
     public UnderWaterTorch(EntityType<? extends UnderWaterTorch> p_37466_, Level p_37467_) {
         super(p_37466_, p_37467_);
@@ -35,38 +47,44 @@ public class UnderWaterTorch extends ThrowableProjectile {
 
     @Override
     protected void defineSynchedData() {
+        this.entityData.define(STACK, ItemStack.EMPTY);
+        this.entityData.define(TIME, -1);
     }
 
     @Override
     public void tick() {
-        super.tick();
+        int time = getTime();
 
-        if (!stack.isEmpty() || stack.is(Items.THROWABLE_UNDERWATER_TORCH.get())) {
-            if (stack.getDamageValue() >= stack.getMaxDamage()) {
-                this.remove(RemovalReason.DISCARDED);
-            } else {
-                stack.setDamageValue(stack.getMaxDamage() + 1);
-            }
-        } else {
+        if (time < 0) {
             this.remove(RemovalReason.DISCARDED);
         }
+        decreaseTime();
 
 
+        BlockPos blockpos = this.blockPosition();
+        BlockState blockstate = this.level.getBlockState(blockpos);
+        VoxelShape voxelshape = blockstate.getCollisionShape(this.level, blockpos);
+        boolean flag = true;
+        if (!voxelshape.isEmpty()) {
+            Vec3 vec31 = this.position();
+
+            for (AABB aabb : voxelshape.toAabbs()) {
+                if (aabb.move(blockpos).contains(vec31)) {
+                    this.setDeltaMovement(Vec3.ZERO);
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+        if (flag) {
+            super.tick();
+        }
 
         level.addParticle(ParticleTypes.SMOKE, getX(), getY(), getZ(), 0.0D, 0.0D, 0.0D);
-        level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, getX(), getY(), getZ(), 0.0D, 0.0D, 0.0D);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(CompoundTag pCompound) {
-        if (pCompound.contains("torch_instance")) {
-            stack = ItemStack.of(pCompound.getCompound("torch_instance"));
+        if(random.nextInt(20) < 3) {
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, getX(), getY() + 0.25, getZ(), 0.0D, 0.025D, 0.0D);
         }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(CompoundTag pCompound) {
-        pCompound.put("torch_instance", stack.serializeNBT());
     }
 
     @Override
@@ -74,4 +92,22 @@ public class UnderWaterTorch extends ThrowableProjectile {
         return new ClientboundAddEntityPacket(this);
     }
 
+    public boolean isStopped() {
+        Vec3 deltaMovement = getDeltaMovement();
+        return deltaMovement.y == deltaMovement.x && deltaMovement.x == deltaMovement.z && deltaMovement.z == 0;
+    }
+
+    public int getTime() {
+        int integer = entityData.get(TIME);
+        if (integer == -1) {
+            ItemStack stack = entityData.get(STACK);
+            integer = stack.getMaxDamage() - stack.getDamageValue();
+            entityData.set(TIME, integer);
+        }
+        return integer;
+    }
+
+    public void decreaseTime() {
+        entityData.set(TIME, entityData.get(TIME) - 1);
+    }
 }

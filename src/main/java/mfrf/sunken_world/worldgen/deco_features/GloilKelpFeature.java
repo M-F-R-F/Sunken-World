@@ -44,17 +44,17 @@ public class GloilKelpFeature extends Feature<NoneFeatureConfiguration> {
                 BlockState root = mfrf.sunken_world.registry.Blocks.GLOIL_KELP_ROOT.block().get().defaultBlockState();
                 BlockState body = mfrf.sunken_world.registry.Blocks.GLOIL_KELP_BODY.get().defaultBlockState();
 
-                int k = 1 + random.nextInt(isInOriginalDimension ? 10 : 50);
+                int k = 1 + random.nextInt(isInOriginalDimension ? 50 : 10);
 
-                for (int l = 0; l <= k; ++l) {
+                  for (int l = 0; l <= k; ++l) {
                     if (worldgenlevel.getBlockState(currentPos).is(Blocks.WATER) && worldgenlevel.getBlockState(currentPos.above()).is(Blocks.WATER) && body.canSurvive(worldgenlevel, currentPos)) {
                         if (l == k) {
                             worldgenlevel.setBlock(currentPos, root.setValue(GloilKelpRootBlock.AGE, Integer.valueOf(random.nextInt(4) + 20)), 2);
                             ++i;
                         } else {
                             //30% chance
-                            if (random.nextInt(100) > 30) {
-                                worldgenlevel.setBlock(currentPos, body.setValue(GloilKelpPlantBlock.OIL_SEED, random.nextInt(4)), 2);
+                            if (random.nextInt(1000) <= 10) {
+                                worldgenlevel.setBlock(currentPos, body.setValue(GloilKelpPlantBlock.OIL_SEED, true), 2);
                             } else {
                                 worldgenlevel.setBlock(currentPos, body, 2);
                             }

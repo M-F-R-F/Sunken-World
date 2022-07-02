@@ -29,7 +29,7 @@ public class Blocks {
     public static final BlockAndItem WORLD_BEACON = blockAndItem("world_beacon", () -> new WorldBeacon(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY).lightLevel(state -> state.getValue(WorldBeacon.CHARGE) ? 15 : 0)), Items.DEFAULT_PROPERTIES);
     public static final RegistryObject<Block> WATER_PROOF_FURNACE = BLOCKS.register("water_proof_furnace", BlockWaterProofFurnace::new);
 
-    public static final RegistryObject<Block> GLOIL_KELP_BODY = BLOCKS.register("gloil_kelp_plant", () -> new GloilKelpPlantBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion().lightLevel(state -> state.getValue(GloilKelpPlantBlock.OIL_SEED) > 0 ? 10 : 0)));
+    public static final RegistryObject<Block> GLOIL_KELP_BODY = BLOCKS.register("gloil_kelp_plant", () -> new GloilKelpPlantBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion().lightLevel(state -> state.getValue(GloilKelpPlantBlock.OIL_SEED) ? 10 : 0)));
     public static final BlockAndItem GLOIL_KELP_ROOT = blockAndItem("gloil_kelp_root", () -> new GloilKelpRootBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion()), Items.DEFAULT_PROPERTIES);
 
     public static <B extends Block> BlockAndItem blockAndItem(String s, Supplier<B> supplier, Item.Properties properties) {

@@ -9,20 +9,22 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
 public class GloilKelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlockContainer {
-    public static final IntegerProperty OIL_SEED = IntegerProperty.create("oil_seed", 0, 5);
+    public static final BooleanProperty OIL_SEED = BooleanProperty.create("oil_seed");
 
     public GloilKelpPlantBlock(Properties p_53886_) {
         super(p_53886_, Direction.UP, Shapes.block(), true);
-        registerDefaultState(defaultBlockState().setValue(OIL_SEED, 0));
+        registerDefaultState(defaultBlockState().setValue(OIL_SEED, false));
     }
 
     protected boolean canAttachTo(BlockState pState) {
@@ -31,12 +33,12 @@ public class GloilKelpPlantBlock extends GrowingPlantBodyBlock implements Liquid
 
     @Override
     public void performBonemeal(ServerLevel pLevel, Random pRandom, BlockPos pPos, BlockState pState) {
-        pLevel.setBlockAndUpdate(pPos, pState.setValue(OIL_SEED, Math.max(pState.getValue(OIL_SEED) + 1, 5)));
+        pLevel.setBlockAndUpdate(pPos, pState.setValue(OIL_SEED, true));
     }
 
     @Override
     public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return pState.getValue(OIL_SEED) >= 5;
+        return !pState.getValue(OIL_SEED);
     }
 
     @Override
@@ -52,6 +54,11 @@ public class GloilKelpPlantBlock extends GrowingPlantBodyBlock implements Liquid
     @Override
     public boolean placeLiquid(LevelAccessor pLevel, BlockPos pPos, BlockState pState, FluidState pFluidState) {
         return false;
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState pState) {
+        return Fluids.WATER.getSource(false);
     }
 
     @Override

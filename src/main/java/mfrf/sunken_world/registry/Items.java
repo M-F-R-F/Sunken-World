@@ -4,6 +4,7 @@ import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.DebugTool;
 import mfrf.sunken_world.items.ItemSpongeOnAStick;
+import mfrf.sunken_world.items.ItemThrowableUnderWaterTorch;
 import mfrf.sunken_world.items.WaterProofPaint;
 import mfrf.sunken_world.items.accessories.*;
 import net.minecraft.world.item.Item;
@@ -41,6 +42,6 @@ public class Items {
     public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugTool::new);
 
     //place holder
-    public static final RegistryObject<Item> THROWABLE_UNDERWATER_TORCH = ITEMS.register("under_water_torch", () -> new Item(new Item.Properties().stacksTo(1).tab(ModTab.TAB).durability(Config.UNDERWATER_TORCH_LIT_DURATION.get())));
+    public static final RegistryObject<Item> THROWABLE_UNDERWATER_TORCH = ITEMS.register("under_water_torch", () -> new ItemThrowableUnderWaterTorch(new Item.Properties().tab(ModTab.TAB).durability(Config.UNDERWATER_TORCH_LIT_DURATION.get())));
     public static final RegistryObject<Item> THROWABLE_SPONGE = ITEMS.register("throwable_sponge", () -> new Item(DEFAULT_PROPERTIES));
 }

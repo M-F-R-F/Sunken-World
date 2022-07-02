@@ -2,6 +2,7 @@ package mfrf.sunken_world.helper;
 
 import mfrf.sunken_world.Config;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -31,4 +32,5 @@ public class Tools {
     public static boolean dimContainsInList(WorldGenLevel pLevel) {
         return Config.getDimensionsWillBeEffect().contains(pLevel.getLevel().dimension().location().toString());
     }
+
 }

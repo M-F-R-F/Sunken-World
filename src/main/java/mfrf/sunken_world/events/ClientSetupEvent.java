@@ -1,14 +1,18 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.under_water_torch.UnderWaterTorchRender;
 import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectileRender;
 import mfrf.sunken_world.Entities.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.BlockEntities;
+import mfrf.sunken_world.registry.Blocks;
 import mfrf.sunken_world.registry.Entities;
 import mfrf.sunken_world.registry.KeyBindings;
 import mfrf.sunken_world.render.EquipmentHud;
 import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRender;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -32,9 +36,16 @@ public class ClientSetupEvent {
     }
 
     @SubscribeEvent
+    public static void setupRenderTypes(final FMLClientSetupEvent event){
+        ItemBlockRenderTypes.setRenderLayer(Blocks.GLOIL_KELP_ROOT.block().get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(Blocks.GLOIL_KELP_BODY.get(), RenderType.translucent());
+    }
+
+    @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
         event.registerEntityRenderer(Entities.WATER_BLOCK_PROJECTILE.get(), WaterBlockProjectileRender::new);
+        event.registerEntityRenderer(Entities.UNDERWATER_TORCH.get(), UnderWaterTorchRender::new);
     }
 
     private static void registerTileRender() {
