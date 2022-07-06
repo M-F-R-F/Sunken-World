@@ -1,12 +1,8 @@
 package mfrf.sunken_world.blocks;
 
 import mfrf.sunken_world.Config;
-import mfrf.sunken_world.Entities.bubble.BubbleEntity;
-import mfrf.sunken_world.registry.Entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;

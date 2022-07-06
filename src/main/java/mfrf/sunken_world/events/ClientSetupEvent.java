@@ -1,8 +1,8 @@
 package mfrf.sunken_world.events;
 
-import mfrf.sunken_world.Entities.under_water_torch.UnderWaterTorchRender;
-import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectileRender;
-import mfrf.sunken_world.Entities.bubble.BubbleRender;
+import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorchRender;
+import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectileRender;
+import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.BlockEntities;

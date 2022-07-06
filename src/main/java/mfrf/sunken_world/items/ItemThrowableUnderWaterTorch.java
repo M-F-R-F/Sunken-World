@@ -1,8 +1,6 @@
 package mfrf.sunken_world.items;
 
-import mfrf.sunken_world.Config;
-import mfrf.sunken_world.Entities.under_water_torch.UnderWaterTorch;
-import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
+import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorch;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;

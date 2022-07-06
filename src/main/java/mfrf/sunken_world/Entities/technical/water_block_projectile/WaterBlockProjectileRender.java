@@ -1,20 +1,14 @@
-package mfrf.sunken_world.Entities.water_block_projectile;
+package mfrf.sunken_world.Entities.technical.water_block_projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.EmptyModelData;
-
-import java.util.Random;
 
 public class WaterBlockProjectileRender extends EntityRenderer<WaterBlockProjectile> {
     public WaterBlockProjectileRender(EntityRendererProvider.Context pContext) {

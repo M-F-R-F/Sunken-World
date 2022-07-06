@@ -1,11 +1,10 @@
 package mfrf.sunken_world.items;
 
 import mfrf.sunken_world.Config;
-import mfrf.sunken_world.Entities.water_block_projectile.WaterBlockProjectile;
+import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;

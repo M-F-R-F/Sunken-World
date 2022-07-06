@@ -1,4 +1,4 @@
-package mfrf.sunken_world.Entities.water_block_projectile;
+package mfrf.sunken_world.Entities.technical.water_block_projectile;
 
 import mfrf.sunken_world.registry.Entities;
 import net.minecraft.core.BlockPos;

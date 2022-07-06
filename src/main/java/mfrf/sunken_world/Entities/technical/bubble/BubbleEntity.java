@@ -1,7 +1,6 @@
-package mfrf.sunken_world.Entities.bubble;
+package mfrf.sunken_world.Entities.technical.bubble;
 
 import mfrf.sunken_world.Config;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;

@@ -1,4 +1,4 @@
-package mfrf.sunken_world.Entities.bubble;
+package mfrf.sunken_world.Entities.technical.bubble;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

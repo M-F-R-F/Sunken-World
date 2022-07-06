@@ -1,4 +1,4 @@
-package mfrf.sunken_world.Entities.under_water_torch;
+package mfrf.sunken_world.Entities.technical.under_water_torch;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
