@@ -46,7 +46,7 @@ public class UnderWaterTorch extends ThrowableProjectile {
     public void tick() {
         int time = getTime();
 
-        if (time < 0) {
+        if (time <= 0) {
             this.remove(RemovalReason.DISCARDED);
         }
         decreaseTime();
@@ -90,11 +90,11 @@ public class UnderWaterTorch extends ThrowableProjectile {
 
     public int getTime() {
         int integer = entityData.get(TIME);
-        //if (integer == -1) {
-         //   ItemStack stack = entityData.get(STACK);
-         //   integer = stack.getMaxDamage() - stack.getDamageValue();
-        //    entityData.set(TIME, integer);
-        //}
+        if (integer == -1) {
+           ItemStack stack = entityData.get(STACK);
+            integer = stack.getMaxDamage() - stack.getDamageValue();
+            entityData.set(TIME, integer);
+        }
         return integer;
     }
 
