@@ -1,8 +1,10 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.mobs.piranha.PiranhaModel;
+import mfrf.sunken_world.Entities.mobs.piranha.PiranhaRender;
+import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
 import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorchRender;
 import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectileRender;
-import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.BlockEntities;
@@ -22,8 +24,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+
 @Mod.EventBusSubscriber(modid = SunkenWorld.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ClientSetupEvent {
+public class ModClientSetup {
 
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
@@ -46,10 +49,15 @@ public class ClientSetupEvent {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
         event.registerEntityRenderer(Entities.WATER_BLOCK_PROJECTILE.get(), WaterBlockProjectileRender::new);
         event.registerEntityRenderer(Entities.UNDERWATER_TORCH.get(), UnderWaterTorchRender::new);
+        event.registerEntityRenderer(Entities.MOB_ENTITY_PIRANHA.get(), PiranhaRender::new);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(PiranhaModel.PIRANHA_LAYER, PiranhaModel::createBodyLayer);
     }
 
     private static void registerTileRender() {
         BlockEntityRenderers.register(BlockEntities.WORLD_BEACON_TILE.get(), TileOverworldBeaconRender::new);
     }
-
 }

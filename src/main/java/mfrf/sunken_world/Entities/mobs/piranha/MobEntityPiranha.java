@@ -18,6 +18,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
+/**
+ * todo fix bug
+ *  seek @Guardian
+ */
 public class MobEntityPiranha extends Monster {
     public static EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(MobEntityPiranha.class, EntityDataSerializers.INT);
     public static EntityDataAccessor<Boolean> HUNTING = SynchedEntityData.defineId(MobEntityPiranha.class, EntityDataSerializers.BOOLEAN);

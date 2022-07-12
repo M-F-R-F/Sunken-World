@@ -1,19 +1,12 @@
 package mfrf.sunken_world.events;
 
 
-import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Option;
-import net.minecraft.client.Options;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.level.material.FogType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = SunkenWorld.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class EntityViewRenderEvents {
+public class ForgeClientSetup {
 
 //    @SubscribeEvent
 //    public static void onRenderFog(net.minecraftforge.client.event.EntityViewRenderEvent.FogColors event){
@@ -34,6 +27,4 @@ public class EntityViewRenderEvents {
 //            event.setFarPlaneDistance(event.getFarPlaneDistance()*2);
 ////        }
 //    }
-
-
 }

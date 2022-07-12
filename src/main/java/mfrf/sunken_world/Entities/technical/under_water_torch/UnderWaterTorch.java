@@ -73,7 +73,7 @@ public class UnderWaterTorch extends ThrowableProjectile {
         }
 
         level.addParticle(ParticleTypes.SMOKE, getX(), getY(), getZ(), 0.0D, 0.0D, 0.0D);
-        if(random.nextInt(20) < 3) {
+        if (random.nextInt(20) < 3) {
             level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, getX(), getY() + 0.25, getZ(), 0.0D, 0.025D, 0.0D);
         }
     }
@@ -91,9 +91,11 @@ public class UnderWaterTorch extends ThrowableProjectile {
     public int getTime() {
         int integer = entityData.get(TIME);
         if (integer == -1) {
-           ItemStack stack = entityData.get(STACK);
-            integer = stack.getMaxDamage() - stack.getDamageValue();
-            entityData.set(TIME, integer);
+            ItemStack stack = entityData.get(STACK);
+            if(!stack.isEmpty()) {
+                integer = stack.getMaxDamage() - stack.getDamageValue();
+                entityData.set(TIME, integer);
+            }
         }
         return integer;
     }

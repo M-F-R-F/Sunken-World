@@ -1,5 +1,6 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.mobs.piranha.MobEntityPiranha;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.network.sync_player_info.SyncPlayerInfoChannel;
 import mfrf.sunken_world.network.try_teleport.TryTeleportChannel;
@@ -14,7 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import terrablender.api.Regions;
 
 @Mod.EventBusSubscriber(modid = SunkenWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CommonSetupEvent {
+public class ModSetUp {
 
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
@@ -24,5 +25,12 @@ public class CommonSetupEvent {
 //        event.enqueueWork(() -> {
 //        });
     }
+
+    @SubscribeEvent
+    public static void onAttributesCreate(EntityAttributeCreationEvent event){
+        event.put(Entities.MOB_ENTITY_PIRANHA.get(), MobEntityPiranha.createAttributes().build());
+    }
+
+
 
 }

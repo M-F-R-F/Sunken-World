@@ -18,7 +18,7 @@ public class Entities {
     //technical
     public static final RegistryObject<EntityType<BubbleEntity>> BUBBLE = ENTITIES.register("oxygen_bubble", () -> EntityType.Builder.of(BubbleEntity::new, MobCategory.MISC).sized(1.5f, 1.5f).clientTrackingRange(8).setShouldReceiveVelocityUpdates(true).updateInterval(10).build("oxygen_bubble"));
     public static final RegistryObject<EntityType<WaterBlockProjectile>> WATER_BLOCK_PROJECTILE = ENTITIES.register("water_projectile", () -> EntityType.Builder.<WaterBlockProjectile>of(WaterBlockProjectile::new, MobCategory.MISC).sized(1f, 1f).clientTrackingRange(8).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("water_projectile"));
-    public static final RegistryObject<EntityType<UnderWaterTorch>> UNDERWATER_TORCH = ENTITIES.register("underwater_torch", () -> EntityType.Builder.<UnderWaterTorch>of(UnderWaterTorch::new, MobCategory.MISC).sized(1f, 1f).clientTrackingRange(8).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("underwater_torch"));
+    public static final RegistryObject<EntityType<UnderWaterTorch>> UNDERWATER_TORCH = ENTITIES.register("underwater_torch", () -> EntityType.Builder.<UnderWaterTorch>of(UnderWaterTorch::new, MobCategory.MISC).sized(.3f, .3f).clientTrackingRange(8).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("underwater_torch"));
 
     //mobs
     public static final RegistryObject<EntityType<MobEntityPiranha>> MOB_ENTITY_PIRANHA = ENTITIES.register("piranha", () -> EntityType.Builder.of(MobEntityPiranha::new, MobCategory.MONSTER).sized(0.5f, 0.5f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("piranha"));

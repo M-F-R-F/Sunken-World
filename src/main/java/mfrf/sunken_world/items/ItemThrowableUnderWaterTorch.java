@@ -19,7 +19,7 @@ public class ItemThrowableUnderWaterTorch extends Item {
             ItemStack itemInHand = player.getItemInHand(hand);
             UnderWaterTorch projectile = new UnderWaterTorch(player, level);
             projectile.getEntityData().set(UnderWaterTorch.STACK,itemInHand.copy());
-            projectile.getEntityData().set(UnderWaterTorch.TIME,itemInHand.getMaxDamage() - itemInHand.getDamageValue());
+//            projectile.getEntityData().set(UnderWaterTorch.TIME,60);
             projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(projectile);
             itemInHand.shrink(1);
