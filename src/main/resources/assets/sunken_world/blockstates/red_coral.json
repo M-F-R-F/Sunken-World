@@ -1,0 +1,20 @@
+{
+    "variants": 
+    {
+        "face=north": {
+            "model": "sunken_world:block/red_coral"
+        },
+        "face=east": {
+            "model": "sunken_world:block/red_coral",
+            "y":90
+        },
+        "face=south": {
+            "model": "sunken_world:block/red_coral",
+            "y":180
+        },
+        "face=west": {
+            "model": "sunken_world:block/red_coral",
+            "y":270
+        }
+    }
+}
