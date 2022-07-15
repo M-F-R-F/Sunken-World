@@ -2,6 +2,8 @@ package mfrf.sunken_world.registry;
 
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.blocks.OxygenCoral;
+import mfrf.sunken_world.blocks.decos.HorizontalAttachBlock;
+import mfrf.sunken_world.blocks.decos.RedCoral;
 import mfrf.sunken_world.blocks.decos.gloil_kelp.GloilKelpPlantBlock;
 import mfrf.sunken_world.blocks.decos.gloil_kelp.GloilKelpRootBlock;
 import mfrf.sunken_world.blocks.nether_furnace.BlockNetherProofFurnace;
@@ -31,6 +33,7 @@ public class Blocks {
 
     public static final RegistryObject<Block> GLOIL_KELP_BODY = BLOCKS.register("gloil_kelp_plant", () -> new GloilKelpPlantBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion().lightLevel(state -> state.getValue(GloilKelpPlantBlock.OIL_SEED) ? 10 : 0)));
     public static final BlockAndItem GLOIL_KELP_ROOT = blockAndItem("gloil_kelp_root", () -> new GloilKelpRootBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion()), Items.DEFAULT_PROPERTIES);
+    public static final BlockAndItem RED_CORAL = blockAndItem("red_coral",()->new RedCoral(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(0.5f,0.5f).sound(SoundType.STONE)),Items.DEFAULT_PROPERTIES);
 
     public static <B extends Block> BlockAndItem blockAndItem(String s, Supplier<B> supplier, Item.Properties properties) {
         RegistryObject<B> object = BLOCKS.register(s, supplier);
