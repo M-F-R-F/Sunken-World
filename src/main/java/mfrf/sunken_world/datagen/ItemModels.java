@@ -4,6 +4,7 @@ import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.registry.Blocks;
 import mfrf.sunken_world.registry.Items;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -24,5 +25,10 @@ public class ItemModels extends ItemModelProvider {
         singleTexture(Items.SPONGE_ON_A_STICK.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/sponge_on_a_stick"));
         singleTexture(Items.THROWABLE_SPONGE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_sponge"));
         singleTexture(Items.THROWABLE_UNDERWATER_TORCH.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_underwater_torch"));
+//        regDefault(Blocks.RED_CORAL.item(),"red_coral");
+    }
+
+    private void regDefault(Item item, String path){
+        singleTexture(item.getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/"+path));
     }
 }

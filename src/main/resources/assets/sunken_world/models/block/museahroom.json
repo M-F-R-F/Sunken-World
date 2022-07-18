@@ -1,8 +1,8 @@
 {
 	"credit": "Made by hqyzsy",
 	"textures": {
-		"0": "sunken_world:block/sea_shroom",
-		"particle": "sunken_world:block/sea_shroom"
+		"0": "sunken_world:block/museahroom",
+		"particle": "sunken_world:block/museahroom"
 	},
 	"elements": [
 		{

@@ -27,7 +27,6 @@ public class WorldBeacon extends Block implements EntityBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(CHARGE);
-        //todo beacon beam, teleport portal
     }
 
     @Nullable

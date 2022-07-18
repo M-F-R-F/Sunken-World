@@ -6,11 +6,13 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WaterBlockProjectileRender extends EntityRenderer<WaterBlockProjectile> {
+
     public WaterBlockProjectileRender(EntityRendererProvider.Context pContext) {
         super(pContext);
     }
@@ -26,6 +28,7 @@ public class WaterBlockProjectileRender extends EntityRenderer<WaterBlockProject
         pMatrixStack.pushPose();
         pMatrixStack.translate(-0.5D, 0.0D, -0.5D);
 //        blockRenderer.getModelRenderer().tesselateBlock(pEntity.level, blockRenderer.getBlockModel(blockState), blockState, pEntity.blockPosition(), pMatrixStack, pBuffer.getBuffer(RenderType.translucentMovingBlock()), false, new Random(), blockState.getSeed(pEntity.blockPosition()), OverlayTexture.NO_OVERLAY);
+        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(Blocks.WATER.defaultBlockState(), pMatrixStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY);
         //todo fixit
 
         pMatrixStack.popPose();

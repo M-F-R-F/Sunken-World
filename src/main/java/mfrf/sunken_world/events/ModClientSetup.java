@@ -39,9 +39,11 @@ public class ModClientSetup {
     }
 
     @SubscribeEvent
-    public static void setupRenderTypes(final FMLClientSetupEvent event){
+    public static void setupRenderTypes(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(Blocks.GLOIL_KELP_ROOT.block().get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(Blocks.GLOIL_KELP_BODY.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(Blocks.RED_CORAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(Blocks.MUSEAHROOM.block().get(), RenderType.translucent());
     }
 
     @SubscribeEvent

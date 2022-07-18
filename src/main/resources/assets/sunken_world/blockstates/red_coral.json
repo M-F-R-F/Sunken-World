@@ -1,18 +1,18 @@
 {
     "variants": 
     {
-        "face=north": {
+        "attach_direction=north": {
             "model": "sunken_world:block/red_coral"
         },
-        "face=east": {
+        "attach_direction=east": {
             "model": "sunken_world:block/red_coral",
             "y":90
         },
-        "face=south": {
+        "attach_direction=south": {
             "model": "sunken_world:block/red_coral",
             "y":180
         },
-        "face=west": {
+        "attach_direction=west": {
             "model": "sunken_world:block/red_coral",
             "y":270
         }
