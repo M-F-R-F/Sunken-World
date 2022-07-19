@@ -38,6 +38,7 @@ public class SunkenWorld {
         Features.FEATURES.register(modEventBus);
         GuiContainers.CONTAINERS.register(modEventBus);
         ModStructures.STRUCTURES.register(modEventBus);
+        Containers.CONTAINERS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

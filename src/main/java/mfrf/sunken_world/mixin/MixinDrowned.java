@@ -21,7 +21,7 @@ import java.util.Random;
 @Mixin(Drowned.class)
 public class MixinDrowned {
 
-    @Inject(method = "checkDrownedSpawnRules", at = @At(value = "RETURN",ordinal = 2),cancellable = true)
+    @Inject(method = "checkDrownedSpawnRules", at = @At(value = "RETURN",ordinal = 2),cancellable = true,remap = false)
     private static void checkDrownedSpawnRules(EntityType<Drowned> p_32350_, ServerLevelAccessor p_32351_, MobSpawnType p_32352_, BlockPos p_32353_, Random p_32354_, CallbackInfoReturnable<Boolean> cir) {
         if (p_32351_.getLevel().dimension().location() == Dimensions.SUNKEN_WORLD.location()) {
             boolean flag = p_32351_.getDifficulty() != Difficulty.PEACEFUL && Drowned.isDarkEnoughToSpawn(p_32351_, p_32353_, p_32354_) && (p_32352_ == MobSpawnType.SPAWNER || p_32351_.getFluidState(p_32353_).is(FluidTags.WATER));

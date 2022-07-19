@@ -2,12 +2,11 @@ package mfrf.sunken_world.registry;
 
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.blocks.OxygenCoral;
-import mfrf.sunken_world.blocks.decos.HorizontalAttachBlock;
 import mfrf.sunken_world.blocks.decos.RedCoral;
 import mfrf.sunken_world.blocks.decos.SimpleUnderWaterVegetation;
 import mfrf.sunken_world.blocks.decos.gloil_kelp.GloilKelpPlantBlock;
 import mfrf.sunken_world.blocks.decos.gloil_kelp.GloilKelpRootBlock;
-import mfrf.sunken_world.blocks.nether_furnace.BlockNetherProofFurnace;
+import mfrf.sunken_world.blocks.nether_furnace.BlockNetherFurnace;
 import mfrf.sunken_world.blocks.overworld_beacon.WorldBeacon;
 import mfrf.sunken_world.blocks.water_proof_furnace.BlockWaterProofFurnace;
 import net.minecraft.core.BlockPos;
@@ -32,7 +31,7 @@ public class Blocks {
 
     //    public static final RegistryObject<ModifiedWaterBlock> MODIFIED_WATER = BLOCKS.register("water", ModifiedWaterBlock::new);
     public static final BlockAndItem OXYGEN_CORAL = blockAndItem("oxygen_coral", () -> new OxygenCoral(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY)), Items.DEFAULT_PROPERTIES),
-            NETHER_FURNACE = blockAndItem("nether_furnace", BlockNetherProofFurnace::new, Items.DEFAULT_PROPERTIES),
+            NETHER_FURNACE = blockAndItem("nether_furnace", BlockNetherFurnace::new, Items.DEFAULT_PROPERTIES),
             WORLD_BEACON = blockAndItem("world_beacon", () -> new WorldBeacon(BlockBehaviour.Properties.of(Material.STONE, DyeColor.GRAY).lightLevel(state -> state.getValue(WorldBeacon.CHARGE) ? 15 : 0)), Items.DEFAULT_PROPERTIES),
             GLOIL_KELP_ROOT = blockAndItem("gloil_kelp_root", () -> new GloilKelpRootBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).noOcclusion()), Items.DEFAULT_PROPERTIES),
             MUSEAHROOM = blockAndItem("museahroom", () -> new SimpleUnderWaterVegetation(BlockBehaviour.Properties.of(Material.WATER_PLANT).noCollission().strength(0.1f).lightLevel((b) -> 4).sound(SoundType.WET_GRASS)) {

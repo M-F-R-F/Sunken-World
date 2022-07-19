@@ -7,14 +7,17 @@ import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.helper.CurioHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
+import top.theillusivec4.curios.api.CuriosApi;
 
 @OnlyIn(Dist.CLIENT)
 public enum EquipmentHud implements IIngameOverlay {
@@ -26,7 +29,7 @@ public enum EquipmentHud implements IIngameOverlay {
     @Override
     public void render(ForgeIngameGui gui, PoseStack poseStack, float partialTick, int width, int height) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (!minecraft.options.hideGui && !minecraft.player.isSpectator() && Config.OXYGEN_TANK_HUD_ENABLED.get() && percent != -1) {
+        if (!minecraft.options.hideGui && !minecraft.player.isSpectator() && Config.OXYGEN_TANK_HUD_ENABLED.get() && !CurioHelper.findAnyItem(minecraft.player,"oxygen_tank", stack -> !stack.isEmpty()).isEmpty() && percent != -1) {
             minecraft.getTextureManager().bindForSetup(OXYGEN_TANK_HUD);
             poseStack.pushPose();
             RenderSystem.setShaderTexture(0, OXYGEN_TANK_HUD);

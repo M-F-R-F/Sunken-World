@@ -19,6 +19,7 @@ public class CurioHelper {
                     ItemStack stackInSlot = stacks.getStackInSlot(i);
                     if (stackPredicate.test(stackInSlot)) {
                         stack.set(stackInSlot);
+                        break;
                     }
                 }
             });

@@ -20,5 +20,6 @@
   "item.sunken_world.throwable_sponge": "Throwable sponge",
   "item.sunken_world.under_water_torch": "Underwater torch",
   "item.sunken_world.water_proof_paint": "Waterproof paint",
-  "itemGroup.sunken_world": "Sunken World"
+  "itemGroup.sunken_world": "Sunken World",
+  "nether_furnace": "Nether Furnace"
 }

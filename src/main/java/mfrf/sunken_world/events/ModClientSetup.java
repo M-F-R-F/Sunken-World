@@ -6,13 +6,12 @@ import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
 import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorchRender;
 import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectileRender;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.gui.nether_furnace.NetherFurnaceScreen;
 import mfrf.sunken_world.helper.ClientHelper;
-import mfrf.sunken_world.registry.BlockEntities;
-import mfrf.sunken_world.registry.Blocks;
-import mfrf.sunken_world.registry.Entities;
-import mfrf.sunken_world.registry.KeyBindings;
+import mfrf.sunken_world.registry.*;
 import mfrf.sunken_world.render.EquipmentHud;
 import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRender;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -37,6 +36,12 @@ public class ModClientSetup {
 
         registerTileRender();
     }
+
+    @SubscribeEvent
+    public static void setupGUI(final FMLClientSetupEvent event) {
+        MenuScreens.register(Containers.NETHER_FURNACE.get(), NetherFurnaceScreen::new);
+    }
+
 
     @SubscribeEvent
     public static void setupRenderTypes(final FMLClientSetupEvent event) {

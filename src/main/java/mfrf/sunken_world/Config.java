@@ -135,7 +135,7 @@ public class Config {
         builder.push("tile entities");
         MIN_BURNING_TICK_OF_NETHER_FURNACE = builder.comment("how many ticks will burning at LEAST while only soul fire burning in nether furnace").defineInRange("min_burning_tick_of_nether_furnace", 800, 0, Integer.MAX_VALUE);
         PROBABILITY_NETHER_FURNACE_EXTINGUISH = builder.comment("probability of soul fire extinguish in nether furnace").define("probability_nether_furnace_extinguish", 0.1d);
-        NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST = builder.comment("boost speed per tick while both soul fire and fuel burning in nether furnace").defineInRange("nether_furnace_overclock_smelting_boost", 0, 2, Integer.MAX_VALUE);
+        NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST = builder.comment("boost speed per tick while both soul fire and fuel burning in nether furnace").defineInRange("nether_furnace_overclock_smelting_boost", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("world settings");
