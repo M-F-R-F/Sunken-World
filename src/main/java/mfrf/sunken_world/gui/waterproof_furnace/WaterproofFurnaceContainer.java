@@ -1,38 +1,36 @@
-package mfrf.sunken_world.gui.nether_furnace;
+package mfrf.sunken_world.gui.waterproof_furnace;
 
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import mfrf.sunken_world.blocks.nether_furnace.TileNetherFurnace;
+import mfrf.sunken_world.blocks.water_proof_furnace.TileWaterProofFurnace;
 import mfrf.sunken_world.gui.ContainerUtil;
 import mfrf.sunken_world.registry.Blocks;
 import mfrf.sunken_world.registry.Containers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-public class NetherFurnaceContainer extends AbstractContainerMenu {
+public class WaterproofFurnaceContainer extends AbstractContainerMenu {
 
     private ContainerData data;
     private InvWrapper playerInventory;
-    public TileNetherFurnace blockEntity;
+    public TileWaterProofFurnace blockEntity;
     private Player playerEntity;
 
-    public NetherFurnaceContainer(int windowId, BlockPos pos, Inventory playerInventory, Player player, @NotNull ContainerData data) {
-        super(Containers.NETHER_FURNACE.get(), windowId);
-        blockEntity = (TileNetherFurnace) player.getCommandSenderWorld().getBlockEntity(pos);
+    public WaterproofFurnaceContainer(int windowId, BlockPos pos, Inventory playerInventory, Player player, @NotNull ContainerData data) {
+        super(Containers.WATER_PROOF_FURNACE.get(), windowId);
+        blockEntity = (TileWaterProofFurnace) player.getCommandSenderWorld().getBlockEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
         this.data = data;
@@ -54,28 +52,32 @@ public class NetherFurnaceContainer extends AbstractContainerMenu {
                     }
                 });
             });
-
         }
+        addSlot(new SlotItemHandler(blockEntity.oxidizerSlot, 0, 147, 60));
         addDataSlots(this.data);
     }
 
-
     public int getBurnProgress() {
-        int i = data.get(2);
-        int j = data.get(3);
-        return 34 - ((i == 0 || j == 0) ? 18 : (18 * i / j));
+        int i = this.data.get(2);
+        int j = this.data.get(3);
+        return j != 0 && i != 0 ? i * 24 / j : 0;
     }
 
     public int getLitProgress() {
-        int max = data.get(1);
-        int current = data.get(0);
-        if (max != 0) {
-            return 16 * current / max;
+        int i = this.data.get(1);
+        if (i == 0) {
+            i = 200;
         }
 
-        return 0;
-
+        return this.data.get(0) * 13 / i;
     }
+
+    public float getPercent() {
+        int i = this.data.get(4);
+        int j = this.data.get(5);
+        return ((float) i) / j;
+    }
+
 
     @Override
     public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
@@ -86,7 +88,7 @@ public class NetherFurnaceContainer extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos()), playerEntity, Blocks.NETHER_FURNACE.block().get());
+        return stillValid(ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos()), playerEntity, Blocks.WATER_PROOF_FURNACE.get());
     }
 
 
@@ -94,4 +96,7 @@ public class NetherFurnaceContainer extends AbstractContainerMenu {
         return data.get(4) > 0;
     }
 
+    public boolean isLit() {
+        return this.data.get(0) > 0;
+    }
 }

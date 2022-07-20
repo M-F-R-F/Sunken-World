@@ -21,5 +21,6 @@
   "item.sunken_world.under_water_torch": "Underwater torch",
   "item.sunken_world.water_proof_paint": "Waterproof paint",
   "itemGroup.sunken_world": "Sunken World",
-  "nether_furnace": "Nether Furnace"
+  "nether_furnace": "Nether Furnace",
+  "water_proof_furnace": "Water Proof Furnace"
 }

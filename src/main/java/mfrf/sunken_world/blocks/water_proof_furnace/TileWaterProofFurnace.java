@@ -1,6 +1,9 @@
 package mfrf.sunken_world.blocks.water_proof_furnace;
 
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.gui.nether_furnace.NetherFurnaceContainer;
+import mfrf.sunken_world.gui.waterproof_furnace.WaterProofFurnaceScreen;
+import mfrf.sunken_world.gui.waterproof_furnace.WaterproofFurnaceContainer;
 import mfrf.sunken_world.helper.TileHelper;
 import mfrf.sunken_world.registry.BlockEntities;
 import mfrf.sunken_world.registry.Items;
@@ -11,20 +14,57 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TileWaterProofFurnace extends AbstractFurnaceBlockEntity {
-    protected ItemStackHandler oxidizerSlot = new ItemStackHandler(1) {
+    public ItemStackHandler oxidizerSlot = new ItemStackHandler(1) {
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return stack.is(Items.OXIDIZER.get());
+        }
     };
     protected int oxidizerRemain;
+    protected int maxOxidizer = Config.OXIDIZER_LAST_TIME.get();
+    public ContainerData data = new ContainerData() {
+        @Override
+        public int get(int pIndex) {
+            return switch (pIndex) {
+                case 4 -> oxidizerRemain;
+                case 5 -> maxOxidizer;
+                default -> TileWaterProofFurnace.super.dataAccess.get(pIndex);
+            };
+        }
+
+        @Override
+        public void set(int pIndex, int pValue) {
+            switch (pIndex) {
+                case 4 -> {
+                    oxidizerRemain = pValue;
+                }
+                case 5 -> {
+                    maxOxidizer = pValue;
+                }
+                default -> TileWaterProofFurnace.super.dataAccess.set(pIndex, pValue);
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 6;
+        }
+    };
 
     public TileWaterProofFurnace(BlockPos pPos, BlockState pState) {
         super(BlockEntities.WATER_PROOF_FURNACE_TILE.get(), pPos, pState, RecipeType.SMELTING);
@@ -51,7 +91,7 @@ public class TileWaterProofFurnace extends AbstractFurnaceBlockEntity {
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        if (facing == getBlockState().getValue(BlockStateProperties.FACING)) {
+        if (facing == getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)) {
             return LazyOptional.of(() -> oxidizerSlot).cast();
         }
         return super.getCapability(capability, facing);
@@ -59,7 +99,7 @@ public class TileWaterProofFurnace extends AbstractFurnaceBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory) {
-        return null;
+        return new WaterproofFurnaceContainer(pContainerId, getBlockPos(), pInventory, pInventory.player, data);
     }
 
     public void setTag(CompoundTag tag) {
@@ -81,8 +121,11 @@ public class TileWaterProofFurnace extends AbstractFurnaceBlockEntity {
         if (TileHelper.isFacingAir(pLevel, pPos, pState)) {
             AbstractFurnaceBlockEntity.serverTick(pLevel, pPos, pState, pBlockEntity);
         } else if (pBlockEntity.oxidizerRemain > 0 || pBlockEntity.tryConsumeOxidizer()) {
-            pBlockEntity.oxidizerRemain -= 1;
+            if (pBlockEntity.isLit()) {
+                pBlockEntity.oxidizerRemain -= 1;
+            }
             AbstractFurnaceBlockEntity.serverTick(pLevel, pPos, pState, pBlockEntity);
+            pBlockEntity.setChanged();
         }
     }
 }

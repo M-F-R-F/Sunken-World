@@ -7,6 +7,7 @@ import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorchRen
 import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectileRender;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.gui.nether_furnace.NetherFurnaceScreen;
+import mfrf.sunken_world.gui.waterproof_furnace.WaterProofFurnaceScreen;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.*;
 import mfrf.sunken_world.render.EquipmentHud;
@@ -40,6 +41,7 @@ public class ModClientSetup {
     @SubscribeEvent
     public static void setupGUI(final FMLClientSetupEvent event) {
         MenuScreens.register(Containers.NETHER_FURNACE.get(), NetherFurnaceScreen::new);
+        MenuScreens.register(Containers.WATER_PROOF_FURNACE.get(), WaterProofFurnaceScreen::new);
     }
 
 

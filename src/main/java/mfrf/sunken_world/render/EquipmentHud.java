@@ -22,7 +22,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 @OnlyIn(Dist.CLIENT)
 public enum EquipmentHud implements IIngameOverlay {
     INSTANCE;
-    private static final ResourceLocation OXYGEN_TANK_HUD = new ResourceLocation(SunkenWorld.MODID, "textures/gui/oxygen_ui.png");
+    public static final ResourceLocation OXYGEN_TANK_HUD = new ResourceLocation(SunkenWorld.MODID, "textures/gui/oxygen_ui.png");
     private static float percent = -1f;
 
 

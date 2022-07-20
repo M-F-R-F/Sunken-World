@@ -41,6 +41,8 @@ public class TileNetherFurnace extends AbstractFurnaceBlockEntity {
             if (pIndex == 4) {
                 nether_fire_burned_time = pValue;
                 setChanged();
+            }else {
+                TileNetherFurnace.super.dataAccess.set(pIndex, pValue);
             }
         }
 
