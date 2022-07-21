@@ -1,5 +1,6 @@
 package mfrf.sunken_world.registry;
 
+import mfrf.sunken_world.Entities.harmless.spadefish.EntitySpadeFish;
 import mfrf.sunken_world.Entities.mobs.piranha.MobEntityPiranha;
 import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorch;
 import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectile;
@@ -22,5 +23,7 @@ public class Entities {
 
     //mobs
     public static final RegistryObject<EntityType<MobEntityPiranha>> MOB_ENTITY_PIRANHA = ENTITIES.register("piranha", () -> EntityType.Builder.of(MobEntityPiranha::new, MobCategory.MONSTER).sized(0.5f, 0.5f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("piranha"));
+    public static final RegistryObject<EntityType<EntitySpadeFish>> SPADE_FISH = ENTITIES.register("spade_fish", () -> EntityType.Builder.of(EntitySpadeFish::new, MobCategory.WATER_CREATURE).sized(1f, 0.55f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("spade_fish"));
+
 
 }

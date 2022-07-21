@@ -1,7 +1,9 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.harmless.spadefish.SpadeFishModel;
+import mfrf.sunken_world.Entities.harmless.spadefish.SpadeFishRenderer;
 import mfrf.sunken_world.Entities.mobs.piranha.PiranhaModel;
-import mfrf.sunken_world.Entities.mobs.piranha.PiranhaRender;
+import mfrf.sunken_world.Entities.mobs.piranha.PiranhaRenderer;
 import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
 import mfrf.sunken_world.Entities.technical.under_water_torch.UnderWaterTorchRender;
 import mfrf.sunken_world.Entities.technical.water_block_projectile.WaterBlockProjectileRender;
@@ -11,7 +13,7 @@ import mfrf.sunken_world.gui.waterproof_furnace.WaterProofFurnaceScreen;
 import mfrf.sunken_world.helper.ClientHelper;
 import mfrf.sunken_world.registry.*;
 import mfrf.sunken_world.render.EquipmentHud;
-import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRender;
+import mfrf.sunken_world.render.tile_render.TileOverworldBeaconRenderer;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -58,15 +60,17 @@ public class ModClientSetup {
         event.registerEntityRenderer(Entities.BUBBLE.get(), BubbleRender::new);
         event.registerEntityRenderer(Entities.WATER_BLOCK_PROJECTILE.get(), WaterBlockProjectileRender::new);
         event.registerEntityRenderer(Entities.UNDERWATER_TORCH.get(), UnderWaterTorchRender::new);
-        event.registerEntityRenderer(Entities.MOB_ENTITY_PIRANHA.get(), PiranhaRender::new);
+        event.registerEntityRenderer(Entities.MOB_ENTITY_PIRANHA.get(), PiranhaRenderer::new);
+        event.registerEntityRenderer(Entities.SPADE_FISH.get(), SpadeFishRenderer::new);
     }
 
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(PiranhaModel.PIRANHA_LAYER, PiranhaModel::createBodyLayer);
+        event.registerLayerDefinition(SpadeFishModel.LAYER_LOCATION, SpadeFishModel::createBodyLayer);
     }
 
     private static void registerTileRender() {
-        BlockEntityRenderers.register(BlockEntities.WORLD_BEACON_TILE.get(), TileOverworldBeaconRender::new);
+        BlockEntityRenderers.register(BlockEntities.WORLD_BEACON_TILE.get(), TileOverworldBeaconRenderer::new);
     }
 }

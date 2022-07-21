@@ -1,5 +1,6 @@
 package mfrf.sunken_world.events;
 
+import mfrf.sunken_world.Entities.harmless.spadefish.EntitySpadeFish;
 import mfrf.sunken_world.Entities.mobs.piranha.MobEntityPiranha;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.network.sync_player_info.SyncPlayerInfoChannel;
@@ -29,6 +30,7 @@ public class ModSetUp {
     @SubscribeEvent
     public static void onAttributesCreate(EntityAttributeCreationEvent event){
         event.put(Entities.MOB_ENTITY_PIRANHA.get(), MobEntityPiranha.createAttributes().build());
+        event.put(Entities.SPADE_FISH.get(), EntitySpadeFish.prepareAttributes().build());
     }
 
 
