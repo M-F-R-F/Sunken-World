@@ -23,8 +23,13 @@ public class ModSetUp {
         TryTeleportChannel.register();
         SyncPlayerInfoChannel.register();
         Features.FeatureHolder.registerFeatures();
-//        event.enqueueWork(() -> {
-//        });
+    }
+
+    @SubscribeEvent
+    public static void regStructure(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            Regions.register(new OverWorldBiomeRegion(new ResourceLocation(SunkenWorld.MODID, "overworld"), 2));
+        });
     }
 
     @SubscribeEvent
