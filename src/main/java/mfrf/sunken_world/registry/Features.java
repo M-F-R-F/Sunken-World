@@ -38,6 +38,7 @@ public class Features {
             GLOIL_KELP_PLACED_FEATURE = registerPlacedFeature("gloil_kelp_feature", new ConfiguredFeature(GLOIL_KELP_FEATURE.get(), FeatureConfiguration.NONE), NoiseBasedCountPlacement.of(80, 80.0D, 0.0D), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
             RED_CORAL_PLACED_FEATURE = registerPlacedFeature("red_coral_feature", new ConfiguredFeature(RED_CORAL_FEATURE.get(), FeatureConfiguration.NONE), NoiseBasedCountPlacement.of(80, 80.0D, 0.0D), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
             MUSEAHROOM_PLACED_FEATURE = registerPlacedFeature("museahroom_feature", new ConfiguredFeature(Feature.FLOWER, FeatureUtils.simpleRandomPatchConfiguration(96, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.MUSEAHROOM.block().get()))))));
+            //todo fixit
         }
 
 

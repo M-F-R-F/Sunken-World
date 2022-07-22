@@ -49,7 +49,6 @@ public class OxygenTank extends CurioBase {
             if (entity.getAirSupply() == 0) {
                 if (!oxygenTank.isEmpty()) {
                     entity.setAirSupply(oxygenTank.extractOxygen(maxAirSupply - 1));
-                    //todo modify vanilla oxygen system #deprecated
                     syncPlayerInfo((float) oxygenTank.getOxygen() / oxygenTank.getCapacity(), entity);
                 }
             }

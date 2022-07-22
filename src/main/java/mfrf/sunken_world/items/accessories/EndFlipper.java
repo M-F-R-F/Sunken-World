@@ -31,7 +31,6 @@ public class EndFlipper extends Flipper {
                 int i = (int) (energy + value);
                 if (i <= Config.END_FLIPPER_ENERGY_CAPACITY.get()) {
                     setEnergy(stack, i);
-                    //todo make it capability
                 }
             }
         }

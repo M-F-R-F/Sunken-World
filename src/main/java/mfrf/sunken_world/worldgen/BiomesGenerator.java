@@ -53,7 +53,6 @@ public class BiomesGenerator {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.WARM_OCEAN_VEGETATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEA_PICKLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.KELP_WARM);
-        //todo 多整点feature
 
         return biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.OCEAN, 0.8F, 0.5F,Mth.color(200,107,255),Mth.color(209,170,255), spawnBuilder, biomeBuilder, Musics.UNDER_WATER);
     }
