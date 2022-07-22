@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -23,7 +24,8 @@ public class RedCoral extends HorizontalAttachBlock{
 //            case NORTH ->
 //            case WEST ->
 //            case EAST ->
-            default -> Shapes.create(new AABB(0d,0d,0d,1d,1.0d,1.0d)); //这是如何创建一个碰撞箱 数字后加d表示这是一个包含小数位的数字
+            default -> Shapes.create(new AABB(0d,0d,0d,.9d,0.9d,0.9d)); //这是如何创建一个碰撞箱 数字后加d表示这是一个包含小数位的数字
         };
     }
+
 }

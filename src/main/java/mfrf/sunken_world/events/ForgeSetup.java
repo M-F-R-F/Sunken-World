@@ -5,6 +5,7 @@ import mfrf.sunken_world.Config;
 import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.registry.Dimensions;
 import mfrf.sunken_world.registry.Features;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -21,6 +22,8 @@ public class ForgeSetup {
     public static void onBiomeLoadingEvent(BiomeLoadingEvent event) {
         if (event.getCategory() == Biome.BiomeCategory.OCEAN) {
             event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Features.FeatureHolder.GLOIL_KELP_PLACED_FEATURE);
+            event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Features.FeatureHolder.MUSEAHROOM_PLACED_FEATURE);
+            event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Features.FeatureHolder.RED_CORAL_PLACED_FEATURE);
         }
     }
 

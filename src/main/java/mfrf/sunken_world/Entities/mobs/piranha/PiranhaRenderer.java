@@ -7,10 +7,10 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class PiranhaRender extends MobRenderer<MobEntityPiranha,PiranhaModel> {
+public class PiranhaRenderer extends MobRenderer<MobEntityPiranha,PiranhaModel> {
     private static final ResourceLocation TEMP_LOCATION = new ResourceLocation("textures/entity/fish/cod.png");
 
-    public PiranhaRender(EntityRendererProvider.Context context) {
+    public PiranhaRenderer(EntityRendererProvider.Context context) {
         super(context, new PiranhaModel(context.bakeLayer(PiranhaModel.PIRANHA_LAYER)), 1f);
     }
 

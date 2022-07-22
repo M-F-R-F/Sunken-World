@@ -5,6 +5,7 @@ import mfrf.sunken_world.SunkenWorld;
 import mfrf.sunken_world.items.*;
 import mfrf.sunken_world.items.accessories.*;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -38,6 +39,8 @@ public class Items {
             WATER_PROOF_PAINT = ITEMS.register("water_proof_paint", () -> new WaterProofPaint(DEFAULT_PROPERTIES)),
             RED_CORAL_FRAGMENT = ITEMS.register("red_coral_fragment", () -> new Item(DEFAULT_PROPERTIES));
 
+    //eggs
+    public static final RegistryObject<Item> SPADE_FISH = ITEMS.register("spade_fish", () -> new ForgeSpawnEggItem(Entities.SPADE_FISH, 0xff0000, 0x00ff00, DEFAULT_PROPERTIES));
 
     //technical
     public static final RegistryObject<Item>

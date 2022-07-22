@@ -25,10 +25,12 @@ public class ItemModels extends ItemModelProvider {
         singleTexture(Items.SPONGE_ON_A_STICK.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/sponge_on_a_stick"));
         singleTexture(Items.THROWABLE_SPONGE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_sponge"));
         singleTexture(Items.THROWABLE_UNDERWATER_TORCH.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/throwable_underwater_torch"));
-//        regDefault(Blocks.RED_CORAL.item(),"red_coral");
+        regDefault(Items.OXIDIZER.get());
+        regDefault(Blocks.MUSEAHROOM.item().get());
+        regDefault(Items.RED_CORAL_FRAGMENT.get());
     }
 
-    private void regDefault(Item item, String path){
-        singleTexture(item.getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/"+path));
+    private void regDefault(Item item){
+        singleTexture(item.getRegistryName().getPath(),mcLoc("item/generated"),"layer0",modLoc("item/"+item.getRegistryName().getPath()));
     }
 }

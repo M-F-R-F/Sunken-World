@@ -38,7 +38,6 @@ public class OverWorldBiomeRegion extends Region {
             modifiedVanillaOverworldBuilder.replaceBiome(net.minecraft.world.level.biome.Biomes.DEEP_LUKEWARM_OCEAN, mfrf.sunken_world.registry.Biomes.MYSTERY_OCEAN);
         });
 
-        //todo
     }
 
 

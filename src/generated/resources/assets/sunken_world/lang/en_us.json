@@ -1,4 +1,6 @@
 {
+  "block.sunken_world.gloil_kelp_root": "Gloil kelp root",
+  "block.sunken_world.museahroom": "Museahroom",
   "block.sunken_world.nether_furnace": "Nether furnace",
   "block.sunken_world.oxygen_coral": "Oxygen coral",
   "block.sunken_world.world_beacon": "World beacon",
@@ -15,12 +17,12 @@
   "item.sunken_world.jet_flipper": "Jet flipper",
   "item.sunken_world.oxidizer": "Oxidizer",
   "item.sunken_world.oxygen_tank": "Oxygen tank",
+  "item.sunken_world.red_coral_fragment": "Red coral fragment",
   "item.sunken_world.sponge_on_a_stick": "Sponge on a stick",
   "item.sunken_world.swim_glass": "Swim glass",
   "item.sunken_world.throwable_sponge": "Throwable sponge",
-  "item.sunken_world.under_water_torch": "Underwater torch",
-  "item.sunken_world.water_proof_paint": "Waterproof paint",
-  "itemGroup.sunken_world": "Sunken World",
-  "nether_furnace": "Nether Furnace",
-  "water_proof_furnace": "Water Proof Furnace"
+  "item.sunken_world.under_water_torch": "Under water torch",
+  "item.sunken_world.underwater_thruster": "Underwater thruster",
+  "item.sunken_world.water_proof_paint": "Water proof paint",
+  "itemGroup.sunken_world": "Sunken World"
 }

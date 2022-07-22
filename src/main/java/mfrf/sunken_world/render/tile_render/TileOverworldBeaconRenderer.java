@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TileOverworldBeaconRender implements BlockEntityRenderer<TileWorldBeacon> {
+public class TileOverworldBeaconRenderer implements BlockEntityRenderer<TileWorldBeacon> {
 
     private final BlockEntityRendererProvider.Context context;
 
-    public TileOverworldBeaconRender(BlockEntityRendererProvider.Context context) {
+    public TileOverworldBeaconRenderer(BlockEntityRendererProvider.Context context) {
         this.context = context;
     }
 
