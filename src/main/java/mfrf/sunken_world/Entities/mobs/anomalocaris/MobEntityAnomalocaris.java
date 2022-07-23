@@ -3,6 +3,7 @@ package mfrf.sunken_world.Entities.mobs.anomalocaris;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -17,9 +18,10 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
+import java.util.UUID;
 import java.util.function.Predicate;
 
-public class MobEntityAnomalocaris extends Monster {
+public class MobEntityAnomalocaris extends Monster implements NeutralMob {
 
     @Nullable
     protected RandomStrollGoal randomStrollGoal;
@@ -55,6 +57,32 @@ public class MobEntityAnomalocaris extends Monster {
     @Override
     public void aiStep() {
         super.aiStep();
+    }
+
+    @Override
+    public int getRemainingPersistentAngerTime() {
+        return 0;
+    }
+
+    @Override
+    public void setRemainingPersistentAngerTime(int pRemainingPersistentAngerTime) {
+
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public UUID getPersistentAngerTarget() {
+        return null;
+    }
+
+    @Override
+    public void setPersistentAngerTarget(@org.jetbrains.annotations.Nullable UUID pPersistentAngerTarget) {
+
+    }
+
+    @Override
+    public void startPersistentAngerTimer() {
+
     }
 
     static class AnomalocarisMoveControl extends MoveControl {
