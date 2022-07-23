@@ -40,7 +40,9 @@ public class Items {
             RED_CORAL_FRAGMENT = ITEMS.register("red_coral_fragment", () -> new Item(DEFAULT_PROPERTIES));
 
     //eggs
-    public static final RegistryObject<Item> SPADE_FISH = ITEMS.register("spade_fish", () -> new ForgeSpawnEggItem(Entities.SPADE_FISH, 0xff0000, 0x00ff00, DEFAULT_PROPERTIES));
+    public static final RegistryObject<Item>
+            SPADE_FISH_EGG = ITEMS.register("spade_fish", () -> new ForgeSpawnEggItem(Entities.SPADE_FISH, 0xff0000, 0x00ff00, DEFAULT_PROPERTIES)),
+            ANOMALOCARIS_EGG = ITEMS.register("anomalocaris",()->new ForgeSpawnEggItem(Entities.ANOMALOCARIS,0xff0000,0x00ff00,DEFAULT_PROPERTIES));
 
     //technical
     public static final RegistryObject<Item>

@@ -95,7 +95,7 @@ public class custom_model<T extends Entity> extends EntityModel<T> {
 		.texOffs(0, 23).addBox(-8.0F, -7.0F, 0.0F, 4.0F, 8.0F, 10.0F, new CubeDeformation(0.0F))
 		.texOffs(0, 0).mirror().addBox(0.0F, -7.0F, 0.0F, 4.0F, 8.0F, 15.0F, new CubeDeformation(0.0F)).mirror(false)
 		.texOffs(23, 0).mirror().addBox(0.0F, -6.5F, 6.0F, 9.0F, 7.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false)
-		.texOffs(0, 23).mirror().addBox(4.0F, -7.0F, 0.0F, 4.0F, 8.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 19.0F, -13.0F, -0.4363F, 0.0F, 0.0F));
+		.texOffs(0, 23).mirror().addBox(4.0F, -7.0F, 0.0F, 4.0F, 8.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 19.0F, -13.0F));
 
 		PartDefinition wing_1_left_r1 = body1.addOrReplaceChild("wing_1_left_r1", CubeListBuilder.create().texOffs(54, 26).mirror().addBox(0.0F, 0.001F, 0.0F, 7.0F, 1.0F, 6.0F, new CubeDeformation(-0.01F)).mirror(false), PartPose.offsetAndRotation(7.5F, -4.001F, 0.0F, 0.0F, 0.0F, 0.0873F));
 
@@ -110,7 +110,7 @@ public class custom_model<T extends Entity> extends EntityModel<T> {
 		.texOffs(36, 56).addBox(-6.0F, -5.0F, 12.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F))
 		.texOffs(47, 7).mirror().addBox(0.0F, -6.0F, 0.0F, 8.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false)
 		.texOffs(40, 44).mirror().addBox(0.0F, -5.5F, 5.0F, 7.0F, 5.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false)
-		.texOffs(36, 56).mirror().addBox(0.0F, -5.0F, 12.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 0.0F, 12.0F, -0.4363F, 0.0F, 0.0F));
+		.texOffs(36, 56).mirror().addBox(0.0F, -5.0F, 12.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 0.0F, 12.0F));
 
 		PartDefinition wing_3_left_r1 = body2.addOrReplaceChild("wing_3_left_r1", CubeListBuilder.create().texOffs(47, 19).mirror().addBox(0.0F, 0.001F, 0.0F, 9.0F, 1.0F, 6.0F, new CubeDeformation(-0.01F)).mirror(false), PartPose.offsetAndRotation(7.5F, -4.001F, 0.0F, 0.0F, 0.0F, 0.3491F));
 
@@ -127,7 +127,7 @@ public class custom_model<T extends Entity> extends EntityModel<T> {
 		PartDefinition body3 = body2.addOrReplaceChild("body3", CubeListBuilder.create().texOffs(19, 39).addBox(-5.0F, -2.5F, -1.0F, 5.0F, 3.0F, 9.0F, new CubeDeformation(0.0F))
 		.texOffs(61, 40).addBox(-3.0F, -2.0F, 8.0F, 3.0F, 2.0F, 6.0F, new CubeDeformation(0.0F))
 		.texOffs(19, 39).mirror().addBox(0.0F, -2.5F, -1.0F, 5.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false)
-		.texOffs(61, 40).mirror().addBox(0.0F, -2.0F, 8.0F, 3.0F, 2.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, -2.0F, 18.0F, -0.4363F, 0.0F, 0.0F));
+		.texOffs(61, 40).mirror().addBox(0.0F, -2.0F, 8.0F, 3.0F, 2.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -2.0F, 18.0F));
 
 		PartDefinition wing_6_left_r1 = body3.addOrReplaceChild("wing_6_left_r1", CubeListBuilder.create().texOffs(53, 59).mirror().addBox(0.0F, 0.001F, 0.0F, 5.0F, 1.0F, 7.0F, new CubeDeformation(-0.01F)).mirror(false), PartPose.offsetAndRotation(4.5F, -2.001F, 0.0F, 0.0F, 0.0F, 0.1309F));
 

@@ -2,6 +2,8 @@ package mfrf.sunken_world.events;
 
 import mfrf.sunken_world.Entities.harmless.spadefish.SpadeFishModel;
 import mfrf.sunken_world.Entities.harmless.spadefish.SpadeFishRenderer;
+import mfrf.sunken_world.Entities.mobs.anomalocaris.AnomalocarisModel;
+import mfrf.sunken_world.Entities.mobs.anomalocaris.AnomalocarisRenderer;
 import mfrf.sunken_world.Entities.mobs.piranha.PiranhaModel;
 import mfrf.sunken_world.Entities.mobs.piranha.PiranhaRenderer;
 import mfrf.sunken_world.Entities.technical.bubble.BubbleRender;
@@ -62,12 +64,14 @@ public class ModClientSetup {
         event.registerEntityRenderer(Entities.UNDERWATER_TORCH.get(), UnderWaterTorchRender::new);
         event.registerEntityRenderer(Entities.MOB_ENTITY_PIRANHA.get(), PiranhaRenderer::new);
         event.registerEntityRenderer(Entities.SPADE_FISH.get(), SpadeFishRenderer::new);
+        event.registerEntityRenderer(Entities.ANOMALOCARIS.get(), AnomalocarisRenderer::new);
     }
 
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(PiranhaModel.PIRANHA_LAYER, PiranhaModel::createBodyLayer);
         event.registerLayerDefinition(SpadeFishModel.LAYER_LOCATION, SpadeFishModel::createBodyLayer);
+        event.registerLayerDefinition(AnomalocarisModel.LAYER_LOCATION, AnomalocarisModel::createBodyLayer);
     }
 
     private static void registerTileRender() {
