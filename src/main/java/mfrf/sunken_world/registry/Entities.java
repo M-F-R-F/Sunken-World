@@ -25,7 +25,7 @@ public class Entities {
     //mobs
     public static final RegistryObject<EntityType<MobEntityPiranha>> MOB_ENTITY_PIRANHA = ENTITIES.register("piranha", () -> EntityType.Builder.of(MobEntityPiranha::new, MobCategory.MONSTER).sized(0.5f, 0.5f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("piranha"));
     public static final RegistryObject<EntityType<EntitySpadeFish>> SPADE_FISH = ENTITIES.register("spade_fish", () -> EntityType.Builder.of(EntitySpadeFish::new, MobCategory.WATER_CREATURE).sized(1f, 0.55f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("spade_fish"));
-    public static final RegistryObject<EntityType<MobEntityAnomalocaris>> ANOMALOCARIS = ENTITIES.register("anomalocaris", () -> EntityType.Builder.of(MobEntityAnomalocaris::new, MobCategory.WATER_CREATURE).sized(2.5f, 2.5f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("anormalocaris"));
+    public static final RegistryObject<EntityType<MobEntityAnomalocaris>> ANOMALOCARIS = ENTITIES.register("anomalocaris", () -> EntityType.Builder.of(MobEntityAnomalocaris::new, MobCategory.WATER_CREATURE).sized(2.5f, 1.5f).clientTrackingRange(16).setShouldReceiveVelocityUpdates(true).updateInterval(1).build("anormalocaris"));
 
 
 }

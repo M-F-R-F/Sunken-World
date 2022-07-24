@@ -7,6 +7,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.netty.util.internal.MathUtil;
 import mfrf.sunken_world.SunkenWorld;
+import mfrf.sunken_world.helper.MathHelper;
+import net.minecraft.client.Timer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -208,14 +210,48 @@ public class AnomalocarisModel extends EntityModel<MobEntityAnomalocaris> {
     @Override
     public void setupAnim(MobEntityAnomalocaris entity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
 
-        float f = 0.5F;
-        boolean moving = entity.getDeltaMovement().length() != 0;
-        if (moving) {
-            f = 1.3F;
+        if (entity.isInWaterOrBubble()) {
+            boolean moving = entity.getDeltaMovement().length() != 0;
+            float v = MathHelper.linearLerpWithMax(entity.moveTime, 0, 15);
 
-            body1.xRot = body2.xRot = body3.xRot = Mth.lerp(entity.swingTime,0,30) * -0.5f;
+            if (moving) {
+                if (entity.hunting()) {
+                    body1.xRot = (float) (0.2 * v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f)));
+                    body2.xRot = (float) (0.2 * -v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f + 2 * Math.PI / 3f)));
+                    body3.xRot = (float) (0.2 * v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f + 4 * Math.PI / 3f)));
+                }
+
+            }
+//            head.y = 15 - v * 13;
+//            body1.y = 15 - v*13;
+            updateFin(pAgeInTicks);
+        }else {
+            body1.xRot = body2.xRot = body3.xRot = 0;
         }
 
+
+    }
+
+    private void updateFin(float time) {
+        float scale = 0.35f;
+
+        wing_1_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f));
+        wing_1_r.zRot = -wing_1_l.zRot;
+
+        wing_2_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f + 2 * Math.PI / 6f));
+        wing_2_r.zRot = -wing_2_l.zRot;
+
+        wing_3_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f + 4 * Math.PI / 6f));
+        wing_3_r.zRot = -wing_3_l.zRot;
+
+        wing_4_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f + 6 * Math.PI / 6f));
+        wing_4_r.zRot = -wing_4_l.zRot;
+
+        wing_5_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f + 8 * Math.PI / 6f));
+        wing_5_r.zRot = -wing_5_l.zRot;
+
+        wing_6_l.zRot = (float) (scale * Math.sin(time * 2f * Math.PI / 20f + 10 * Math.PI / 6f));
+        wing_6_r.zRot = -wing_6_l.zRot;
 
     }
 
