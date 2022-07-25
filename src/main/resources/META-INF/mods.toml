@@ -45,4 +45,10 @@ description='''
     versionRange="[1.2.2,]"
     ordering="NONE"
     side="CLIENT"
+    [[dependencies.sunken_world]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[3.0.28,]"
+    ordering="NONE"
+    side="BOTH"
 
