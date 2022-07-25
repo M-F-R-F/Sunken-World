@@ -21,6 +21,7 @@ import net.minecraft.world.entity.Entity;
 public class AnomalocarisModel extends EntityModel<MobEntityAnomalocaris> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(SunkenWorld.MODID, "anomalocaris"), "main");
+    private final ModelPart root;
     private final ModelPart head;
     private final ModelPart body1;
     private final ModelPart body2;
@@ -40,6 +41,7 @@ public class AnomalocarisModel extends EntityModel<MobEntityAnomalocaris> {
     private final ModelPart wing_6_r;
 
     public AnomalocarisModel(ModelPart root) {
+        this.root = root;
         this.head = root.getChild("head");
         this.body1 = root.getChild("body1");
         this.wing_1_l = body1.getChild("wing_1_left_r1");
@@ -213,22 +215,38 @@ public class AnomalocarisModel extends EntityModel<MobEntityAnomalocaris> {
         if (entity.isInWaterOrBubble()) {
             boolean moving = entity.getDeltaMovement().length() != 0;
             float v = MathHelper.linearLerpWithMax(entity.moveTime, 0, 15);
+//            float b1XRot = 0;
+//            float b1YRot = 0;
+//            float b1ZRot = 0;
+//            float b2XRot = 0;
+//            float b2YRot = 0;
+//            float b2ZRot = 0;
+//            float b3XRot = 0;
+//            float b4YRot = 0;
+//            float b4ZRot = 0;
+//            float hXRot = 0;
+//            float hYRot = 0;
+//            float hZRot = 0;
 
             if (moving) {
                 if (entity.hunting()) {
                     body1.xRot = (float) (0.2 * v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f)));
                     body2.xRot = (float) (0.2 * -v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f + 2 * Math.PI / 3f)));
                     body3.xRot = (float) (0.2 * v * Math.sin((pAgeInTicks * 2f * Math.PI / 20f + 4 * Math.PI / 3f)));
+                } else {
+                    body1.xRot = body2.xRot = body3.xRot = 0;
                 }
 
             }
-//            head.y = 15 - v * 13;
-//            body1.y = 15 - v*13;
+            head.y = 15 - v * 8;
+            body1.y = 15 - v * 8;
             updateFin(pAgeInTicks);
-        }else {
-            body1.xRot = body2.xRot = body3.xRot = 0;
-        }
 
+        } else {
+            body1.xRot = -0.05f;
+            body2.xRot = body3.xRot = 0;
+            head.y = body1.y = 23;
+        }
 
     }
 
