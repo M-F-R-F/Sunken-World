@@ -175,6 +175,7 @@ repositories {
         name "Modding Legacy Maven"
         url "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
     }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 
 }
 
@@ -188,6 +189,7 @@ dependencies {
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.18.2-5.0.7.0")
     implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.18.2-${terrablender_version}")
     implementation fg.deobf("com.legacy:lucent:1.18.2-1.2.2")
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.18:3.0.28')
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
