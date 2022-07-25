@@ -3,8 +3,6 @@ package mfrf.sunken_world.blocks.decos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -17,15 +15,14 @@ public class RedCoral extends HorizontalAttachBlock{
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         Direction value = pState.getValue(HorizontalAttachBlock.ATTACH_DIRECTION);
         return switch (value){
-//            case SOUTH ->
-//            case NORTH ->
-//            case WEST ->
-//            case EAST ->
-            default -> Shapes.create(new AABB(0d,0d,0d,.9d,0.9d,0.9d)); //这是如何创建一个碰撞箱 数字后加d表示这是一个包含小数位的数字
+            case NORTH ->Shapes.create(new AABB(0.0625d,0.125d,0d,0.9375d,0.8125d,0.4375d));
+            case SOUTH ->Shapes.create(new AABB(0.0625d,0.125d,0.5625d,0.9375d,0.8125d,1d));
+            case EAST ->Shapes.create(new AABB(0.5625d,0.125d,0.9375d,1d,0.8125d,0.0625d));
+            case WEST ->Shapes.create(new AABB(0.5625d,0.125d,0.0625d,0d,0.8125d,.9375d));
+            default -> Shapes.create(new AABB(0d,0d,0d,0d,0d,0d)); //这是如何创建一个碰撞箱 数字后加d表示这是一个包含小数位的数字
         };
     }
-
 }
