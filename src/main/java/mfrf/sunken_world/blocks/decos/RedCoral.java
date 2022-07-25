@@ -22,7 +22,7 @@ public class RedCoral extends HorizontalAttachBlock{
             case SOUTH ->Shapes.create(new AABB(0.0625d,0.125d,0.5625d,0.9375d,0.8125d,1d));
             case EAST ->Shapes.create(new AABB(0.5625d,0.125d,0.9375d,1d,0.8125d,0.0625d));
             case WEST ->Shapes.create(new AABB(0.5625d,0.125d,0.0625d,0d,0.8125d,.9375d));
-            default -> Shapes.create(new AABB(0d,0d,0d,0d,0d,0d)); //这是如何创建一个碰撞箱 数字后加d表示这是一个包含小数位的数字
+            default -> Shapes.create(new AABB(0d,0d,0d,0d,0d,0d));
         };
     }
 }
