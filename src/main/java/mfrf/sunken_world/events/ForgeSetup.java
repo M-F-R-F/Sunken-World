@@ -30,7 +30,7 @@ public class ForgeSetup {
     @SubscribeEvent
     public static void onLivingSpawnEvent(LivingSpawnEvent event) {
         if (event.getEntity().getType() == EntityType.DROWNED && event.getWorld().dimensionType().effectsLocation() == Dimensions.SUNKEN_WORLD.location()) {
-            event.setResult(event.getY() < Config.SEA_LEVEL_BOTTOM.get() && event.getWorld().getRandom().nextInt(30) == 0? Event.Result.ALLOW : Event.Result.DENY);
+            event.setResult(event.getY() < Config.SEA_LEVEL_BOTTOM.get() && event.getWorld().getRandom().nextInt(30) == 0 ? Event.Result.ALLOW : Event.Result.DENY);
         }
     }
 }

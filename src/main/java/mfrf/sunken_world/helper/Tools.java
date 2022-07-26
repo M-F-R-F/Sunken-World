@@ -1,6 +1,7 @@
 package mfrf.sunken_world.helper;
 
 import mfrf.sunken_world.Config;
+import mfrf.sunken_world.registry.Biomes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -31,6 +32,10 @@ public class Tools {
 
     public static boolean dimContainsInList(WorldGenLevel pLevel) {
         return Config.getDimensionsWillBeEffect().contains(pLevel.getLevel().dimension().location().toString());
+    }
+
+    public static boolean inListOrInMysteryOcean(WorldGenLevel level, BlockPos pos) {
+        return dimContainsInList(level) || level.getBiome(pos).is(Biomes.MYSTERY_OCEAN);
     }
 
 }

@@ -144,6 +144,7 @@ minecraft {
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'sunken_world', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
+
             mods {
                 sunken_world {
                     source sourceSets.main

@@ -26,8 +26,8 @@ public class ItemSpongeOnAStick extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand pUsedHand) {
 
-        if (!level.isClientSide()) {
-            BlockPos blockPos = player.blockPosition();
+//        if (!level.isClientSide()) {
+//            BlockPos blockPos = player.blockPosition();
             ItemStack itemInHand = player.getItemInHand(pUsedHand);
 //            CompoundTag orCreateTag = itemInHand.getOrCreateTag();
 //            Integer capacity = Config.MAX_WATER_CONTAINS_IN_SPONGE_STICK.get();
@@ -48,8 +48,8 @@ public class ItemSpongeOnAStick extends Item {
 //            }
             player.sendMessage(new TextComponent("受到TeaCon规则限制，为防止破坏场馆，本物品已暂时禁用"),null);
             return InteractionResultHolder.success(itemInHand);
-        }
-        return super.use(level, player, pUsedHand);
+//        }
+//        return super.use(level, player, pUsedHand);
     }
 
     private boolean squeeze(Level level, Player player, CompoundTag orCreateTag, int water) {

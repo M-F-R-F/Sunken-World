@@ -44,7 +44,7 @@ public class RedCoralFeature extends Feature<NoneFeatureConfiguration> {
                         if (worldgenlevel.isWaterAt(pos)) {
                             if (VineBlock.isAcceptableNeighbour(worldgenlevel, relative, direction)) {
 
-                                worldgenlevel.setBlock(relative, Blocks.RED_CORAL.get().defaultBlockState().setValue(HorizontalAttachBlock.ATTACH_DIRECTION, direction), 2);
+                                worldgenlevel.setBlock(pos, Blocks.RED_CORAL.get().defaultBlockState().setValue(HorizontalAttachBlock.ATTACH_DIRECTION, direction), 2);
                                 cache.add(pos);
                                 flag.addAndGet(1);
 

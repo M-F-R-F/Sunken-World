@@ -9,7 +9,8 @@
     "MixinFurnaceTile"
   ],
   "client": [
-    "MixinFogRender"
+    "MixinFogRender",
+    "MixinHumanoidModel"
   ],
   "injectors": {
     "defaultRequire": 1
