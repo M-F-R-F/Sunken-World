@@ -24,5 +24,7 @@
   "item.sunken_world.under_water_torch": "Under water torch",
   "item.sunken_world.underwater_thruster": "Underwater thruster",
   "item.sunken_world.water_proof_paint": "Water proof paint",
-  "itemGroup.sunken_world": "Sunken World"
+  "itemGroup.sunken_world": "Sunken World",
+  "lucent_not_loaded": "Lucent not loaded, therefore this item would not act correctly",
+  "item.sunken_world.oxidizer.tooltip": "我们这里没有火，只有一大片的水，\n实在想不到送你们什么，就给你们一袋氧化剂吧!\n于是，火焰得以在水下燃烧。"
 }

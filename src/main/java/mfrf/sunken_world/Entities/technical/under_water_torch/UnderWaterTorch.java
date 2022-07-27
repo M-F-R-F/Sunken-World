@@ -12,10 +12,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.ModList;
 
 public class UnderWaterTorch extends ThrowableProjectile {
 
@@ -44,10 +50,18 @@ public class UnderWaterTorch extends ThrowableProjectile {
 
     @Override
     public void tick() {
+
+//        if(isStopped() && !ModList.get().isLoaded("lucent")){
+//
+//        }
+
         int time = getTime();
 
         if (time <= 0) {
             this.remove(RemovalReason.DISCARDED);
+//            LevelLightEngine lightEngine = level.getLightEngine();
+//            LevelChunk chunkAt = level.getChunkAt(blockPosition());
+//            lightEngine.updateSectionStatus(blockPosition(),chunkAt.getSection(chunkAt.getSectionIndex(getBlockY())).hasOnlyAir());
         }
         decreaseTime();
 
@@ -103,4 +117,5 @@ public class UnderWaterTorch extends ThrowableProjectile {
     public void decreaseTime() {
         entityData.set(TIME, entityData.get(TIME) - 1);
     }
+
 }
