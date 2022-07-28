@@ -5,6 +5,7 @@ import mfrf.sunken_world.registry.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlockStates extends BlockStateProvider {
@@ -14,6 +15,7 @@ public class BlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+//        horizontalFaceBlock(Blocks.NETHER_FURNACE.block().get(), models().withExistingParent());
     }
 
 
