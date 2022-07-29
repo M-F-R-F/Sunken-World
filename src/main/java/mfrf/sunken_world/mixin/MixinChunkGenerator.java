@@ -43,8 +43,7 @@ public abstract class MixinChunkGenerator {
                     target = "Lnet/minecraft/world/level/WorldGenLevel;setCurrentlyGenerating(Ljava/util/function/Supplier;)V",
                     ordinal = 2,
                     shift = At.Shift.AFTER
-            ),
-            remap = false
+            )
     )
     public void generateFeatures(WorldGenLevel pLevel, ChunkAccess pChunk, StructureFeatureManager pStructureFeatureManager, CallbackInfo ci) {
         if (Tools.dimContainsInList(pLevel)) {

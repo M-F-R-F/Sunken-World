@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinFurnaceTile {
 
 
-    @Inject(method = "serverTick", at = @At("HEAD"), cancellable = true,remap = false)
+    @Inject(method = "serverTick", at = @At("HEAD"), cancellable = true)
     private static void serverTick(Level pLevel, BlockPos pPos, BlockState pState, AbstractFurnaceBlockEntity pBlockEntity, CallbackInfo ci) {
         if (!Config.CAN_FURNACE_BURN_UNDER_WATER.get()) {
             if ((!TileHelper.isFacingAir(pLevel, pPos, pState) && !(pBlockEntity instanceof TileWaterProofFurnace) && !(pBlockEntity instanceof TileNetherFurnace))) {
