@@ -117,17 +117,19 @@ public class MobEntityAnomalocaris extends Monster implements NeutralMob {
         if (this.isInWaterOrBubble()) {
             this.setAirSupply(300);
             setNoGravity(true);
-        } else if (this.onGround) {
+        } else {
             this.setNoGravity(false);
-            this.hasImpulse = true;
-            setNoAi(true);
             this.setAirSupply(Math.max(0, this.decreaseAirSupply(4)));
+            this.hasImpulse = true;
+            if (isOnGround()) {
+                setNoAi(true);
+            }
         }
 
         if (hunting()) {
 //            navigation.moveTo(getTarget(), 1.5);
             LivingEntity target = getTarget();
-            moveControl.setWantedPosition(target.getX(),target.getY(),target.getZ(),1.5f);
+            moveControl.setWantedPosition(target.getX(), target.getY(), target.getZ(), 1.5f);
         }
 
         this.jumping = false;
