@@ -3,9 +3,12 @@ package mfrf.sunken_world;
 import mfrf.sunken_world.events.PlayerEvents;
 import mfrf.sunken_world.registry.*;
 import mfrf.sunken_world.registry.ModStructures;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +22,7 @@ public class SunkenWorld {
 
     public SunkenWorld() {
         MinecraftForge.EVENT_BUS.register(new PlayerEvents());
+        regConfig();
         ModInit();
     }
 
@@ -36,6 +40,11 @@ public class SunkenWorld {
         Containers.CONTAINERS.register(modEventBus);
     }
 
+    private void regConfig() {
+        ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+        Config.register(COMMON_BUILDER);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_BUILDER.build());
+    }
 
 
 }
