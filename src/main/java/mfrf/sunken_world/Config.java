@@ -1,5 +1,6 @@
 package mfrf.sunken_world;
 
+import net.minecraftforge.common.ForgeConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -9,52 +10,48 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
-    private static ForgeConfigSpec configSpec;
-
-    public static final ForgeConfigSpec.IntValue SEA_LEVEL_TOP;
-    public static final ForgeConfigSpec.IntValue SEA_LEVEL_BOTTOM;
-    public static final ForgeConfigSpec.ConfigValue<String> DIMENSIONS_WILL_BE_EFFECT;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_1;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_2;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_3;
-    public static final ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> CAN_FURNACE_BURN_UNDER_WATER;
-    public static final ForgeConfigSpec.ConfigValue<Double> SWIFT_DIG_ADDITION;
-    public static final ForgeConfigSpec.ConfigValue<Double> MAX_SWIFT_DIG;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_SKY;
-    public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_SKY;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_STRATA;
-    public static final ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_STRATA;
-    public static final ForgeConfigSpec.ConfigValue<Double> FLIPPER_SPEED_BOOST;
-    public static final ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_BOOST;
-    public static final ForgeConfigSpec.ConfigValue<Double> END_FLIPPER_SPEED_BOOST;
-    public static final ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_ACTIVATED_BOOST;
-    public static final ForgeConfigSpec.ConfigValue<Integer> JET_FLIPPER_COST_ON_ACTIVATED_PER_TICK;
-    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_DISTANCE;
-    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_ENERGY_CAPACITY;
-    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COST;
-    public static final ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COOL_DOWN;
-    public static final ForgeConfigSpec.BooleanValue OXYGEN_TANK_HUD_ENABLED;
-    public static final ForgeConfigSpec.IntValue PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE;
-    public static final ForgeConfigSpec.DoubleValue OXYGEN_BUBBLE_SPEED;
-    public static final ForgeConfigSpec.BooleanValue DISABLE_WATER_FOG;
-    public static final ForgeConfigSpec.IntValue OXIDIZER_LAST_TIME;
-    public static final ForgeConfigSpec.IntValue MIN_BURNING_TICK_OF_NETHER_FURNACE;
-    public static final ForgeConfigSpec.ConfigValue<Double> PROBABILITY_NETHER_FURNACE_EXTINGUISH;
-    public static final ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
-    public static final ForgeConfigSpec.IntValue MAX_WATER_CONTAINS_IN_SPONGE_STICK;
-    public static final ForgeConfigSpec.IntValue SPONGE_STICK_BRUST_CONSUME;
-    public static final ForgeConfigSpec.IntValue UNDERWATER_TORCH_LIT_DURATION;
-    public static final ForgeConfigSpec.IntValue UNDERWATER_THRUSTER_SPEED;
+    public static ForgeConfigSpec.IntValue SEA_LEVEL_TOP;
+    public static ForgeConfigSpec.IntValue SEA_LEVEL_BOTTOM;
+    public static ForgeConfigSpec.ConfigValue<String> DIMENSIONS_WILL_BE_EFFECT;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_1;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_1;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_2;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_2;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_CAPACITY_TIER_3;
+    public static ForgeConfigSpec.ConfigValue<Integer> OXYGEN_TANK_OXYGEN_RECOVERY_RATE_TIER_3;
+    public static ForgeConfigSpec.ConfigValue<Boolean> CAN_FURNACE_BURN_UNDER_WATER;
+    public static ForgeConfigSpec.ConfigValue<Double> SWIFT_DIG_ADDITION;
+    public static ForgeConfigSpec.ConfigValue<Double> MAX_SWIFT_DIG;
+    public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_SKY;
+    public static ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_SKY;
+    public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_FURY_OF_STRATA;
+    public static ForgeConfigSpec.ConfigValue<Double> DAMAGE_FURY_OF_STRATA;
+    public static ForgeConfigSpec.ConfigValue<Double> FLIPPER_SPEED_BOOST;
+    public static ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_BOOST;
+    public static ForgeConfigSpec.ConfigValue<Double> END_FLIPPER_SPEED_BOOST;
+    public static ForgeConfigSpec.ConfigValue<Double> JET_FLIPPER_SPEED_ACTIVATED_BOOST;
+    public static ForgeConfigSpec.ConfigValue<Integer> JET_FLIPPER_COST_ON_ACTIVATED_PER_TICK;
+    public static ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_DISTANCE;
+    public static ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_ENERGY_CAPACITY;
+    public static ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COST;
+    public static ForgeConfigSpec.ConfigValue<Integer> END_FLIPPER_TELEPORT_COOL_DOWN;
+    public static ForgeConfigSpec.BooleanValue OXYGEN_TANK_HUD_ENABLED;
+    public static ForgeConfigSpec.IntValue PROBABILITY_OXYGEN_CORAL_GENERATE_BUBBLE;
+    public static ForgeConfigSpec.DoubleValue OXYGEN_BUBBLE_SPEED;
+    public static ForgeConfigSpec.BooleanValue DISABLE_WATER_FOG;
+    public static ForgeConfigSpec.IntValue OXIDIZER_LAST_TIME;
+    public static ForgeConfigSpec.IntValue MIN_BURNING_TICK_OF_NETHER_FURNACE;
+    public static ForgeConfigSpec.ConfigValue<Double> PROBABILITY_NETHER_FURNACE_EXTINGUISH;
+    public static ForgeConfigSpec.IntValue NETHER_FURNACE_OVERCLOCK_SMELTING_BOOST;
+    public static ForgeConfigSpec.IntValue MAX_WATER_CONTAINS_IN_SPONGE_STICK;
+    public static ForgeConfigSpec.IntValue SPONGE_STICK_BRUST_CONSUME;
+    public static ForgeConfigSpec.IntValue UNDERWATER_TORCH_LIT_DURATION;
+    public static ForgeConfigSpec.IntValue UNDERWATER_THRUSTER_SPEED;
 
     public static List<String> dimensionsWillBeEffectCache = null;
 
 
-
-    static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+    public static void register(ForgeConfigSpec.Builder builder) {
 
         builder.push("General settings");
         SEA_LEVEL_TOP = builder
@@ -115,7 +112,7 @@ public class Config {
 
         UNDERWATER_TORCH_LIT_DURATION = builder.comment("lit duration of underwater torch").defineInRange("underwater_torch_lit_duration", 7200, 0, Integer.MAX_VALUE);
 
-        UNDERWATER_THRUSTER_SPEED = builder.comment("speed while using underwater thruster").defineInRange("underwater_thruster_speed",4,0,Integer.MAX_VALUE);
+        UNDERWATER_THRUSTER_SPEED = builder.comment("speed while using underwater thruster").defineInRange("underwater_thruster_speed", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("technical settings");
@@ -154,8 +151,6 @@ public class Config {
 
         builder.pop();
 
-
-        configSpec = builder.build();
     }
 
     public static List<String> getDimensionsWillBeEffect() {
